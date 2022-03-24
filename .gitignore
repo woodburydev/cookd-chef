@@ -59,3 +59,5 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 yarn.lock
+ios/GoogleService-Info.plist
+android/app/google-services.json

@@ -1,4 +1,4 @@
-package com.cookdchef;
+package com.woodburydev.cookdchef;
 
 import com.facebook.react.ReactActivity;
 
