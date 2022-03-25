@@ -1,6 +1,7 @@
 import React, {createContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import auth from '@react-native-firebase/auth';
+import {endpoint} from '../config/api';
 
 export const myContext = createContext({});
 export default function Context(props: any) {
@@ -13,7 +14,7 @@ export default function Context(props: any) {
     const uid = authUser.uid;
     authUser.getIdToken().then((token: string) => {
       axios
-        .get(`https://cookd-server-z8lmh.ondigitalocean.app/cook/${uid}`, {
+        .get(`${endpoint}/cook/${uid}`, {
           headers: {Authorization: `Bearer ${token}`},
         })
         .then(res => {

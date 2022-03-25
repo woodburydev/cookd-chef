@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import Context from './Context';
+import Context from './src/context/Context';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import AppNavigator from './AppNavigator';

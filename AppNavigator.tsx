@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/screens/Home';
 import Login from './src/screens/Login';
 import Signup from './src/screens/Signup';
-import {myContext} from './Context';
+import {myContext} from './src/context/Context';
 import {ActivityIndicator} from 'react-native';
 
 export default function AppNavigator() {

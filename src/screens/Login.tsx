@@ -12,7 +12,7 @@ import {
 import {ScrollView, TextInput} from 'react-native-gesture-handler';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {myContext} from '../../Context';
+import {myContext} from '../context/Context';
 
 GoogleSignin.configure({
   webClientId:
