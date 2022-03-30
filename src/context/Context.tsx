@@ -29,7 +29,7 @@ export default function Context(props: any) {
           }
         })
         .catch(error => {
-          console.log(error);
+          console.log(JSON.stringify(error));
           setUser(null);
           setDatabaseFetchError(true);
           // maybe get some state for the specific error being returned from server

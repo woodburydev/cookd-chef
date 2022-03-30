@@ -82,7 +82,7 @@ export default function Signup({navigation}: any) {
             }
           })
           .catch(async err => {
-            console.log(err);
+            console.log(JSON.stringify(err));
             await firebase.auth().currentUser?.delete();
             setErrortext('Oops, something went wrong. Please try again later');
             setLoading(false);

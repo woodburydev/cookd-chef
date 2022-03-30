@@ -61,3 +61,4 @@ buck-out/
 yarn.lock
 ios/GoogleService-Info.plist
 android/app/google-services.json
+ios/keys/*
