@@ -9,15 +9,15 @@
  */
 
 import React, {useEffect} from 'react';
-import Context from './src/context/Context';
+import Context from 'src/context/UserContext';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
-import AppNavigator from './AppNavigator';
+import AppNavigator from '../navigation/AppNavigator';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import {
   notificationListener,
   requestUserPermission,
-} from './src/config/notificationHandler';
+} from '@config/notificationHandler';
 
 const App = () => {
   useEffect(() => {
