@@ -84,7 +84,7 @@ export default function SetPassword() {
         <View style={[commonStyles.FlexColCenterCenter, styles.inputWrapper]}>
           <View style={styles.SectionStyle}>
             <Text style={styles.labelText} type="label">
-              Lets make a password!
+              Set a Password
             </Text>
             <Input
               shake={() => {}}
@@ -104,7 +104,7 @@ export default function SetPassword() {
           </View>
           <View style={styles.SectionStyle}>
             <Text style={styles.labelText} type="label">
-              Re-enter password
+              Confirm Pasword
             </Text>
             <Input
               shake={() => {}}

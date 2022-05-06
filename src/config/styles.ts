@@ -49,6 +49,9 @@ export const myTheme = createTheme({
     }
   },
   Input: {
+    containerStyle: {
+      height: windowHeight < 750 ? 60 : 70,
+    },
     style: {
       fontFamily: 'WorkSans-Regular',
       fontWeight: '400',
@@ -90,7 +93,7 @@ export const myTheme = createTheme({
       case 'info':
         return {
           style: {
-            fontSize: 14,
+            fontSize: 12,
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
           },

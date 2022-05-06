@@ -35,6 +35,7 @@ export default function Header({
     },
     loadingBar: {
       height: 20,
+      backgroundColor: 'undefined',
       width: '100%',
       alignSelf: 'flex-start',
     },
