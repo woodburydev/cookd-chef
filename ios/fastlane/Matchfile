@@ -1,4 +1,4 @@
-git_url("https://github.com/woodburydev/CookdPrivateKeys.git")
+git_url("git@github.com:woodburydev/cookd-chef.git")
 
 git_basic_authorization(ENV['GIT_AUTHORIZATION'])
 
