@@ -1,5 +1,5 @@
-git_url("git@github.com:woodburydev/cookd-chef.git")
-
+git_url("git@github.com:woodburydev/CookdPrivateKeys.git")
+git_branch("cookd")
 git_basic_authorization(ENV['GIT_AUTHORIZATION'])
 
 storage_mode("git")
