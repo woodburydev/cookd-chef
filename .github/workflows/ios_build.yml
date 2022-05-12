@@ -1,0 +1,74 @@
+name: CD
+on:
+  push:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions a tab
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploying to Testflight
+    runs-on: macOS-latest
+    steps:
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          # config: ${{ secrets.CONFIG }} # ssh_config; optional
+          if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Restore node_modules from cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Audit
+        run: npm audit fix && yarn install
+      - name: Setup Ruby (bundle)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.6
+          bundler-cache: true
+      - name: Restore Pods cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Caches/CocoaPods
+            ~/.cocoapods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+      # - name: Run Bundle install
+      #   run: cd ios && pwd && bundle install
+      - name: Deploy iOS Beta to TestFlight via Fastlane
+        uses: maierj/fastlane-action@v1.4.0
+        # run: cd ios && bundles install && bundle exec fastlane beta
+        with:
+          subdirectory: 'ios'
+          lane: closed_beta
+        env:
+          APP_STORE_CONNECT_TEAM_ID: '${{ secrets.APP_STORE_CONNECT_TEAM_ID }}'
+          DEVELOPER_APP_ID: '${{ secrets.DEVELOPER_APP_ID }}'
+          DEVELOPER_APP_IDENTIFIER: '${{ secrets.DEVELOPER_APP_IDENTIFIER }}'
+          DEVELOPER_PORTAL_TEAM_ID: '${{ secrets.DEVELOPER_PORTAL_TEAM_ID }}'
+          FASTLANE_APPLE_ID: '${{ secrets.FASTLANE_APPLE_ID }}'
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: '${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}'
+          MATCH_PASSWORD: '${{ secrets.MATCH_PASSWORD }}'
+          GIT_AUTHORIZATION: '${{ secrets.GIT_AUTHORIZATION }}'
+          PROVISIONING_PROFILE_SPECIFIER: '${{ secrets.PROVISIONING_PROFILE_SPECIFIER }}'
+          TEMP_KEYCHAIN_PASSWORD: '${{ secrets.TEMP_KEYCHAIN_PASSWORD }}'
+          TEMP_KEYCHAIN_USER: '${{ secrets.TEMP_KEYCHAIN_USER }}'
+          APPLE_KEY_ID: '${{ secrets.APPLE_KEY_ID }}'
+          APPLE_ISSUER_ID: '${{ secrets.APPLE_ISSUER_ID }}'
+          APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'

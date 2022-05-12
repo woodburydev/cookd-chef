@@ -12,6 +12,24 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		28B0BE5940C766A921C2C0D6 /* libPods-CookdChef.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6382A4F7014906A31F53112D /* libPods-CookdChef.a */; };
+		6E3099BF2823227B00A1204F /* WorkSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4388B45F8ED84D558783423A /* WorkSans-Black.ttf */; };
+		6E3099C02823227B00A1204F /* WorkSans-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E49E57DA1A342F78DB2629E /* WorkSans-BlackItalic.ttf */; };
+		6E3099C12823227B00A1204F /* WorkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4060658BE1614FD5A31BD321 /* WorkSans-Bold.ttf */; };
+		6E3099C22823227B00A1204F /* WorkSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E37BC9A127D64837A99B5E09 /* WorkSans-BoldItalic.ttf */; };
+		6E3099C32823227B00A1204F /* WorkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F4232D24C4E4A3F82A1B692 /* WorkSans-ExtraBold.ttf */; };
+		6E3099C42823227B00A1204F /* WorkSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD7B06A901E414988A52F2F /* WorkSans-ExtraBoldItalic.ttf */; };
+		6E3099C52823227B00A1204F /* WorkSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99BF73E3A5594D06A47977D6 /* WorkSans-ExtraLight.ttf */; };
+		6E3099C62823227B00A1204F /* WorkSans-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D96E70FFFDC4DCABD0B1318 /* WorkSans-ExtraLightItalic.ttf */; };
+		6E3099C72823227B00A1204F /* WorkSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10DDDDE58B7549B0AB3FEFF8 /* WorkSans-Italic.ttf */; };
+		6E3099C82823227B00A1204F /* WorkSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A7377FAD30A24686927A753A /* WorkSans-Light.ttf */; };
+		6E3099C92823227B00A1204F /* WorkSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28E9147446F846CF9C5CC3EE /* WorkSans-LightItalic.ttf */; };
+		6E3099CA2823227B00A1204F /* WorkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD483EFDAC424C41BDA7DBBF /* WorkSans-Medium.ttf */; };
+		6E3099CB2823227B00A1204F /* WorkSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AF79077CDA1414BBF0DAD79 /* WorkSans-MediumItalic.ttf */; };
+		6E3099CC2823227B00A1204F /* WorkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6B3190868EF4F1D9F9F222A /* WorkSans-Regular.ttf */; };
+		6E3099CD2823227B00A1204F /* WorkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD0FA88682174101969774C8 /* WorkSans-SemiBold.ttf */; };
+		6E3099CE2823227B00A1204F /* WorkSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92E16E30F0C643E38F3C5E42 /* WorkSans-SemiBoldItalic.ttf */; };
+		6E3099CF2823227B00A1204F /* WorkSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79C798B0A0244BDC841CF8AC /* WorkSans-Thin.ttf */; };
+		6E3099D02823227B00A1204F /* WorkSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59C30693276045CC8AA87628 /* WorkSans-ThinItalic.ttf */; };
 		6ECF05F327F39BE0005290D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6ECF05F227F39BE0005290D1 /* GoogleService-Info.plist */; };
 		6ECF05F427F39BE0005290D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6ECF05F227F39BE0005290D1 /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -32,22 +50,56 @@
 		00E356EE1AD99517003FC87E /* CookdChefTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CookdChefTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* CookdChefTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CookdChefTests.m; sourceTree = "<group>"; };
+		07F79A89C8614191AA5812D8 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		0AF79077CDA1414BBF0DAD79 /* WorkSans-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-MediumItalic.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-MediumItalic.ttf"; sourceTree = "<group>"; };
+		10DDDDE58B7549B0AB3FEFF8 /* WorkSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Italic.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-Italic.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* CookdChef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookdChef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CookdChef/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CookdChef/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CookdChef/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CookdChef/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CookdChef/main.m; sourceTree = "<group>"; };
+		28E9147446F846CF9C5CC3EE /* WorkSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-LightItalic.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		2F4232D24C4E4A3F82A1B692 /* WorkSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-ExtraBold.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		33A1B6B8B4A14AEB81B6A5E9 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		3ACE5C8A45C99573EAAEC453 /* Pods-CookdChef-CookdChefTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookdChef-CookdChefTests.release.xcconfig"; path = "Target Support Files/Pods-CookdChef-CookdChefTests/Pods-CookdChef-CookdChefTests.release.xcconfig"; sourceTree = "<group>"; };
+		3D96E70FFFDC4DCABD0B1318 /* WorkSans-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-ExtraLightItalic.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		3DF2ED4EC0624F30A8EE1CAE /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		4060658BE1614FD5A31BD321 /* WorkSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Bold.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-Bold.ttf"; sourceTree = "<group>"; };
+		4388B45F8ED84D558783423A /* WorkSans-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Black.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-Black.ttf"; sourceTree = "<group>"; };
+		4AD7B06A901E414988A52F2F /* WorkSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		59879A1CB8FC4367941F6644 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		59C30693276045CC8AA87628 /* WorkSans-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-ThinItalic.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-ThinItalic.ttf"; sourceTree = "<group>"; };
+		5E49E57DA1A342F78DB2629E /* WorkSans-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-BlackItalic.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-BlackItalic.ttf"; sourceTree = "<group>"; };
 		6382A4F7014906A31F53112D /* libPods-CookdChef.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CookdChef.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		642F48CA1DA64D57ADFADE7A /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		689E8AF1426E479492876112 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		6DCD2F0C909647A5815AE6F9 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		6ECF05F227F39BE0005290D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6EF8EE3727F2D31B00F07E22 /* CookdChef.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = CookdChef.entitlements; path = CookdChef/CookdChef.entitlements; sourceTree = "<group>"; };
+		78E2D080B22843E7BA20B6D2 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		79C798B0A0244BDC841CF8AC /* WorkSans-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Thin.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-Thin.ttf"; sourceTree = "<group>"; };
+		7A8BCCBEB5C64D799C34332C /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		7D808882EEC99CBF2E469C90 /* Pods-CookdChef-CookdChefTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookdChef-CookdChefTests.debug.xcconfig"; path = "Target Support Files/Pods-CookdChef-CookdChefTests/Pods-CookdChef-CookdChefTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CookdChef/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89A6BAD92FBC469CA16FA061 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		92E16E30F0C643E38F3C5E42 /* WorkSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-SemiBoldItalic.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		99BF73E3A5594D06A47977D6 /* WorkSans-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-ExtraLight.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		A3B5305280814C169436EDC3 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		A6B3190868EF4F1D9F9F222A /* WorkSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Regular.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-Regular.ttf"; sourceTree = "<group>"; };
+		A7377FAD30A24686927A753A /* WorkSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Light.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-Light.ttf"; sourceTree = "<group>"; };
+		AD0FA88682174101969774C8 /* WorkSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-SemiBold.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		AD483EFDAC424C41BDA7DBBF /* WorkSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Medium.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-Medium.ttf"; sourceTree = "<group>"; };
 		B766A5ABD53F7C2D6E1BAD24 /* Pods-CookdChef.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookdChef.debug.xcconfig"; path = "Target Support Files/Pods-CookdChef/Pods-CookdChef.debug.xcconfig"; sourceTree = "<group>"; };
 		BACFF8DE0F42B7CEE97A7118 /* Pods-CookdChef.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookdChef.release.xcconfig"; path = "Target Support Files/Pods-CookdChef/Pods-CookdChef.release.xcconfig"; sourceTree = "<group>"; };
 		CEE4A80D9983C4D7D66A5DDD /* libPods-CookdChef-CookdChefTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CookdChef-CookdChefTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E29171CC938944FABEFCD891 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		E37BC9A127D64837A99B5E09 /* WorkSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-BoldItalic.ttf"; path = "../src/assets/fonts/work-sans/WorkSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EDEC7C8FD40D4B17BC9AA01E /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		F9336A960AEC426FB024E599 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		FC5A10EC0E584E48802D379A /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		FD248C04686A48F4B76A3227 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +180,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				FDB6712853BDD989D7E41BB6 /* Pods */,
+				9032517553C843C593F9973A /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -141,6 +194,47 @@
 				00E356EE1AD99517003FC87E /* CookdChefTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9032517553C843C593F9973A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4388B45F8ED84D558783423A /* WorkSans-Black.ttf */,
+				5E49E57DA1A342F78DB2629E /* WorkSans-BlackItalic.ttf */,
+				4060658BE1614FD5A31BD321 /* WorkSans-Bold.ttf */,
+				E37BC9A127D64837A99B5E09 /* WorkSans-BoldItalic.ttf */,
+				2F4232D24C4E4A3F82A1B692 /* WorkSans-ExtraBold.ttf */,
+				4AD7B06A901E414988A52F2F /* WorkSans-ExtraBoldItalic.ttf */,
+				99BF73E3A5594D06A47977D6 /* WorkSans-ExtraLight.ttf */,
+				3D96E70FFFDC4DCABD0B1318 /* WorkSans-ExtraLightItalic.ttf */,
+				10DDDDE58B7549B0AB3FEFF8 /* WorkSans-Italic.ttf */,
+				A7377FAD30A24686927A753A /* WorkSans-Light.ttf */,
+				28E9147446F846CF9C5CC3EE /* WorkSans-LightItalic.ttf */,
+				AD483EFDAC424C41BDA7DBBF /* WorkSans-Medium.ttf */,
+				0AF79077CDA1414BBF0DAD79 /* WorkSans-MediumItalic.ttf */,
+				A6B3190868EF4F1D9F9F222A /* WorkSans-Regular.ttf */,
+				AD0FA88682174101969774C8 /* WorkSans-SemiBold.ttf */,
+				92E16E30F0C643E38F3C5E42 /* WorkSans-SemiBoldItalic.ttf */,
+				79C798B0A0244BDC841CF8AC /* WorkSans-Thin.ttf */,
+				59C30693276045CC8AA87628 /* WorkSans-ThinItalic.ttf */,
+				FD248C04686A48F4B76A3227 /* AntDesign.ttf */,
+				59879A1CB8FC4367941F6644 /* Entypo.ttf */,
+				33A1B6B8B4A14AEB81B6A5E9 /* EvilIcons.ttf */,
+				642F48CA1DA64D57ADFADE7A /* Feather.ttf */,
+				7A8BCCBEB5C64D799C34332C /* FontAwesome.ttf */,
+				FC5A10EC0E584E48802D379A /* FontAwesome5_Brands.ttf */,
+				78E2D080B22843E7BA20B6D2 /* FontAwesome5_Regular.ttf */,
+				EDEC7C8FD40D4B17BC9AA01E /* FontAwesome5_Solid.ttf */,
+				07F79A89C8614191AA5812D8 /* Fontisto.ttf */,
+				A3B5305280814C169436EDC3 /* Foundation.ttf */,
+				E29171CC938944FABEFCD891 /* Ionicons.ttf */,
+				689E8AF1426E479492876112 /* MaterialCommunityIcons.ttf */,
+				3DF2ED4EC0624F30A8EE1CAE /* MaterialIcons.ttf */,
+				F9336A960AEC426FB024E599 /* Octicons.ttf */,
+				89A6BAD92FBC469CA16FA061 /* SimpleLineIcons.ttf */,
+				6DCD2F0C909647A5815AE6F9 /* Zocial.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		FDB6712853BDD989D7E41BB6 /* Pods */ = {
@@ -250,6 +344,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E3099BF2823227B00A1204F /* WorkSans-Black.ttf in Resources */,
+				6E3099C02823227B00A1204F /* WorkSans-BlackItalic.ttf in Resources */,
+				6E3099C12823227B00A1204F /* WorkSans-Bold.ttf in Resources */,
+				6E3099C22823227B00A1204F /* WorkSans-BoldItalic.ttf in Resources */,
+				6E3099C32823227B00A1204F /* WorkSans-ExtraBold.ttf in Resources */,
+				6E3099C42823227B00A1204F /* WorkSans-ExtraBoldItalic.ttf in Resources */,
+				6E3099C52823227B00A1204F /* WorkSans-ExtraLight.ttf in Resources */,
+				6E3099C62823227B00A1204F /* WorkSans-ExtraLightItalic.ttf in Resources */,
+				6E3099C72823227B00A1204F /* WorkSans-Italic.ttf in Resources */,
+				6E3099C82823227B00A1204F /* WorkSans-Light.ttf in Resources */,
+				6E3099C92823227B00A1204F /* WorkSans-LightItalic.ttf in Resources */,
+				6E3099CA2823227B00A1204F /* WorkSans-Medium.ttf in Resources */,
+				6E3099CB2823227B00A1204F /* WorkSans-MediumItalic.ttf in Resources */,
+				6E3099CC2823227B00A1204F /* WorkSans-Regular.ttf in Resources */,
+				6E3099CD2823227B00A1204F /* WorkSans-SemiBold.ttf in Resources */,
+				6E3099CE2823227B00A1204F /* WorkSans-SemiBoldItalic.ttf in Resources */,
+				6E3099CF2823227B00A1204F /* WorkSans-Thin.ttf in Resources */,
+				6E3099D02823227B00A1204F /* WorkSans-ThinItalic.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				6ECF05F327F39BE0005290D1 /* GoogleService-Info.plist in Resources */,
@@ -535,7 +647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodburydev.cookdchef;
 				PRODUCT_NAME = CookdChef;
-				PROVISIONING_PROFILE_SPECIFIER = "Cookd Chef - Development Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.woodburydev.cookdchef";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -549,7 +661,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CookdChef/CookdChef.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MC5LT58J8L;
@@ -566,7 +678,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodburydev.cookdchef;
 				PRODUCT_NAME = CookdChef;
-				PROVISIONING_PROFILE_SPECIFIER = "Cookd Chef - Development Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.woodburydev.cookdchef";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

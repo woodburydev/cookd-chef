@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>892232216075-utb39cfjm0j5q6irm8h12b107gq3v0pu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.892232216075-utb39cfjm0j5q6irm8h12b107gq3v0pu</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>892232216075-2i3tbid041q3nk0f4omd0bccsrepd5of.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCg-0GhKl1nCitoPGVTasTbiIF-NQNL3Zo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>892232216075</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.woodburydev.cookdchef</string>
+	<key>PROJECT_ID</key>
+	<string>cookd-chef</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cookd-chef.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:892232216075:ios:591f841a564ab10e9a610e</string>
+</dict>
+</plist>
