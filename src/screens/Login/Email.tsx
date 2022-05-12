@@ -1,16 +1,16 @@
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
-import {Button, Icon, Input, Text} from '@rneui/themed';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import { Button, Icon, Input, Text } from '@rneui/themed';
 import axios from 'axios';
-import React, {useCallback, useState} from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   View,
   StyleSheet,
   ActivityIndicator,
   KeyboardAvoidingView,
 } from 'react-native';
-import {endpoint} from 'src/config/api';
-import {commonStyles} from 'src/config/styles';
-import {LoginRoutes} from 'src/navigation/Login/routes';
+import { endpoint } from 'src/config/api';
+import { commonStyles } from 'src/config/styles';
+import { LoginRoutes } from 'src/navigation/Login/routes';
 import {
   LoginNavigationRoutes,
   LoginRoutesNames,
@@ -46,7 +46,7 @@ export default function Email() {
         if (res.data.status) {
           navigation.navigate(
             LoginRoutes.SET_PASSWORD.name as LoginRoutesNames['SET_PASSWORD'],
-            {fullName, email},
+            { fullName, email },
           );
         } else {
           const reason = res.data.reason;
@@ -56,7 +56,7 @@ export default function Email() {
           }
           if (reason === 'not-in-db') {
             navigation.navigate(
-              LoginRoutes.ALLERGIES.name as LoginRoutesNames['ALLERGIES'],
+              LoginRoutes.ADDRESS.name as LoginRoutesNames['ADDRESS'],
             );
           }
         }
@@ -78,7 +78,7 @@ export default function Email() {
             Whats a good email for you?
           </Text>
           <Input
-            shake={() => {}}
+            shake={() => { }}
             maxLength={40}
             onChangeText={UserEmail => {
               setEmail(UserEmail);
@@ -88,7 +88,7 @@ export default function Email() {
             autoCapitalize="none"
             keyboardType="email-address"
             returnKeyType="next"
-            onSubmitEditing={() => {}}
+            onSubmitEditing={() => { }}
             blurOnSubmit={false}
             errorMessage={emailErrorText}
           />

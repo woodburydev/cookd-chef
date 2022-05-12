@@ -1,6 +1,6 @@
-import {Icon} from '@rneui/base';
-import {Button, Input, Text} from '@rneui/themed';
-import React, {useRef, useState} from 'react';
+import { Icon } from '@rneui/base';
+import { Button, Input, Text } from '@rneui/themed';
+import React, { useRef, useState } from 'react';
 import {
   View,
   KeyboardAvoidingView,
@@ -8,10 +8,10 @@ import {
   ActivityIndicator,
   Dimensions,
 } from 'react-native';
-import {commonStyles} from '@config/styles';
-import {LoginRoutes} from '@navigation/Login/routes';
+import { commonStyles } from '@config/styles';
+import { LoginRoutes } from '@navigation/Login/routes';
 import auth from '@react-native-firebase/auth';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 import {
   LoginNavigationRoutes,
   LoginRoutesNames,
@@ -52,7 +52,7 @@ export default function SetPassword() {
           .then(async () => {
             await updateName();
             navigation.navigate(
-              LoginRoutes.ALLERGIES.name as LoginRoutesNames['ALLERGIES'],
+              LoginRoutes.ADDRESS.name as LoginRoutesNames['ADDRESS'],
             );
           })
           .catch(err => {
@@ -87,7 +87,7 @@ export default function SetPassword() {
               Set a Password
             </Text>
             <Input
-              shake={() => {}}
+              shake={() => { }}
               textContentType="newPassword"
               secureTextEntry
               autoFocus={true}
@@ -107,7 +107,7 @@ export default function SetPassword() {
               Confirm Pasword
             </Text>
             <Input
-              shake={() => {}}
+              shake={() => { }}
               ref={confirmPasswordRef}
               textContentType="newPassword"
               secureTextEntry

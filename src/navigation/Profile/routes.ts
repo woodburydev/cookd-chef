@@ -1,13 +1,15 @@
-import ContactInfo from '@screens/Profile/ContactInfo';
-import FavoriteChefs from '@screens/Profile/FavoriteChefs';
-import FavoriteCuisines from '@screens/Profile/FavoriteCuisines';
+import FavoriteCuisines from 'src/screens/Profile/Bio';
 import Feedback from '@screens/Profile/Feedback';
-import InviteFriend from '@screens/Profile/InviteFriend';
-import PaymentMethods from '@screens/Profile/PaymentMethods';
+import PaymentMethods from 'src/screens/Profile/ContactInfo';
 import PrivacyPolicy from '@screens/Profile/PrivacyPolicy';
 import Rewards from '@screens/Profile/Rewards';
-import Allergies from 'src/screens/Profile/Allergies';
 import TOS from 'src/screens/Profile/TOS';
+import Reviews from 'src/screens/Profile/Reviews';
+import Menus from 'src/screens/Profile/Menus';
+import Bio from 'src/screens/Profile/Bio';
+import BankingInfo from 'src/screens/Profile/BankingInfo';
+import InviteChef from 'src/screens/Profile/InviteChef';
+import ContactInfo from 'src/screens/Profile/ContactInfo';
 
 export const ProfileRoutes = {
   REWARDS: {
@@ -17,45 +19,52 @@ export const ProfileRoutes = {
     iconType: 'material-community',
     iconName: 'gift-outline',
   },
-  FAVORITE_CHEFS: {
-    name: 'FAVORITE_CHEFS',
-    displayName: 'Favorite Chefs',
-    component: FavoriteChefs,
+  REVIEWS: {
+    name: 'REVIEWS',
+    displayName: 'Reviews',
+    component: Reviews,
     iconType: 'material-community',
     iconName: 'chef-hat',
   },
-  ALLERGIES: {
-    name: 'ALLERGIES',
-    displayName: 'Allergies',
-    component: Allergies,
+  MENUS: {
+    name: 'MENUS',
+    displayName: 'Menus',
+    component: Menus,
     iconType: 'material-community',
     iconName: 'cancel',
+  },
+  BIO: {
+    name: 'BIO',
+    displayName: 'Bio',
+    component: Bio,
+    iconType: 'material-community',
+    iconName: 'food-drumstick',
   },
   FAVORITE_CUISINES: {
     name: 'FAVORITE_CUISINES',
     displayName: 'Favorite Cuisines',
     component: FavoriteCuisines,
     iconType: 'material-community',
-    iconName: 'food-drumstick',
+    iconName: 'phone',
   },
   CONTACT_INFO: {
     name: 'CONTACT_INFO',
     displayName: 'Contact Info',
     component: ContactInfo,
     iconType: 'material-community',
-    iconName: 'phone',
+    iconName: 'wallet-outline',
   },
-  PAYMENT_METHODS: {
-    name: 'PAYMENT_METHODS',
-    displayName: 'Payment Methods',
-    component: PaymentMethods,
+  BANKING_INFO: {
+    name: 'BANKING_INFO',
+    displayName: 'Banking Info',
+    component: BankingInfo,
     iconType: 'material-community',
     iconName: 'wallet-outline',
   },
-  INVITE_FRIEND: {
-    name: 'INVITE_FRIEND',
-    displayName: 'Invite A Friend',
-    component: InviteFriend,
+  INVITE_CHEF: {
+    name: 'INVITE_CHEF',
+    displayName: 'Invite A Chef',
+    component: InviteChef,
     iconType: 'font-awesome',
     iconName: 'smile-o',
   },

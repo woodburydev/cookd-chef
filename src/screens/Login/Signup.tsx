@@ -1,4 +1,4 @@
-import React, {createRef, useState} from 'react';
+import React, { createRef, useState } from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -6,11 +6,11 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import {Text, Input, Button, Icon} from '@rneui/themed';
-import {commonStyles} from '@config/styles';
-import {LoginRoutes} from '@navigation/Login/routes';
-import {useNavigation} from '@react-navigation/core';
-import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
+import { Text, Input, Button, Icon } from '@rneui/themed';
+import { commonStyles } from '@config/styles';
+import { LoginRoutes } from '@navigation/Login/routes';
+import { useNavigation } from '@react-navigation/core';
+import { LoginRoutesNames } from 'src/navigation/NavigationTypes';
 import { create } from 'react-test-renderer';
 
 export default function Signup() {
@@ -42,11 +42,11 @@ export default function Signup() {
         <View />
         <View style={styles.inputContainer}>
           <Text type="label" style={styles.labelText}>
-          First Name
+            First Name
           </Text>
           <Input
             autoFocus={true}
-            shake={() => {}}
+            shake={() => { }}
             onChangeText={name => {
               setFirstName(name);
               setLastNameErrorText('');
@@ -57,16 +57,16 @@ export default function Signup() {
             maxLength={20}
             returnKeyType="next"
 
-            onSubmitEditing={() => {lastNameRef.current && lastNameRef.current.focus()}}
+            onSubmitEditing={() => { lastNameRef.current && lastNameRef.current.focus() }}
             blurOnSubmit={false}
           />
           <Text type="label" style={styles.labelText}>
-          Last Name
+            Last Name
           </Text>
           <Input
             autoFocus={true}
             textContentType="familyName"
-            shake={() => {}}
+            shake={() => { }}
             ref={lastNameRef}
             onChangeText={name => {
               setLastName(name);
@@ -123,13 +123,13 @@ const styles = StyleSheet.create({
     marginBottom: windowHeight < 750 ? 5 : 20,
   },
   inputContainer: {
-    bottom: windowHeight < 850 ? '13%': '11%',
+    bottom: windowHeight < 850 ? '13%' : '11%',
   },
   Button: {
     alignSelf: 'flex-end',
   },
   buttonView: {
-    top: windowHeight < 850 ? '7%': '4%',
+    top: windowHeight < 850 ? '9%' : '4%',
   },
   iconStyle: {
     color: 'white',

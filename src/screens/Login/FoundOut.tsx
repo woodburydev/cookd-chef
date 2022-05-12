@@ -1,66 +1,48 @@
-import React, {useContext, useState} from 'react';
-import {View, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
-import {AppColorPalette, commonStyles} from '@config/styles';
-import {Button, CheckBox, Text} from '@rneui/themed';
+import React, { useContext, useState } from 'react';
+import { View, StyleSheet, ActivityIndicator, Dimensions } from 'react-native';
+import { AppColorPalette, commonStyles } from '@config/styles';
+import { Button, CheckBox, Text } from '@rneui/themed';
 import axios from 'axios';
-import auth from '@react-native-firebase/auth';
-import {endpoint} from '@config/api';
-import {UserContext} from 'src/context/UserContext';
-import {RouteProp, useRoute} from '@react-navigation/core';
+import { endpoint } from '@config/api';
+import { UserContext } from 'src/context/UserContext';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
 import {
   LoginNavigationRoutes,
   LoginRoutesNames,
 } from 'src/navigation/NavigationTypes';
 
-export default function Cuisines() {
-  const [selectedCuisines, setSelectedCuisines] = useState<number[]>([]);
+export default function FoundOut() {
+  const [foundOut, setFoundOut] = useState<number[]>([]);
   const [loading, setLoading] = useState(false);
   const route =
-    useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['CUISINES']>>();
-  const {allergies} = route.params;
-  const {getUser} = useContext(UserContext);
+    useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FOUND_OUT']>>();
+  const navigation = useNavigation();
+  const { address } = route.params;
+  console.log(address);
 
   const checkBoxPressed = (item: number) => {
-    if (selectedCuisines.includes(item)) {
-      setSelectedCuisines(selectedCuisines.filter(curItem => item !== curItem));
+    if (foundOut.includes(item)) {
+      setFoundOut(foundOut.filter(curItem => item !== curItem));
     } else {
-      setSelectedCuisines([...selectedCuisines, item]);
+      setFoundOut([...foundOut, item]);
     }
   };
 
   const submit = () => {
     setLoading(true);
-    const cuisines = getRadioButtonsData()
-      .filter(item => selectedCuisines.includes(item.id))
+    const foundOutList = getRadioButtonsData()
+      .filter(item => foundOut.includes(item.id))
       .map(item => item.label.toLowerCase());
 
-    const user = auth().currentUser!;
-    axios
-      .post(`${endpoint}/cook`, {
-        displayname: user!.displayName,
-        fbuuid: user!.uid,
-        email: user!.email,
-        phone: user!.phoneNumber,
-        allergies,
-        cuisines,
-      })
-      .then(() => {
-        getUser!(user);
-      })
-      .catch(err => {
-        console.log('Error saving user in database: ', err);
-        setLoading(false);
-      });
+    navigation.navigate('FINAL', { address, foundOut: foundOutList })
+    setLoading(false);
   };
 
   return (
     <View style={[commonStyles.FlexColCenterCenter, styles.contentContainer]}>
       <View style={[styles.SectionStyle]}>
         <Text style={styles.labelText} type="header">
-          Favorite Cuisines?
-        </Text>
-        <Text style={styles.descriptionText} type="info">
-          Check any that peak your interest!
+          How'd you hear about us?
         </Text>
         <View style={styles.ListContainer}>
           {getRadioButtonsData().map(item => (
@@ -73,7 +55,7 @@ export default function Cuisines() {
               textStyle={styles.CheckboxStyle}
               checkedIcon="check-circle-o"
               uncheckedIcon="circle-o"
-              checked={selectedCuisines.includes(item.id)}
+              checked={foundOut.includes(item.id)}
             />
           ))}
         </View>
@@ -82,7 +64,7 @@ export default function Cuisines() {
         onPress={submit}
         style={styles.Button}
         title={
-          loading ? <ActivityIndicator color="white" /> : 'START BROWSING CHEFS'
+          loading ? <ActivityIndicator color="white" /> : 'NEXT'
         }
       />
     </View>
@@ -133,39 +115,31 @@ function getRadioButtonsData() {
   return [
     {
       id: 1, // acts as primary key, should be unique and non-empty string
-      label: 'Thai',
+      label: 'A Friend',
     },
     {
       id: 2,
-      label: 'Italian',
+      label: 'Google Ad',
     },
     {
       id: 3,
-      label: 'Indian',
+      label: 'Youtube Ad',
     },
     {
       id: 4,
-      label: 'Mexican',
+      label: 'Our Blog',
     },
     {
       id: 5,
-      label: 'Japanese',
+      label: 'Billboard',
     },
     {
       id: 6,
-      label: 'American',
+      label: 'News',
     },
     {
       id: 7,
-      label: 'Mediterannian',
-    },
-    {
-      id: 8,
-      label: 'African',
-    },
-    {
-      id: 9,
-      label: 'French',
+      label: 'Other',
     },
   ];
 }

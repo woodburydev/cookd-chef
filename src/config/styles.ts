@@ -4,6 +4,7 @@ import {Dimensions, StyleSheet} from 'react-native';
 export const AppColorPalette = {
   orange: '#F26430',
   appBackgroundColor: '#F6F5F5',
+  red: '#FF1643',
 };
 
 const windowHeight = Dimensions.get('window').height;
@@ -21,6 +22,44 @@ export const myTheme = createTheme({
           backgroundColor: '#F8EFA0',
           width: 200,
           height: 40,
+        },
+      };
+    } else if (props.mode === 'miniRed') {
+      return {
+        titleStyle: {
+          fontFamily: 'WorkSans-Regular',
+          color: 'white',
+          fontSize: 12,
+          fontWeight: '700',
+        },
+        containerStyle: {
+          borderRadius: 0,
+        },
+        buttonStyle: {
+          padding: 0,
+          backgroundColor: AppColorPalette.red,
+          width: 100,
+          height: 24,
+          borderRadius: 0,
+        },
+      };
+    } else if (props.mode === 'miniOrange') {
+      return {
+        titleStyle: {
+          fontFamily: 'WorkSans-Regular',
+          color: 'white',
+          fontSize: 12,
+          fontWeight: '700',
+        },
+        containerStyle: {
+          borderRadius: 0,
+        },
+        buttonStyle: {
+          padding: 0,
+          backgroundColor: AppColorPalette.orange,
+          width: 100,
+          height: 24,
+          borderRadius: 0,
         },
       };
     } else {
@@ -90,6 +129,15 @@ export const myTheme = createTheme({
             textAlign: props.centerText ? 'center' : undefined,
           },
         };
+        case 'large-header':
+        return {
+          style: {
+            fontSize: 28,
+            fontWeight: 'bold',
+            fontFamily: 'WorkSans-Regular',
+            textAlign: props.centerText ? 'center' : undefined,
+          },
+        };
       case 'info':
         return {
           style: {
@@ -107,6 +155,7 @@ export const myTheme = createTheme({
             textAlign: props.centerText ? 'center' : undefined,
           },
         };
+
       default: {
         return {
           style: {
@@ -126,10 +175,56 @@ export const commonStyles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  mt5: {
+    marginTop: 5
+  },
+  mb5: {
+    marginBottom: 5
+  },
+  mx5: {
+    marginBottom: 5,
+    marginTop: 5
+  },
+  mt10: {
+    marginTop: 10
+  },
+  mb10: {
+    marginBottom: 10
+  },
+  mx10: {
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  mt20: {
+    marginTop: 20
+  },
+  mb20: {
+    marginBottom: 20
+  },
+  mx20: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  mt30: {
+    marginTop: 30
+  },
+  mb30: {
+    marginBottom: 30
+  },
+  mx30: {
+    marginTop: 30,
+    marginBottom: 30,
+  },
   FlexColCenterStart: {
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    width: '100%',
+  },
+  FlexColStartCenter: {
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    justifyContent: 'center',
     width: '100%',
   },
   FlexColCenterSpaceAround: {
@@ -143,6 +238,18 @@ export const commonStyles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
+  },
+  FlexRowCenterCenter: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'center',
+  },
+  FlexRowCenterStart: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'flex-start',
   },
   FlexGrow: {
     flexGrow: 1,

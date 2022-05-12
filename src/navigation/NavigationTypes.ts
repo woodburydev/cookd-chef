@@ -17,8 +17,9 @@ export type LoginNavigationRoutes = {
     };
   };
   SET_PASSWORD: {email: string; fullName: string};
-  ALLERGIES: undefined;
-  CUISINES: {allergies: string[]};
+  ADDRESS: undefined;
+  FOUND_OUT: {address: string};
+  FINAL: { address: string, foundOut: string[]}
 };
 
 export type LoginRoutesNames = {
@@ -28,8 +29,9 @@ export type LoginRoutesNames = {
   PHONE_NUMBER: 'PHONE_NUMBER';
   ENTER_OTP: 'ENTER_OTP';
   SET_PASSWORD: 'SET_PASSWORD';
-  ALLERGIES: 'ALLERGIES';
-  CUISINES: 'CUISINES';
+  ADDRESS: 'ADDRESS';
+  FOUND_OUT: 'FOUND_OUT';
+  FINAL: 'FINAL'
 };
 
 export type HomeRouteNames = {
@@ -38,28 +40,42 @@ export type HomeRouteNames = {
   ORDER: 'ORDER';
   PROFILE: 'PROFILE';
   SEARCH: 'SEARCH';
+  VERIFICATION: 'VERIFICATION';
+};
+
+export type HomeNavigationRoutes = {
+  HOME: undefined;
+  MESSAGE: undefined;
+  ORDER: undefined;
+  PROFILE: undefined;
+  SEARCH: undefined;
+  VERIFICATION: undefined;
 };
 
 export type ProfileNavigationRoutes = {
-  ALLERGIES: undefined;
-  CONTACT_INFO: undefined;
-  FAVORITE_CHEFS: undefined;
-  FAVORITE_CUISINES: undefined;
-  FEEDBACK: undefined;
-  INVITE_FRIEND: undefined;
-  PRIVACY_POLICY: undefined;
   REWARDS: undefined;
+  REVIEWS: undefined;
+  MENUS: undefined;
+  BIO: undefined;
+  FAVORITE_CUISINES: undefined;
+  CONTACT_INFO: undefined;
+  BANKING_INFO: undefined;
+  INVITE_CHEF: undefined;
+  PRIVACY_POLICY: undefined;
   TERMS_OF_SERVICE: undefined;
+  FEEDBACK: undefined;
 };
 
 export type ProfileRouteNames = {
-  ALLERGIES: 'ALLERGIES';
-  CONTACT_INFO: 'CONTACT_INFO';
-  FAVORITE_CHEFS: 'FAVORITE_CHEFS';
-  FAVORITE_CUISINES: 'FAVORITE_CUISINES';
-  FEEDBACK: 'FEEDBACK';
-  INVITE_FRIEND: 'INVITE_FRIEND';
-  PRIVACY_POLICY: 'PRIVACY_POLICY';
   REWARDS: 'REWARDS';
+  REVIEWS: 'REVIEWS';
+  MENUS: 'MENUS';
+  BIO: 'BIO';
+  FAVORITE_CUISINES: 'FAVORITE_CUISINES';
+  CONTACT_INFO: 'CONTACT_INFO';
+  BANKING_INFO: 'BANKING_INFO';
+  INVITE_CHEF: 'INVITE_CHEF';
+  PRIVACY_POLICY: 'PRIVACY_POLICY';
   TERMS_OF_SERVICE: 'TERMS_OF_SERVICE';
+  FEEDBACK: 'FEEDBACK';
 };

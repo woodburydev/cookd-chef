@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { commonStyles } from 'src/config/styles';
 
-export default function ContactInfo() {
+export default function InviteChef() {
   return (
     <View style={commonStyles.FlexColCenterCenter}>
-      <Text>Contact Info</Text>
+      <Text>Invite A Chef</Text>
     </View>
   );
 }

@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   KeyboardAvoidingView,
   Keyboard,
+  Dimensions,
 } from 'react-native';
 import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -19,7 +20,9 @@ import {
   LoginRoutesNames,
 } from 'src/navigation/NavigationTypes';
 
-export default function Allergies() {
+const windowHeight = Dimensions.get('window').height;
+
+export default function Address() {
   const [emailErrorText, setEmailErrorText] = useState('');
   const [email, setEmail] = useState('');
   const navigation = useNavigation();
@@ -31,13 +34,12 @@ export default function Allergies() {
 
   const submit = () => {
     setLoading(true);
-    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    if (!emailRegex.test(email)) {
-      setEmailErrorText('Please enter a valid email');
-      setLoading(false);
+    const address = googleMapsComponent.current.getAddressText()
+    if (address.length > 5) {
+      navigation.navigate("FOUND_OUT", { address })
     } else {
-      confirmDetails();
     }
+    setLoading(false);
   };
 
   const confirmDetails = useCallback(async () => {
@@ -45,7 +47,7 @@ export default function Allergies() {
   }, []);
 
   return (
-    <TouchableWithoutFeedback style={[commonStyles.FlexColCenterCenter]} onPress={Keyboard.dismiss}>
+    <ScrollView contentContainerStyle={[commonStyles.FlexColCenterCenter]} keyboardShouldPersistTaps='handled' scrollEnabled={false}>
       <View style={[styles.SectionStyle]}>
         <View />
         <View style={styles.inputContainer}>
@@ -69,7 +71,7 @@ export default function Allergies() {
                 marginTop: 90,
                 width: '100%',
                 margin: 0,
-                zIndex: 1000,
+                maxHeight: windowHeight < 750 ? 100 : windowHeight < 850 ? 150 : 200,
                 padding: 0,
                 position: 'absolute',
                 backgroundColor: 'white'
@@ -77,7 +79,7 @@ export default function Allergies() {
 
               listView: {
                 top: 50,
-                zIndex: 1000,
+                maxHeight: windowHeight < 750 ? 100 : windowHeight < 850 ? 150 : 200,
                 position: 'absolute',
                 backgroundColor: "white",
               },
@@ -91,13 +93,11 @@ export default function Allergies() {
           />
           {/* <Text style={styles.labelText} type="info">Make sure to use your Legal Primary Residence, no P.O. Boxes</Text> */}
         </View>
-        <KeyboardAvoidingView
-          style={[styles.buttonView]}
-          keyboardVerticalOffset={50}
-          behavior="position">
+        <View
+          style={[styles.buttonView]}>
           <Button
-            onPress={() => (loading ? undefined : submit())}
-            circle={true}
+            onPress={submit}
+            circle
             icon={
               loading ? (
                 <ActivityIndicator color="white" />
@@ -110,12 +110,11 @@ export default function Allergies() {
                 />
               )
             }
-            containerStyle={{ opacity: buttonVisible ? 1 : 0 }}
             style={styles.Button}
           />
-        </KeyboardAvoidingView>
+        </View>
       </View>
-    </TouchableWithoutFeedback>
+    </ScrollView>
   );
 }
 
@@ -135,11 +134,9 @@ const styles = StyleSheet.create({
   },
   Button: {
     alignSelf: 'flex-end',
-    zIndex: -100,
   },
   buttonView: {
-    top: '4%',
-    zIndex: -10,
+    top: '5%',
   },
   inputContainer: {
     bottom: '20%',
