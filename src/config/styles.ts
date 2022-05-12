@@ -257,4 +257,16 @@ export const commonStyles = StyleSheet.create({
   Underline: {
     textDecorationLine: 'underline',
   },
+  WhiteHeaderBackground: {
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    backgroundColor: 'white',
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+  },
+  TransparentHeaderBackground: {
+    backgroundColor: AppColorPalette.appBackgroundColor, shadowColor: 'transparent'
+  }
 });

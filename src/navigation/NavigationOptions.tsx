@@ -13,7 +13,9 @@ import { HomeRouteNames, ProfileNavigationRoutes, ProfileRouteNames } from './Na
 import { UserContext } from 'src/context/UserContext';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Image } from '@rneui/themed/dist/Image';
-import { useNavigation, useNavigationState } from '@react-navigation/core';
+import { CommonActions, useNavigation, useNavigationState } from '@react-navigation/core';
+import Header from 'src/screens/Login/Components/Header';
+import { HeaderBackButton } from '@react-navigation/elements';
 
 export const HomeNavigationOptions: StackNavigationOptions = {
   headerShown: false,
@@ -63,12 +65,19 @@ export const ProfileNavigationOptions = (
         </SafeAreaView>
       ),
     };
+  } else {
+    return {
+      headerShown: true,
+      header: (headerProps) => {
+
+        return (
+          <SafeAreaView>
+            <Header backArrow loading={0} onPressBack={() => navigation.navigate('PROFILE')} isVisible />
+          </SafeAreaView>
+        )
+      }
+    }
   }
-  return {
-    title: displayName,
-    headerBackTitle: 'Back',
-    headerShown: true,
-  };
 };
 
 const styles = StyleSheet.create({

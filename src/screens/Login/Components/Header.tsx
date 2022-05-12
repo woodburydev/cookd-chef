@@ -14,6 +14,7 @@ export default function Header({
   onPressBack,
   loginPages,
   isVisible,
+  ...rest
 }: {
   loading: number;
   headerContainerStyle?: {}

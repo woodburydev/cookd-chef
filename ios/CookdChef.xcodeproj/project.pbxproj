@@ -678,7 +678,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodburydev.cookdchef;
 				PRODUCT_NAME = CookdChef;
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.woodburydev.cookdchef";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.woodburydev.cookdchef 1652377306";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

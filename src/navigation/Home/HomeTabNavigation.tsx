@@ -66,7 +66,7 @@ export default function HomeTabNavigation() {
       tabBarButton: route.name === HomeRoutes.VERIFICATION.displayName ? () => null : undefined,
       tabBarShowLabel: false,
       headerShown: route.name === HomeRoutes.VERIFICATION.displayName || route.name === HomeRoutes.HOME.displayName ? true : false,
-      headerStyle: route.name === HomeRoutes.VERIFICATION.displayName ? styles.transparentHeaderBackground : styles.whiteHeaderBackground,
+      headerStyle: route.name === HomeRoutes.VERIFICATION.displayName ? commonStyles.TransparentHeaderBackground : commonStyles.WhiteHeaderBackground,
       header: (props) => {
         if (route.name === HomeRoutes.VERIFICATION.displayName) {
           return (
@@ -76,7 +76,7 @@ export default function HomeTabNavigation() {
           )
         } else if (route.name === HomeRoutes.HOME.displayName) {
           return (
-            <SafeAreaView style={styles.whiteHeaderBackground}>
+            <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
               <Header loading={0} isVisible />
             </SafeAreaView>
           )
@@ -115,16 +115,5 @@ const styles = StyleSheet.create({
   focus: {
     color: AppColorPalette.orange,
   },
-  whiteHeaderBackground: {
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    backgroundColor: 'white',
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-  },
-  transparentHeaderBackground: {
-    backgroundColor: AppColorPalette.appBackgroundColor, shadowColor: 'transparent'
-  }
+
 });
