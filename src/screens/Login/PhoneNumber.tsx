@@ -1,16 +1,16 @@
-import {useNavigation} from '@react-navigation/core';
-import {Button, Icon, Input, Text} from '@rneui/themed';
-import React, {useCallback, useEffect, useState} from 'react';
+import { useNavigation } from '@react-navigation/core';
+import { Button, Icon, Input, Text } from '@rneui/themed';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
   KeyboardAvoidingView,
   ActivityIndicator,
 } from 'react-native';
-import {commonStyles} from 'src/config/styles';
-import {LoginRoutes} from 'src/navigation/Login/routes';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
+import { commonStyles } from 'src/config/styles';
+import { LoginRoutes } from 'src/navigation/Login/routes';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { LoginRoutesNames } from 'src/navigation/NavigationTypes';
 
 const countryCode = '+1';
 
@@ -84,53 +84,38 @@ export default function PhoneNumber() {
 
   return (
     <View style={commonStyles.FlexColCenterCenter}>
-      <View style={commonStyles.FlexColCenterCenter}>
+      <View style={[commonStyles.FlexColCenterCenter, styles.ContentContainer]}>
         <View style={styles.SectionStyle}>
-          <View />
-          <View style={styles.inputContainer}>
-            <Text type="label" style={styles.labelText}>
-              Whats your number?
+          <Text type="header" style={styles.labelText}>
+            Whats your number?
             </Text>
-            <Input
-              autoFocus={true}
-              shake={() => {}}
-              placeholder="(555) 555-5555"
-              onSubmitEditing={() => submit()}
-              textContentType="telephoneNumber"
-              value={formatPhoneNumber(userPhoneNumber)}
-              onChangeText={number => {
-                setUserPhoneNumber(number);
-                setPhoneErrorText('');
-              }}
-              maxLength={14}
-              keyboardType="number-pad"
-              errorMessage={phoneErrorText}
-            />
-          </View>
-
-          <KeyboardAvoidingView
-            style={[styles.buttonView]}
-            keyboardVerticalOffset={50}
-            behavior="position">
-            <Button
-              onPress={() => (loading ? undefined : submit())}
-              circle={true}
-              icon={
-                loading ? (
-                  <ActivityIndicator color="white" />
-                ) : (
-                  <Icon
-                    type="material-icons"
-                    name="arrow-forward"
-                    iconStyle={styles.iconStyle}
-                    size={25}
-                  />
-                )
-              }
-              style={styles.Button}
-            />
-          </KeyboardAvoidingView>
+          <Input
+            autoFocus={true}
+            containerStyle={{ marginTop: 10 }}
+            shake={() => { }}
+            placeholder="(555) 555-5555"
+            onSubmitEditing={() => submit()}
+            errorStyle={{
+              marginTop: 10,
+              marginBottom: 15
+            }}
+            textContentType="telephoneNumber"
+            value={formatPhoneNumber(userPhoneNumber)}
+            onChangeText={number => {
+              setUserPhoneNumber(number);
+              setPhoneErrorText('');
+            }}
+            maxLength={14}
+            keyboardType="number-pad"
+            errorMessage={phoneErrorText}
+          />
         </View>
+        <Button onPress={() => (loading ? undefined : submit())}
+          icon={
+            loading ? (
+              <ActivityIndicator color="white" />
+            ) : undefined
+          } title={loading ? "" : "Verify"} />
       </View>
     </View>
   );
@@ -139,18 +124,13 @@ export default function PhoneNumber() {
 const styles = StyleSheet.create({
   SectionStyle: {
     width: '80%',
-    height: '100%',
-    marginTop: '15%',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
   },
-  inputContainer: {
-    bottom: '10%',
+  ContentContainer: {
+    bottom: 50
   },
-  Button: {
-    alignSelf: 'flex-end',
-  },
-  buttonView: {
-    top: '4%',
+  button: {
+    alignSelf: 'center'
   },
   inputStyle: {
     color: 'black',

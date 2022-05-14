@@ -48,6 +48,7 @@ export default function Header({
       alignItems: 'center',
       justifyContent: 'center',
       width: '80%',
+      height: DeviceInfo.hasNotch() ? 75 : 100,
       flexDirection: 'row',
       top: loginPages ? 15 : 0
     },

@@ -34,14 +34,14 @@ export default function Verification() {
                 <View style={[styles.ContainerStyle]}>
                     <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>* Give us a short description of how you plan on offering a unique dining experience for your clients.</Text>
                     <View style={[styles.ButtonView, commonStyles.mb20]}>
-                        <Input maxLength={400} containerStyle={styles.InputStyle} shake={() => null} />
+                        <Input inputContainerStyle={{ backgroundColor: '#f4f4f4' }} maxLength={400} containerStyle={styles.InputStyle} shake={() => null} />
                         <Button mode="miniRed" style={{ marginTop: 15 }} title="Submit"></Button>
                     </View>
                 </View>
                 <View style={[styles.ContainerStyle]}>
                     <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>* Whats your SSN</Text>
                     <View style={[styles.ButtonView, commonStyles.mb20]}>
-                        <Input placeholder="xxx-xx-xxxx" maxLength={7} keyboardType="number-pad" secureTextEntry containerStyle={styles.InputStyle} shake={() => null} />
+                        <Input inputContainerStyle={{ backgroundColor: '#f4f4f4' }} placeholder="xxx-xx-xxxx" maxLength={7} keyboardType="number-pad" secureTextEntry containerStyle={styles.InputStyle} shake={() => null} />
                         <Button mode="miniRed" style={{ marginTop: 15 }} title="Submit"></Button>
                     </View>
                 </View>
@@ -56,7 +56,7 @@ export default function Verification() {
                 <View style={[styles.ContainerStyle]}>
                     <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>* Give us a short description of your Professional Cooking Career.</Text>
                     <View style={[styles.ButtonView, commonStyles.mb20]}>
-                        <Input maxLength={400} containerStyle={styles.InputStyle} shake={() => null} />
+                        <Input inputContainerStyle={{ backgroundColor: '#f4f4f4' }} maxLength={400} containerStyle={styles.InputStyle} shake={() => null} />
                         <Button mode="miniRed" style={{ marginTop: 15 }} title="Submit"></Button>
                     </View>
                 </View>

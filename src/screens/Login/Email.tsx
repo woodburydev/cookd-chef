@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   KeyboardAvoidingView,
+  Dimensions,
 } from 'react-native';
 import { endpoint } from 'src/config/api';
 import { commonStyles } from 'src/config/styles';
@@ -39,7 +40,7 @@ export default function Email() {
   const confirmDetails = useCallback(async () => {
     setLoading(true);
     await axios
-      .post(`${endpoint}/cook/canCreate`, {
+      .post(`${endpoint}/user/canCreate`, {
         email: email,
       })
       .then(res => {
@@ -70,12 +71,11 @@ export default function Email() {
   }, [email, navigation, fullName]);
 
   return (
-    <View style={[commonStyles.FlexColCenterCenter]}>
-      <View style={[styles.SectionStyle]}>
-        <View />
-        <View style={styles.inputContainer}>
-          <Text type="label" style={styles.labelText}>
-            Whats a good email for you?
+    <View style={commonStyles.FlexColCenterCenter}>
+      <View style={[commonStyles.FlexColCenterCenter, styles.ContentContainer]}>
+        <View style={styles.SectionStyle}>
+          <Text type="header" style={styles.labelText}>
+            Whats your email?
           </Text>
           <Input
             shake={() => { }}
@@ -84,57 +84,36 @@ export default function Email() {
               setEmail(UserEmail);
               setEmailErrorText('');
             }}
+            errorStyle={{
+              marginTop: 10,
+              marginBottom: 15
+            }}
             autoFocus={true}
             autoCapitalize="none"
             keyboardType="email-address"
             returnKeyType="next"
-            onSubmitEditing={() => { }}
+            onSubmitEditing={() => submit()}
             blurOnSubmit={false}
             errorMessage={emailErrorText}
           />
         </View>
-        <KeyboardAvoidingView
-          style={[styles.buttonView]}
-          keyboardVerticalOffset={50}
-          behavior="position">
-          <Button
-            onPress={() => (loading ? undefined : submit())}
-            circle={true}
-            icon={
-              loading ? (
-                <ActivityIndicator color="white" />
-              ) : (
-                <Icon
-                  type="material-icons"
-                  name="arrow-forward"
-                  iconStyle={styles.iconStyle}
-                  size={25}
-                />
-              )
-            }
-            style={styles.Button}
-          />
-        </KeyboardAvoidingView>
+        <Button onPress={() => (loading ? undefined : submit())} icon={
+          loading ? (
+            <ActivityIndicator color="white" />
+          ) : undefined} title={loading ? "" : "Next"} />
       </View>
     </View>
   );
 }
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   SectionStyle: {
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     width: '80%',
-    height: '100%',
-    marginTop: '15%',
   },
   iconStyle: {
     color: 'white',
-  },
-  Button: {
-    alignSelf: 'flex-end',
-  },
-  buttonView: {
-    top: '4%',
   },
   inputContainer: {
     bottom: '15%',
@@ -142,5 +121,8 @@ const styles = StyleSheet.create({
   labelText: {
     marginLeft: 10,
     marginBottom: 20,
+  },
+  ContentContainer: {
+    bottom: windowHeight < 750 ? 60 : 100
   },
 });

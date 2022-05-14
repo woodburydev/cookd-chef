@@ -11,7 +11,6 @@ declare module '@rneui/themed' {
   export interface Colors {}
 
   export interface ButtonProps {
-    circle?: boolean;
     mode?: 'warning' | 'miniRed' | 'miniOrange';
   }
 

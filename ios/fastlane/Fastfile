@@ -47,6 +47,11 @@ platform :ios do
     
     increment_build_number(xcodeproj: "CookdChef.xcodeproj")
     
+    commit_version_bump(
+      message: "Version Bump",# create a commit with a custom message
+      xcodeproj: "CookdChef.xcodeproj"
+    )
+
     cocoapods(
       clean_install: true
     )

@@ -78,73 +78,58 @@ export default function SetPassword() {
   };
   return (
     <View style={[commonStyles.FlexColCenterCenter]}>
-      {/* <Header loading="60%" /> */}
-      <View style={[styles.ContentContainer]}>
-        <View />
-        <View style={[commonStyles.FlexColCenterCenter, styles.inputWrapper]}>
-          <View style={styles.SectionStyle}>
-            <Text style={styles.labelText} type="label">
-              Set a Password
+      <View style={[commonStyles.FlexColCenterCenter, styles.ContentContainer]}>
+        <View style={styles.SectionStyle}>
+          <Text style={styles.labelText} type="label">
+            Lets make a password!
             </Text>
-            <Input
-              shake={() => { }}
-              textContentType="newPassword"
-              secureTextEntry
-              autoFocus={true}
-              maxLength={40}
-              onChangeText={input => {
-                setPassword(input);
-                setErrorText('');
-              }}
-              onSubmitEditing={() =>
-                confirmPasswordRef.current && confirmPasswordRef.current.focus()
-              }
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyle}>
-            <Text style={styles.labelText} type="label">
-              Confirm Pasword
-            </Text>
-            <Input
-              shake={() => { }}
-              ref={confirmPasswordRef}
-              textContentType="newPassword"
-              secureTextEntry
-              maxLength={40}
-              onChangeText={input => {
-                setConfirmPassword(input);
-                setErrorText('');
-              }}
-              placeholderTextColor="#8b9cb5"
-              errorMessage={errorText}
-              onSubmitEditing={() => submitPassword()}
-              blurOnSubmit={false}
-            />
-          </View>
-        </View>
-        <KeyboardAvoidingView
-          style={[styles.buttonView]}
-          keyboardVerticalOffset={-15}
-          behavior="position">
-          <Button
-            onPress={() => (loading ? undefined : submitPassword())}
-            circle={true}
-            icon={
-              loading ? (
-                <ActivityIndicator color="white" />
-              ) : (
-                <Icon
-                  type="material-icons"
-                  name="arrow-forward"
-                  iconStyle={styles.iconStyle}
-                  size={25}
-                />
-              )
+          <Input
+            shake={() => { }}
+            textContentType="newPassword"
+            secureTextEntry
+            autoFocus={true}
+            errorStyle={{ marginBottom: windowHeight < 850 ? 0 : 15, marginTop: windowHeight < 850 ? 0 : 0 }}
+            maxLength={40}
+            onChangeText={input => {
+              setPassword(input);
+              setErrorText('');
+            }}
+            onSubmitEditing={() =>
+              confirmPasswordRef.current && confirmPasswordRef.current.focus()
             }
-            style={styles.Button}
+            blurOnSubmit={false}
           />
-        </KeyboardAvoidingView>
+        </View>
+        <View style={styles.SectionStyle}>
+          <Text style={styles.labelText} type="label">
+            Re-enter password
+            </Text>
+          <Input
+            shake={() => { }}
+            ref={confirmPasswordRef}
+            textContentType="newPassword"
+            secureTextEntry
+            maxLength={40}
+            onChangeText={input => {
+              setConfirmPassword(input);
+              setErrorText('');
+            }}
+            errorStyle={{
+              marginTop: 10,
+              marginBottom: 15
+            }}
+            placeholderTextColor="#8b9cb5"
+            errorMessage={errorText}
+            onSubmitEditing={() => submitPassword()}
+            blurOnSubmit={false}
+          />
+        </View>
+        <Button onPress={() => (loading ? undefined : submitPassword())}
+          icon={
+            loading ? (
+              <ActivityIndicator color="white" />
+            ) : undefined
+          } title={loading ? "" : "Next"} />
       </View>
     </View>
   );
@@ -154,34 +139,18 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   SectionStyle: {
-    width: '100%',
-    marginTop: 10,
+    justifyContent: 'center',
+    width: '80%',
   },
   ContentContainer: {
-    marginBottom: '15%',
-    justifyContent: 'space-around',
-    width: '80%',
-    height: '100%',
-  },
-  inputWrapper: {
-    bottom: windowHeight < 750 ? '1%' : '5%',
+    bottom: windowHeight < 750 ? 60 : 70
   },
   labelText: {
     alignSelf: 'flex-start',
     marginLeft: 10,
     marginBottom: 5,
   },
-  KeyboardView: {
-    width: '100%',
-    display: 'flex',
-  },
   iconStyle: {
     color: 'white',
-  },
-  Button: {
-    alignSelf: 'flex-end',
-  },
-  buttonView: {
-    top: '4%',
   },
 });

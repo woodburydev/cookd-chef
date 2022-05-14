@@ -252,7 +252,7 @@ export default function Home() {
           </View>
           <View style={styles.TextContainerStyle}>
             <Text type="description" style={[commonStyles.mx10]}>Looks like you have a busy week Chef! Make sure your ingredients are in order.</Text>
-            <Button style={commonStyles.mx20} title="Manage Schedule" />
+            <Button style={[commonStyles.mx20, { alignSelf: 'center' }]} title="Manage Schedule" />
           </View>
         </View>
       </ScrollView>
