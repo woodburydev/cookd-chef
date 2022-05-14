@@ -52,7 +52,7 @@ export default function Address() {
         <View />
         <View style={styles.inputContainer}>
           <Text type="info" style={styles.labelText}>Make sure to use your Legal Primary Residence, no P.O. Boxes</Text>
-          <Text type="label" style={styles.labelText}>
+          <Text type="header" style={styles.labelText}>
             Home Address
           </Text>
           <GooglePlacesAutocomplete
@@ -95,23 +95,12 @@ export default function Address() {
         </View>
         <View
           style={[styles.buttonView]}>
-          <Button
-            onPress={submit}
-            circle
+          <Button onPress={() => (loading ? undefined : submit())}
             icon={
               loading ? (
                 <ActivityIndicator color="white" />
-              ) : (
-                <Icon
-                  type="material-icons"
-                  name="arrow-forward"
-                  iconStyle={styles.iconStyle}
-                  size={25}
-                />
-              )
-            }
-            style={styles.Button}
-          />
+              ) : undefined
+            } title={loading ? "" : "Next"} />
         </View>
       </View>
     </ScrollView>
