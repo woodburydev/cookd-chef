@@ -1,14 +1,16 @@
 name: CD
 on:
-  push:
-    branches: [master]
+  pull_request:
+    branches: 
+      - main
+    types: [closed]
 
   # Allows you to run this workflow manually from the Actions a tab
   workflow_dispatch:
 
 jobs:
   deploy:
-    name: Deploying to Testflight
+    if: ${{ github.event.pull_request.merged }}
     runs-on: macOS-latest
     steps:
       - name: Install SSH key

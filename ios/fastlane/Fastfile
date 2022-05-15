@@ -88,6 +88,11 @@ platform :ios do
       ipa: "./CookdChef.ipa"
     )
 
+    push_to_git_remote(
+      remote: "origin",         # optional, default:
+      force: true,    # optional, default: false
+    )
+
     delete_temp_keychain(keychain_name)
   end
 end
