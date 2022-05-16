@@ -225,7 +225,6 @@ export default function Home() {
               segments={3}
               width={width - 40}
               height={300}
-              title={() => "Transaction Types"}
               data={chartData}
               chartConfig={{
                 decimalPlaces: 0,

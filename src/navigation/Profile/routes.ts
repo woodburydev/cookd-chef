@@ -10,6 +10,7 @@ import Bio from 'src/screens/Profile/Bio';
 import BankingInfo from 'src/screens/Profile/BankingInfo';
 import InviteChef from 'src/screens/Profile/InviteChef';
 import ContactInfo from 'src/screens/Profile/ContactInfo';
+import MenuDetails from 'src/screens/Profile/MenuDetails';
 
 export const ProfileRoutes = {
   REWARDS: {
@@ -91,3 +92,12 @@ export const ProfileRoutes = {
     iconName: 'feedback',
   },
 };
+
+export const AllProfileRoutes = {
+  ...ProfileRoutes, 
+  MENU_DETAILS: {
+    name: 'MENU_DETAILS',
+    displayName: 'Menu Details',
+    component: MenuDetails,
+  },
+}

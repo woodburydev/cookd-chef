@@ -1,4 +1,4 @@
-import { Image } from '@rneui/themed';
+import { Image, Text } from '@rneui/themed';
 import { LinearProgress } from '@rneui/themed/dist/LinearProgress';
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ActivityIndicator, Animated } from 'react-native';
@@ -11,18 +11,17 @@ export default function Header({
   loading,
   headerContainerStyle,
   backArrow,
+  headerText,
   onPressBack,
   loginPages,
-  isVisible,
   ...rest
 }: {
-  loading: number;
+  loading?: number;
   headerContainerStyle?: {}
   backArrow?: boolean;
+  headerText?: string;
   onPressBack?: () => any;
   loginPages?: boolean;
-  // can remove isVisible
-  isVisible?: boolean;
 }) {
   const [fadeAnim] = useState(new Animated.Value(0));
   const styles = StyleSheet.create({
@@ -62,20 +61,14 @@ export default function Header({
   });
 
   useEffect(() => {
-    if (isVisible) {
-      setTimeout(() => {
-        Animated.timing(fadeAnim, {
-          toValue: 1,
-          duration: 1000,
-          useNativeDriver: true,
-        }).start();
-      }, 500);
-    }
-  }, [fadeAnim, isVisible]);
-
-  if (!isVisible) {
-    return null;
-  }
+    setTimeout(() => {
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+    }, 500);
+  }, [fadeAnim]);
 
   return (
     <Animated.View style={[styles.HeaderContainer, { opacity: loginPages ? fadeAnim : 1 }]}>
@@ -85,14 +78,17 @@ export default function Header({
           <View style={styles.arrowBack}>
             <Icon type="ionicon" name="arrow-back" onPress={onPressBack} />
           </View>}
-        <Image
-          source={CookdLogo}
-          style={styles.logoContainer}
-          PlaceholderContent={<ActivityIndicator />}
-        />
+        {
+          headerText ? <Text type="header">{headerText}</Text> : <Image
+            source={CookdLogo}
+            style={styles.logoContainer}
+            PlaceholderContent={<ActivityIndicator />}
+          />
+        }
+
       </View>
       {
-        loading !== 0 && (
+        loading && (
           <LinearProgress
             style={styles.loadingBar}
             variant="determinate"

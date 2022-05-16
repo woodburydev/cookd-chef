@@ -6,7 +6,7 @@ import {
 import { ActivityIndicator, Dimensions, EdgeInsetsPropType, StyleSheet, View } from 'react-native';
 import { HomeRoutes } from './Home/routes';
 import { AirbnbRating, Button, Icon, Rating, Text } from '@rneui/themed';
-import { ProfileRoutes } from './Profile/routes';
+import { AllProfileRoutes } from './Profile/routes';
 import ChefProfilePicture from '@assets/chefProfilePicture.jpeg';
 import { AppColorPalette, commonStyles } from 'src/config/styles';
 import { HomeRouteNames, ProfileNavigationRoutes, ProfileRouteNames } from './NavigationTypes';
@@ -31,7 +31,7 @@ export const ProfileNavigationOptions = (
   const { user } = useContext(UserContext);
   const routeName = props.route.name as keyof ProfileRouteNames;
   // seperate sames to save first and last name in DB to display only first name for responsive compatibility
-  const displayName = ProfileRoutes[routeName]?.displayName;
+  const displayName = AllProfileRoutes[routeName]?.displayName;
   if (props.route.name === HomeRoutes.PROFILE.name) {
     return {
       headerShown: true,
@@ -71,8 +71,12 @@ export const ProfileNavigationOptions = (
       header: (headerProps) => {
 
         return (
-          <SafeAreaView>
-            <Header backArrow loading={0} onPressBack={() => navigation.navigate('PROFILE')} isVisible />
+          <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
+            <Header backArrow headerText={displayName} onPressBack={
+              // sub navigation fix, if we are on menu details, back should take us to menus. Not profile.
+              props.route.name === AllProfileRoutes.MENU_DETAILS.name ?
+                () => navigation.navigate('MENUS') :
+                () => navigation.navigate('PROFILE')} />
           </SafeAreaView>
         )
       }

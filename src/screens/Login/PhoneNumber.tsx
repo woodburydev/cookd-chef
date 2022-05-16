@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   ContentContainer: {
-    bottom: 50
+    bottom: 70
   },
   button: {
     alignSelf: 'center'

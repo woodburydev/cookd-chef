@@ -1,12 +1,12 @@
-import {DefaultTheme} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { DefaultTheme } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import {ProfileRoutes} from './routes';
-import {HomeRoutes} from '../Home/routes';
+import { AllProfileRoutes } from './routes';
+import { HomeRoutes } from '../Home/routes';
 import uuidv4 from 'uuidv4';
-import {AppColorPalette} from 'src/config/styles';
-import {ProfileNavigationOptions} from '../NavigationOptions';
-import {getKeyValue} from 'src/util/helperFunctions';
+import { AppColorPalette } from 'src/config/styles';
+import { ProfileNavigationOptions } from '../NavigationOptions';
+import { getKeyValue } from 'src/util/helperFunctions';
 
 export default function ProfileNavigation() {
   const Stack: any = createStackNavigator();
@@ -20,11 +20,11 @@ export default function ProfileNavigation() {
         component={HomeRoutes.PROFILE.component}
         key={uuidv4()}
       />
-      {Object.keys(ProfileRoutes).map(key => {
+      {Object.keys(AllProfileRoutes).map(key => {
         return (
           <Stack.Screen
-            name={getKeyValue(key)(ProfileRoutes).name}
-            component={getKeyValue(key)(ProfileRoutes).component}
+            name={getKeyValue(key)(AllProfileRoutes).name}
+            component={getKeyValue(key)(AllProfileRoutes).component}
             key={uuidv4()}
           />
         );
