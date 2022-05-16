@@ -50,6 +50,7 @@ export default function Signup() {
               setLastNameErrorText('');
             }}
             autoComplete="name-given"
+            placeholder="John"
             autoCapitalize="words"
             maxLength={20}
             returnKeyType="next"
@@ -61,7 +62,6 @@ export default function Signup() {
             Last Name
           </Text>
           <Input
-            autoFocus={true}
             autoComplete="name-family"
             shake={() => { }}
             ref={lastNameRef}
@@ -73,6 +73,7 @@ export default function Signup() {
               marginTop: 10,
               marginBottom: 15
             }}
+            placeholder="Smith"
             autoCapitalize="words"
             maxLength={20}
             errorMessage={lastNameErrorText}

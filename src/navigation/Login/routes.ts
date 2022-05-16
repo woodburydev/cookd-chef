@@ -8,6 +8,29 @@ import Email from 'src/screens/Login/Email';
 import Address from 'src/screens/Login/Address';
 import Final from 'src/screens/Login/Final';
 
+export const SignUpRoutes = {
+  SIGN_UP: {
+    name: 'SIGN_UP',
+    component: Signup,
+  },
+  EMAIL: {
+    name: 'EMAIL',
+    component: Email,
+  },
+  SET_PASSWORD: {
+    name: 'SET_PASSWORD',
+    component: Password,
+  },
+  ADDRESS: {
+    name: 'ADDRESS',
+    component: Address,
+  },
+  FOUND_OUT: {
+    name: 'FOUND_OUT',
+    component: FoundOut,
+  },
+}
+
 export const LoginRoutes = {
   GET_STARTED: {
     name: 'GET_STARTED',

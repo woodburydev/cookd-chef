@@ -94,7 +94,7 @@ export const myTheme = createTheme({
       case 'label':
         return {
           style: {
-            fontSize: 18,
+            fontSize: windowHeight < 750 ? 16 : 18,
             fontWeight: '600',
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
@@ -103,7 +103,7 @@ export const myTheme = createTheme({
       case 'description':
         return {
           style: {
-            fontSize: 16,
+            fontSize: windowHeight < 750 ? 14 : 16,
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
           },
@@ -111,16 +111,16 @@ export const myTheme = createTheme({
       case 'header':
         return {
           style: {
-            fontSize: 22,
+            fontSize: windowHeight < 750 ? 20 : 22,
             fontWeight: '600',
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
           },
         };
-        case 'large-header':
+      case 'large-header':
         return {
           style: {
-            fontSize: 28,
+            fontSize: windowHeight < 850 ? 25 : 28,
             fontWeight: 'bold',
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
@@ -129,7 +129,7 @@ export const myTheme = createTheme({
       case 'info':
         return {
           style: {
-            fontSize: 12,
+            fontSize: windowHeight < 750 ? 12 : 14,
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
           },
@@ -137,16 +137,16 @@ export const myTheme = createTheme({
       case 'error':
         return {
           style: {
-            fontSize: 14,
+            fontSize: windowHeight < 750 ? 12 : 14,
             color: 'red',
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
           },
         };
-
       default: {
         return {
           style: {
+            fontSize: 14,
             fontFamily: 'WorkSans-Regular',
           },
         };
@@ -219,6 +219,12 @@ export const commonStyles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     flexDirection: 'column',
+    width: '100%',
+  },
+  FlexRowStartStart: {
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
     width: '100%',
   },
   FlexColCenterSpaceAround: {

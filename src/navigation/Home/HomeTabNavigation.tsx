@@ -71,13 +71,13 @@ export default function HomeTabNavigation() {
         if (route.name === HomeRoutes.VERIFICATION.displayName) {
           return (
             <SafeAreaView>
-              <Header backArrow onPressBack={() => navigation.navigate("Profile" as HomeRouteNames['PROFILE'])} loading={0} isVisible />
+              <Header backArrow onPressBack={() => navigation.navigate("Profile" as HomeRouteNames['PROFILE'])} />
             </SafeAreaView>
           )
         } else if (route.name === HomeRoutes.HOME.displayName) {
           return (
             <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
-              <Header loading={0} isVisible />
+              <Header />
             </SafeAreaView>
           )
         }

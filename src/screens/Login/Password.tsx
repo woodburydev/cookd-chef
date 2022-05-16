@@ -80,56 +80,54 @@ export default function SetPassword() {
     <View style={[commonStyles.FlexColCenterCenter]}>
       <View style={[commonStyles.FlexColCenterCenter, styles.ContentContainer]}>
         <View style={styles.SectionStyle}>
-          <Text style={styles.labelText} type="label">
-            Lets make a password!
-            </Text>
+          <Text type="label" style={styles.labelText}>
+            Set A Password
+          </Text>
           <Input
-            shake={() => { }}
-            textContentType="newPassword"
-            secureTextEntry
             autoFocus={true}
-            errorStyle={{ marginBottom: windowHeight < 850 ? 0 : 15, marginTop: windowHeight < 850 ? 0 : 0 }}
-            maxLength={40}
-            onChangeText={input => {
-              setPassword(input);
-              setErrorText('');
+            shake={() => { }}
+            onChangeText={name => {
+              setPassword(name);
             }}
-            onSubmitEditing={() =>
-              confirmPasswordRef.current && confirmPasswordRef.current.focus()
-            }
+            autoComplete="name-given"
+            placeholder="John"
+            autoCapitalize="words"
+            secureTextEntry
+            maxLength={20}
+            returnKeyType="next"
+            errorStyle={{ marginBottom: windowHeight < 850 ? 0 : 15, marginTop: windowHeight < 850 ? 0 : 0 }}
+            onSubmitEditing={() => { confirmPasswordRef.current && confirmPasswordRef.current.focus() }}
             blurOnSubmit={false}
           />
-        </View>
-        <View style={styles.SectionStyle}>
-          <Text style={styles.labelText} type="label">
-            Re-enter password
-            </Text>
+          <Text type="label" style={styles.labelText}>
+            Confirm Password
+          </Text>
           <Input
+            autoComplete="name-family"
             shake={() => { }}
             ref={confirmPasswordRef}
-            textContentType="newPassword"
-            secureTextEntry
-            maxLength={40}
-            onChangeText={input => {
-              setConfirmPassword(input);
-              setErrorText('');
+            onChangeText={name => {
+              setConfirmPassword(name);
             }}
             errorStyle={{
               marginTop: 10,
               marginBottom: 15
             }}
-            placeholderTextColor="#8b9cb5"
+            secureTextEntry
+            placeholder="Smith"
+            autoCapitalize="words"
+            maxLength={20}
             errorMessage={errorText}
-            onSubmitEditing={() => submitPassword()}
+            returnKeyType="next"
+            onSubmitEditing={submitPassword}
             blurOnSubmit={false}
           />
         </View>
-        <Button onPress={() => (loading ? undefined : submitPassword())}
-          icon={
-            loading ? (
-              <ActivityIndicator color="white" />
-            ) : undefined
-          } title={loading ? "" : "Next"} />
+
+        <Button onPress={() => (loading ? undefined : submitPassword())} icon={
+          loading ? (
+            <ActivityIndicator color="white" />
+          ) : undefined} title={loading ? "" : "Next"} />
       </View>
     </View>
   );
@@ -142,15 +140,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '80%',
   },
-  ContentContainer: {
-    bottom: windowHeight < 750 ? 60 : 70
-  },
   labelText: {
     alignSelf: 'flex-start',
     marginLeft: 10,
-    marginBottom: 5,
+    marginBottom: 10,
   },
-  iconStyle: {
-    color: 'white',
+  ContentContainer: {
+    bottom: windowHeight < 750 ? 60 : 100
   },
 });

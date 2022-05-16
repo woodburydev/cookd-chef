@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
   buttonView: {
+    alignSelf: 'center',
     top: '5%',
   },
   inputContainer: {

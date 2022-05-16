@@ -19,7 +19,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function LoginNavigation() {
   const [isVisible, setIsVisible] = useState(false);
-  const [loading, setLoading] = useState(0);
+  const [loading, setLoading] = useState<number | undefined>(0);
   const Stack: any = createStackNavigator();
   const navTheme = DefaultTheme;
   navTheme.colors.background = AppColorPalette.appBackgroundColor;
@@ -37,7 +37,9 @@ export default function LoginNavigation() {
       return LoginRoutes.GET_STARTED.name;
     }
   };
-
+  const getLoaderPercentage = (numberInList: number) => {
+    return (1 / Object.keys(LoginRoutes).length) * numberInList
+  }
   // intercepting screen options for control before rendering each route.
   const screenOptions = (
     props: StackNavigationProp<LoginNavigationRoutes, keyof LoginRoutesNames>,
@@ -45,35 +47,35 @@ export default function LoginNavigation() {
     const routeName = props.route.name
     switch (routeName) {
       case LoginRoutes.PHONE_NUMBER.name:
-        setLoading(0);
+        setLoading(undefined);
         setIsVisible(true);
         break;
       case LoginRoutes.SIGN_UP.name:
-        setLoading(0.2);
+        setLoading(getLoaderPercentage(1));
         setIsVisible(true);
         break;
       case LoginRoutes.EMAIL.name:
-        setLoading(0.4);
+        setLoading(getLoaderPercentage(2));
         setIsVisible(true);
         break;
       case LoginRoutes.ENTER_OTP.name:
-        setLoading(0);
+        setLoading(undefined);
         setIsVisible(true);
         break;
       case LoginRoutes.SET_PASSWORD.name:
-        setLoading(0.6);
+        setLoading(getLoaderPercentage(3));
         setIsVisible(true);
         break;
       case LoginRoutes.ADDRESS.name:
-        setLoading(0.8);
+        setLoading(getLoaderPercentage(4));
         setIsVisible(true);
         break;
       case LoginRoutes.FOUND_OUT.name:
-        setLoading(1);
+        setLoading(getLoaderPercentage(5));
         setIsVisible(true);
         break;
       case LoginRoutes.FINAL.name:
-        setLoading(0);
+        setLoading(undefined);
         setIsVisible(true);
         break;
       case LoginRoutes.GET_STARTED.name:
@@ -82,8 +84,9 @@ export default function LoginNavigation() {
     }
 
     return {
+      headerShown: isVisible,
       header: () =>
-        <Header loading={loading} isVisible={isVisible} loginPages headerContainerStyle={{ position: 'absolute', zIndex: 100, height: 135 }} />
+        <Header loading={loading} loginPages headerContainerStyle={{ position: 'absolute', zIndex: 100, height: 135 }} />
     };
   };
   // update to use header from config above instead
