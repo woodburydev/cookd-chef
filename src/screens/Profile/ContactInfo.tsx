@@ -15,7 +15,7 @@ export default function ContactInfo() {
           containerStyle={styles.imageContainer}
         />
         <View style={styles.imageIconContainerView}>
-          <Icon size={windowHeight < 750 ? 15 : 20} color={AppColorPalette.orange} type="material" name="edit" />
+          <Icon size={windowHeight < 750 ? 15 : 18} color={AppColorPalette.orange} type="material" name="edit" />
         </View>
       </View>
       <View style={styles.whiteBackgroundView}>
@@ -31,7 +31,7 @@ export default function ContactInfo() {
               San Francisco, CA 94016
           </Text>
           </View>
-          <Icon size={22} color={AppColorPalette.orange} style={styles.notificationIcon} containerStyle={[styles.notificationIconContainer, { right: 10, top: 5 }]} type="material" name="edit" />
+          <Icon size={18} color={AppColorPalette.orange} style={styles.notificationIcon} containerStyle={[styles.notificationIconContainer, { right: 10, top: 5 }]} type="material" name="edit" />
         </View>
 
       </View>
@@ -45,7 +45,7 @@ export default function ContactInfo() {
               (916) 352-2765
           </Text>
           </View>
-          <Icon size={22} color={AppColorPalette.orange} style={styles.notificationIcon} containerStyle={[styles.notificationIconContainer, { right: 10, top: 5 }]} type="material" name="edit" />
+          <Icon size={18} color={AppColorPalette.orange} style={styles.notificationIcon} containerStyle={[styles.notificationIconContainer, { right: 10, top: 5 }]} type="material" name="edit" />
 
         </View>
 
@@ -60,7 +60,7 @@ export default function ContactInfo() {
               NathanielWoodbury@gmail.com
           </Text>
           </View>
-          <Icon size={22} color={AppColorPalette.orange} style={styles.notificationIcon} containerStyle={[styles.notificationIconContainer, { right: 10, top: 5 }]} type="material" name="edit" />
+          <Icon size={18} color={AppColorPalette.orange} style={styles.notificationIcon} containerStyle={[styles.notificationIconContainer, { right: 10, top: 5 }]} type="material" name="edit" />
 
         </View>
 
