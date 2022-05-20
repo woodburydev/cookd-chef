@@ -2,7 +2,7 @@ import { Image, Text } from '@rneui/themed';
 import React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { AppColorPalette, commonStyles } from 'src/config/styles';
-import ProfilePicture from '@assets/profilePicture.jpg'
+import ProfilePicture from '@assets/chefProfilePicture.jpeg'
 import { ScrollView } from 'react-native-gesture-handler';
 import { Icon } from '@rneui/base';
 export default function ContactInfo() {

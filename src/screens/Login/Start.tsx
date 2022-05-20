@@ -1,12 +1,12 @@
-import {Button, Image} from '@rneui/themed';
+import { Button, Image, Text } from '@rneui/themed';
 import React from 'react';
-import {View, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
-import {commonStyles} from '@config/styles';
-import CookingImage from '@assets/cookingimage.jpeg';
+import { View, StyleSheet, ActivityIndicator, Dimensions } from 'react-native';
+import { commonStyles } from '@config/styles';
+import CookingImage from '@assets/cookingImage.jpg';
 import CookdLogo from '@assets/cookdlogolabel.png';
-import {LoginRoutes} from 'src/navigation/Login/routes';
-import {useNavigation} from '@react-navigation/core';
-import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
+import { LoginRoutes } from 'src/navigation/Login/routes';
+import { useNavigation } from '@react-navigation/core';
+import { LoginRoutesNames } from 'src/navigation/NavigationTypes';
 
 export default function GetStarted() {
   const navigation = useNavigation();
@@ -25,14 +25,18 @@ export default function GetStarted() {
           style={styles.logoContainer}
           PlaceholderContent={<ActivityIndicator />}
         />
-
+        <View style={[{ alignItems: 'center' }, commonStyles.mt30]}>
+          <Text type="header" style={commonStyles.mb5}>Your Schedule.</Text>
+          <Text type="header" style={commonStyles.mb5}>Your Talents.</Text>
+          <Text type="header" style={commonStyles.mb5}>Your Business.</Text>
+        </View>
         <Button
           onPress={() =>
             navigation.navigate(
               LoginRoutes.PHONE_NUMBER.name as LoginRoutesNames['PHONE_NUMBER'],
             )
           }
-          title="GET STARTED"
+          title="Get Started"
           style={styles.button}
         />
       </View>
@@ -80,7 +84,7 @@ const styles = StyleSheet.create({
     width: '60%',
   },
   button: {
-    marginTop: 50,
+    marginTop: 40,
   },
   linkStyle: {
     marginTop: 20,

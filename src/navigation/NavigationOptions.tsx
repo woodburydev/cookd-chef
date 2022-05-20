@@ -9,19 +9,53 @@ import { AirbnbRating, Button, Icon, Rating, Text } from '@rneui/themed';
 import { AllProfileRoutes } from './Profile/routes';
 import ChefProfilePicture from '@assets/chefProfilePicture.jpeg';
 import { AppColorPalette, commonStyles } from 'src/config/styles';
-import { HomeRouteNames, ProfileNavigationRoutes, ProfileRouteNames } from './NavigationTypes';
+import { HomeRouteNames, MessageNavigationRoutes, MessageRouteNames, ProfileNavigationRoutes, ProfileRouteNames } from './NavigationTypes';
 import { UserContext } from 'src/context/UserContext';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Image } from '@rneui/themed/dist/Image';
 import { CommonActions, useNavigation, useNavigationState } from '@react-navigation/core';
 import Header from 'src/screens/Login/Components/Header';
 import { HeaderBackButton } from '@react-navigation/elements';
+import { MessageRoutes } from './Messages/routes';
 
 export const HomeNavigationOptions: StackNavigationOptions = {
   headerShown: false,
 };
 
 const windowHeight = Dimensions.get('window').height;
+
+export const MessageNavigationOptions = (
+  props: StackNavigationProp<MessageNavigationRoutes, keyof MessageRouteNames>,
+): StackNavigationOptions => {
+  const navigation = useNavigation();
+  const routeName = props.route.name as keyof MessageRouteNames;
+  const { recipientDisplayName } = props.route?.params || '';
+  const displayName = MessageRoutes[routeName]?.displayName;
+  if (routeName === MessageRoutes['MESSAGE_DETAIL'].name) {
+    return {
+      headerShown: true,
+      headerStyle: commonStyles.WhiteHeaderBackground,
+      header: (headerProps) => {
+        return (
+          <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
+            <Header backArrow onPressBack={() => navigation.navigate("MESSAGE")} headerText={recipientDisplayName} />
+          </SafeAreaView>
+        )
+      }
+    }
+  }
+  return {
+    headerShown: true,
+    headerStyle: commonStyles.WhiteHeaderBackground,
+    header: (headerProps) => {
+      return (
+        <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
+          <Header headerText={displayName} />
+        </SafeAreaView>
+      )
+    }
+  }
+}
 
 export const ProfileNavigationOptions = (
   props: StackNavigationProp<ProfileNavigationRoutes, keyof ProfileRouteNames>,
@@ -59,7 +93,7 @@ export const ProfileNavigationOptions = (
                 starContainerStyle={styles.starRating}
                 ratingContainerStyle={styles.rating}
               />
-              <Button mode="miniRed" title="VERIFY" type="solid" style={styles.button} onPress={() => navigation.navigate("Verification")} />
+              <Button mode="miniRed" title="Verify" type="solid" style={styles.button} onPress={() => navigation.navigate("Verification")} />
             </View>
           </View>
         </SafeAreaView>

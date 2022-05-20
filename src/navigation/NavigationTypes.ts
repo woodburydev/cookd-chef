@@ -81,3 +81,13 @@ export type ProfileRouteNames = {
   TERMS_OF_SERVICE: 'TERMS_OF_SERVICE';
   FEEDBACK: 'FEEDBACK';
 };
+
+export type MessageRouteNames = {
+  MESSAGE: 'MESSAGE';
+  MESSAGE_DETAIL: 'MESSAGE_DETAIL';
+};
+
+export type MessageNavigationRoutes = {
+  MESSAGE: undefined;
+  MESSAGE_DETAIL: { recipientDisplayName: string };
+};

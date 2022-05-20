@@ -1,6 +1,4 @@
-import FavoriteCuisines from 'src/screens/Profile/Bio';
 import Feedback from '@screens/Profile/Feedback';
-import PaymentMethods from 'src/screens/Profile/ContactInfo';
 import PrivacyPolicy from '@screens/Profile/PrivacyPolicy';
 import Rewards from '@screens/Profile/Rewards';
 import TOS from 'src/screens/Profile/TOS';
@@ -13,13 +11,6 @@ import ContactInfo from 'src/screens/Profile/ContactInfo';
 import MenuDetails from 'src/screens/Profile/MenuDetails';
 
 export const ProfileRoutes = {
-  REWARDS: {
-    name: 'REWARDS',
-    displayName: 'Rewards',
-    component: Rewards,
-    iconType: 'material-community',
-    iconName: 'gift-outline',
-  },
   REVIEWS: {
     name: 'REVIEWS',
     displayName: 'Reviews',
@@ -40,13 +31,6 @@ export const ProfileRoutes = {
     component: Bio,
     iconType: 'material-community',
     iconName: 'food-drumstick',
-  },
-  FAVORITE_CUISINES: {
-    name: 'FAVORITE_CUISINES',
-    displayName: 'Favorite Cuisines',
-    component: FavoriteCuisines,
-    iconType: 'material-community',
-    iconName: 'phone',
   },
   CONTACT_INFO: {
     name: 'CONTACT_INFO',

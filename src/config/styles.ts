@@ -22,6 +22,7 @@ export const myTheme = createTheme({
           backgroundColor: '#F8EFA0',
           width: 200,
           height: 40,
+          borderRadius: 10,
         },
       };
     } else if (props.mode === 'miniRed') {
@@ -56,10 +57,10 @@ export const myTheme = createTheme({
         },
         buttonStyle: {
           padding: 0,
+          borderRadius: 0,
           backgroundColor: AppColorPalette.orange,
           width: 100,
           height: 24,
-          borderRadius: 0,
         },
       };
     } else {
@@ -72,6 +73,7 @@ export const myTheme = createTheme({
         buttonStyle: {
           backgroundColor: '#F26430',
           width: 300,
+          borderRadius: 10,
           height: 55,
         },
       };
