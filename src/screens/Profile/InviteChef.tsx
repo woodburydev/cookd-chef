@@ -13,7 +13,7 @@ export default function Invite() {
         <KeyboardAvoidingView style={commonStyles.FlexColCenterCenter}>
           <View style={styles.contentContainer}>
             <Text style={commonStyles.mb30} centerText type="large-header">Email or Phone Number</Text>
-            <Text style={commonStyles.mb30} type="description">Inviting a chef can give you a comission off thier first service they do over $400! See more details <Text style={{ textDecorationLine: 'underline', color: AppColorPalette.orange}}>here</Text></Text>
+            <Text style={commonStyles.mb30} type="description">Inviting a chef can give you a commission off thier first service they do over $400! See more details <Text style={{ textDecorationLine: 'underline', color: AppColorPalette.orange}}>here</Text></Text>
             <Input shake={() => null} />
           </View>
           <Button title="Submit" />

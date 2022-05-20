@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   imageIconContainerView: {
-    height: 30, width: 30, left: 10, bottom: 40, backgroundColor: 'white', borderRadius: 100, alignItems: 'center', justifyContent: 'center'
+    height: 30, width: 30, left: 22, bottom: 40, backgroundColor: 'white', borderRadius: 100, alignItems: 'center', justifyContent: 'center'
   },
   notificationIconContainer: {
     width: 25,
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
   },
   ImageContainer: {
     height: "100%",
-    width: '100%',
-    borderRadius: 20,
+    width: '90%',
+    left: "10%"
   },
   ImageWrapper: {
     width: '40%',

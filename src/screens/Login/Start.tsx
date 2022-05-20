@@ -25,8 +25,10 @@ export default function GetStarted() {
           style={styles.logoContainer}
           PlaceholderContent={<ActivityIndicator />}
         />
-        <View style={[{ width: '60%', alignItems: 'center'}, commonStyles.mt30]}>
-          <Text type="large-header" style={{ fontWeight: '600'}}>Bringing <Text style={{ fontWeight: '600', textDecorationLine: 'underline'}} type="large-header" >Fine Dining</Text> Home</Text>
+        <View style={[{ alignItems: 'center' }, commonStyles.mt30]}>
+          <Text type="header" style={commonStyles.mb5}>Your Schedule.</Text>
+          <Text type="header" style={commonStyles.mb5}>Your Talents.</Text>
+          <Text type="header" style={commonStyles.mb5}>Your Business.</Text>
         </View>
         <Button
           onPress={() =>
