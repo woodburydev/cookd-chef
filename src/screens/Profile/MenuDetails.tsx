@@ -44,7 +44,7 @@ const MenuDetails = () => {
                     <View style={[commonStyles.mt20, commonStyles.FlexRowStartStart]}>
                         <View style={{ justifyContent: 'center', width: "50%" }}>
                             <Text type="header">Appetizers</Text>
-                            <Button containerStyle={commonStyles.mt20} buttonStyle={styles.ButtonStyle} title="ADD NEW" />
+                            <Button containerStyle={commonStyles.mt20} buttonStyle={styles.ButtonStyle} title="Add New" />
                         </View>
                         <View>
                             <Text style={styles.InfoText} type="info">1 Included Per Person</Text>
@@ -53,7 +53,7 @@ const MenuDetails = () => {
                     <View style={[commonStyles.mt30, commonStyles.FlexRowStartStart]}>
                         <View style={{ justifyContent: 'center', width: "50%" }}>
                             <Text type="header">Entrees</Text>
-                            <Button containerStyle={commonStyles.mt20} buttonStyle={styles.ButtonStyle} title="ADD NEW" />
+                            <Button containerStyle={commonStyles.mt20} buttonStyle={styles.ButtonStyle} title="Add New" />
                         </View>
                         <View>
                             <Text style={styles.InfoText} type="info">1 Included Per Person</Text>
@@ -62,7 +62,7 @@ const MenuDetails = () => {
                     <View style={[commonStyles.mt30, commonStyles.FlexRowStartStart]}>
                         <View style={{ justifyContent: 'center', width: "50%" }}>
                             <Text type="header">Desserts</Text>
-                            <Button containerStyle={commonStyles.mt20} buttonStyle={styles.ButtonStyle} title="ADD NEW" />
+                            <Button containerStyle={commonStyles.mt20} buttonStyle={styles.ButtonStyle} title="Add New" />
                         </View>
                         <View>
                             <Text style={styles.InfoText} type="info">1 Included Per Person</Text>
@@ -71,7 +71,7 @@ const MenuDetails = () => {
                     <View style={[commonStyles.mx30, commonStyles.FlexRowStartStart]}>
                         <View style={{ justifyContent: 'center', width: "50%" }}>
                             <Text type="header">Extras</Text>
-                            <Button containerStyle={commonStyles.mt20} buttonStyle={styles.ButtonStyle} title="ADD NEW" />
+                            <Button containerStyle={commonStyles.mt20} buttonStyle={styles.ButtonStyle} title="Add New" />
                         </View>
                     </View>
 
