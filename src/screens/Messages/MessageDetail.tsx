@@ -2,9 +2,9 @@ import { Input, Text } from '@rneui/themed/dist';
 import React, { useContext } from 'react';
 import { Dimensions, KeyboardAvoidingView, StyleSheet, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Bubble, GiftedChat, InputToolbar, MessageText } from 'react-native-gifted-chat';
+import { Bubble, Day, GiftedChat, InputToolbar, Message, MessageImage, MessageText } from 'react-native-gifted-chat';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { commonStyles } from 'src/config/styles';
+import { AppColorPalette, commonStyles } from 'src/config/styles';
 import User from '@assets/user1Female.jpg';
 import User2 from '@assets/user2Male.jpg';
 import User3 from '@assets/user3Male.jpg';
@@ -142,10 +142,12 @@ const MessageDetail = () => {
             alignTop={false}
             listViewProps={{contentContainerStyle: {flexGrow: 1, justifyContent: 'flex-end'}}}
             bottomOffset={insets.bottom + 43}
+            renderDay={renderDay}
             renderMessageText={renderMessageText}
             renderBubble={renderBubble}
             renderInputToolbar={renderInputToolbar}
             timeTextStyle={{ left: { display: 'none' },right: { display: 'none'} }}
+            renderMessage={renderMessage}
             user={{
                 _id: 2,
                 name: 'Aaron',
@@ -212,6 +214,14 @@ const renderMessageText = (props) => (
 
 
   const renderBubble = (props) => {
-    return <Bubble {...props} wrapperStyle={{ left: { marginTop: 10, marginBottom: 10, padding: 8 }, right: { marginTop: 10, marginBottom: 10, padding: 8}}} />
+    return <Bubble {...props} wrapperStyle={{ left: { padding: 8 }, right: { padding: 8, backgroundColor: AppColorPalette.orange}}} />
+  }
+
+  const renderMessage = (props) => {
+    return <Message {...props} containerStyle={{ left: { marginTop: 15, marginBottom: 15}, right: { marginTop: 15, marginBottom: 15}}} />
+  }
+
+  const renderDay = (props) => {
+    return <Day {...props} wrapperStyle={{ marginTop: 20, marginBottom: 5 }} dateFormat="ddd, MMM D"/>
   }
 export default MessageDetail;

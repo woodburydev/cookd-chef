@@ -1,41 +1,20 @@
 import { Button, Text } from '@rneui/themed';
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { ActivityIndicator, Dimensions, StyleSheet, View } from 'react-native';
 import { commonStyles } from 'src/config/styles';
-import auth from '@react-native-firebase/auth';
-import axios from 'axios';
-import { endpoint } from 'src/config/api';
-import { UserContext } from 'src/context/UserContext';
-import { LoginNavigationRoutes, LoginRoutesNames } from 'src/navigation/NavigationTypes';
-import { RouteProp, useRoute } from '@react-navigation/core';
+
 import ChefImage from '@assets/chefIcon1.png';
 import { Image } from '@rneui/themed/dist/Image';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { LoginNavigationRoutes, LoginRoutesNames } from 'src/navigation/NavigationTypes';
 
 export default function Final() {
-    const { getUser } = useContext(UserContext);
-    const [loading, setLoading] = useState(false);
     const route =
         useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
+    const navigation = useNavigation();
     const { address, foundOut } = route.params;
-
     const submit = () => {
-        const user = auth().currentUser!;
-        axios
-            .post(`${endpoint}/cook`, {
-                displayname: user!.displayName,
-                fbuuid: user!.uid,
-                email: user!.email,
-                phone: user!.phoneNumber,
-                address,
-                foundOut,
-            })
-            .then(() => {
-                getUser!(user);
-            })
-            .catch(err => {
-                console.log('Error saving user in database: ', JSON.stringify(err));
-                setLoading(false);
-            });
+        navigation.navigate('CREATE_PROFILE', { address, foundOut })
     }
     return (
         <View style={commonStyles.FlexColCenterCenter}>
@@ -50,9 +29,7 @@ export default function Final() {
                 <Button
                     onPress={submit}
                     style={styles.Button}
-                    title={
-                        loading ? <ActivityIndicator color="white" /> : 'NEXT'
-                    }
+                    title='Get Started'
                 />
             </View>
         </View>

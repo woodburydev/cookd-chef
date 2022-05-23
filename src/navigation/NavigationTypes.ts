@@ -1,9 +1,9 @@
-import {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 export type LoginNavigationRoutes = {
   GET_STARTED: undefined;
   SIGN_UP: undefined;
-  EMAIL: {fullName: string};
+  EMAIL: { fullName: string };
   PHONE_NUMBER: undefined;
   ENTER_OTP: {
     confirm: FirebaseAuthTypes.ConfirmationResult;
@@ -16,10 +16,14 @@ export type LoginNavigationRoutes = {
       };
     };
   };
-  SET_PASSWORD: {email: string; fullName: string};
+  SET_PASSWORD: { email: string; fullName: string };
   ADDRESS: undefined;
-  FOUND_OUT: {address: string};
-  FINAL: { address: string, foundOut: string[]}
+  FOUND_OUT: { address: string };
+  FINAL: { address: string, foundOut: string[] }
+  CREATE_PROFILE: { address: string, foundOut: string[] };
+  COOK: { address: string, foundOut: string[] };
+  CUSTOMER_MANAGEMENT: { address: string, foundOut: string[] };
+  GROW: { address: string, foundOut: string[] };
 };
 
 export type LoginRoutesNames = {
@@ -32,6 +36,10 @@ export type LoginRoutesNames = {
   ADDRESS: 'ADDRESS';
   FOUND_OUT: 'FOUND_OUT';
   FINAL: 'FINAL'
+  CREATE_PROFILE: "CREATE_PROFILE"
+  COOK: "COOK"
+  CUSTOMER_MANAGEMENT: "CUSTOMER_MANAGEMENT"
+  GROW: "GROW"
 };
 
 export type HomeRouteNames = {

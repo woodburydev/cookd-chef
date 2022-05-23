@@ -64,7 +64,7 @@ export default function FoundOut() {
         onPress={submit}
         style={styles.Button}
         title={
-          loading ? <ActivityIndicator color="white" /> : 'NEXT'
+          loading ? <ActivityIndicator color="white" /> : 'Next'
         }
       />
     </View>

@@ -10,7 +10,7 @@ import {
   LoginNavigationRoutes,
   LoginRoutesNames,
 } from 'src/navigation/NavigationTypes';
-import { LoginRoutes } from './routes';
+import { LoginRoutes, SignUpRoutes } from './routes';
 import auth from '@react-native-firebase/auth';
 import Header from 'src/screens/Login/Components/Header';
 import { AppColorPalette } from 'src/config/styles';
@@ -40,7 +40,7 @@ export default function LoginNavigation() {
     }
   };
   const getLoaderPercentage = (numberInList: number) => {
-    return (1 / Object.keys(LoginRoutes).length) * numberInList
+    return (1 / Object.keys(SignUpRoutes).length) * numberInList
   }
   // intercepting screen options for control before rendering each route.
   const screenOptions = (
@@ -91,12 +91,16 @@ export default function LoginNavigation() {
         setIsVisible(false);
         setShowBackButton(false);
         break;
+      default:
+        setLoading(undefined);
+        setIsVisible(true);
+        setShowBackButton(true);
     }
     if (showBackButton) {
       return {
         headerShown: isVisible,
         header: () =>
-          <Header loading={loading} backArrow onPressBack={() => navigation.goBack()}loginPages headerContainerStyle={{ position: 'absolute', zIndex: 100, height: 135 }} />
+          <Header loading={loading} backArrow onPressBack={() => navigation.goBack()} loginPages headerContainerStyle={{ position: 'absolute', zIndex: 100, height: 135 }} />
       };
     }
     return {
