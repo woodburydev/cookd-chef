@@ -632,7 +632,7 @@
 				CODE_SIGN_ENTITLEMENTS = CookdChef/CookdChef.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = MC5LT58J8L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CookdChef/Info.plist;
@@ -663,7 +663,7 @@
 				CODE_SIGN_ENTITLEMENTS = CookdChef/CookdChef.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = MC5LT58J8L;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = CookdChef/Info.plist;
