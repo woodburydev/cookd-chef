@@ -16,7 +16,7 @@ export default function Grow() {
   const { address, foundOut } = route.params;
   const { getUser } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-  
+
   const submit = () => {
     const user = auth().currentUser!;
     axios
@@ -46,7 +46,7 @@ export default function Grow() {
           PlaceholderContent={<ActivityIndicator />}
         />
         <View style={[styles.TextContainer, commonStyles.mb20]}>
-          <Text type="large-header" style={[commonStyles.mb20]}centerText>Step 4: Grow</Text>
+          <Text type="large-header" style={[commonStyles.mb20]} centerText>Step 4: Grow</Text>
           <Text type="description" centerText>Cookd provides you with tools to grow your business. </Text>
           <Text type="description" centerText style={commonStyles.mt10}>View your profile statstics and track trends. </Text>
           <Text type="description" centerText style={commonStyles.mt10}>Read our Cookd Chef Guide for educational blogs to ensure your success!</Text>

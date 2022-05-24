@@ -2,7 +2,7 @@ import Home from 'src/screens/Home/Home';
 import Message from 'src/screens/Home/Message';
 import Order from 'src/screens/Home/Order';
 import Profile from 'src/screens/Home/Profile';
-import Search from 'src/screens/Home/Search';
+import Payments from 'src/screens/Home/Payments';
 import Verification from 'src/screens/Profile/Verification';
 
 export const HomeRoutes = {
@@ -16,10 +16,10 @@ export const HomeRoutes = {
     name: 'MESSAGE',
     component: Message,
   },
-  SEARCH: {
-    displayName: 'Search',
-    name: 'SEARCH',
-    component: Search,
+  PAYMENTS: {
+    displayName: 'Payments',
+    name: 'PAYMENTS',
+    component: Payments,
   },
   ORDER: {
     displayName: 'Order',
