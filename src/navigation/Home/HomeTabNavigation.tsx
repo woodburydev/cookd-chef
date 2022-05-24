@@ -34,7 +34,7 @@ export default function HomeTabNavigation() {
     switch (route.name) {
       case HomeRoutes.HOME.displayName:
         iconName = 'home';
-        iconType = 'material-community'
+        iconType = 'feather'
         break;
       case HomeRoutes.ORDER.displayName:
         iconName = 'clipboard-text-outline';
