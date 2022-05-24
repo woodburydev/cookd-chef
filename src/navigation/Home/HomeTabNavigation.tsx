@@ -48,7 +48,7 @@ export default function HomeTabNavigation() {
         iconName = 'person-circle-outline';
         iconType = 'ionicon'
         break;
-      case HomeRoutes.SEARCH.displayName:
+      case HomeRoutes.PAYMENTS.displayName:
         iconName = 'chart-box-outline';
         iconType = 'material-community'
         break;
@@ -67,7 +67,7 @@ export default function HomeTabNavigation() {
       ),
       tabBarButton: route.name === HomeRoutes.VERIFICATION.displayName ? () => null : undefined,
       tabBarShowLabel: false,
-      headerShown: route.name === HomeRoutes.VERIFICATION.displayName || route.name === HomeRoutes.HOME.displayName ? true : false,
+      headerShown: route.name === HomeRoutes.VERIFICATION.displayName || route.name === HomeRoutes.PAYMENTS.displayName || route.name === HomeRoutes.HOME.displayName ? true : false,
       headerStyle: route.name === HomeRoutes.VERIFICATION.displayName ? commonStyles.TransparentHeaderBackground : commonStyles.WhiteHeaderBackground,
       header: (props) => {
         if (route.name === HomeRoutes.VERIFICATION.displayName) {
@@ -76,7 +76,7 @@ export default function HomeTabNavigation() {
               <Header backArrow onPressBack={() => navigation.navigate("Profile" as HomeRouteNames['PROFILE'])} />
             </SafeAreaView>
           )
-        } else if (route.name === HomeRoutes.HOME.displayName) {
+        } else if (route.name === HomeRoutes.HOME.displayName || route.name === HomeRoutes.PAYMENTS.displayName) {
           return (
             <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
               <Header />

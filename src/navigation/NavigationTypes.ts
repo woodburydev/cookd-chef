@@ -47,7 +47,7 @@ export type HomeRouteNames = {
   MESSAGE: 'MESSAGE';
   ORDER: 'ORDER';
   PROFILE: 'PROFILE';
-  SEARCH: 'SEARCH';
+  PAYMENTS: 'PAYMENTS';
   VERIFICATION: 'VERIFICATION';
 };
 
@@ -56,7 +56,7 @@ export type HomeNavigationRoutes = {
   MESSAGE: undefined;
   ORDER: undefined;
   PROFILE: undefined;
-  SEARCH: undefined;
+  PAYMENTS: undefined;
   VERIFICATION: undefined;
 };
 
