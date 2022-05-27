@@ -18,6 +18,8 @@ import {
   notificationListener,
   requestUserPermission,
 } from '@config/notificationHandler';
+import {TailwindProvider} from 'tailwind-rn/dist';
+import utilities from '../../tailwind.json';
 
 const App = () => {
   useEffect(() => {
@@ -28,11 +30,13 @@ const App = () => {
   }, []);
 
   return (
-    <NavigationContainer>
-      <Context>
-        <AppNavigator />
-      </Context>
-    </NavigationContainer>
+    <TailwindProvider utilities={utilities}>
+      <NavigationContainer>
+        <Context>
+          <AppNavigator />
+        </Context>
+      </NavigationContainer>
+    </TailwindProvider>
   );
 };
 

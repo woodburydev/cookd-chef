@@ -1,15 +1,16 @@
-import React, { useContext, useState } from 'react';
-import { View, StyleSheet, ActivityIndicator, Dimensions } from 'react-native';
-import { AppColorPalette, commonStyles } from '@config/styles';
-import { Button, CheckBox, Text } from '@rneui/themed';
+import React, {useContext, useState} from 'react';
+import {View, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
+import {AppColorPalette, commonStyles} from '@config/styles';
+import {Button, CheckBox, Text} from '@rneui/themed';
 import axios from 'axios';
-import { endpoint } from '@config/api';
-import { UserContext } from 'src/context/UserContext';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import {endpoint} from '@config/api';
+import {UserContext} from 'src/context/UserContext';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import {
   LoginNavigationRoutes,
   LoginRoutesNames,
 } from 'src/navigation/NavigationTypes';
+import {WINDOW_HEIGHT} from 'src/config/constants';
 
 export default function FoundOut() {
   const [foundOut, setFoundOut] = useState<number[]>([]);
@@ -17,7 +18,7 @@ export default function FoundOut() {
   const route =
     useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FOUND_OUT']>>();
   const navigation = useNavigation();
-  const { address } = route.params;
+  const {address} = route.params;
   console.log(address);
 
   const checkBoxPressed = (item: number) => {
@@ -34,7 +35,7 @@ export default function FoundOut() {
       .filter(item => foundOut.includes(item.id))
       .map(item => item.label.toLowerCase());
 
-    navigation.navigate('FINAL', { address, foundOut: foundOutList })
+    navigation.navigate('FINAL', {address, foundOut: foundOutList});
     setLoading(false);
   };
 
@@ -50,6 +51,7 @@ export default function FoundOut() {
               center
               key={item.id}
               title={item.label}
+              checkedColor={AppColorPalette.orange}
               containerStyle={styles.CheckboxContainerStyle}
               onPress={() => checkBoxPressed(item.id)}
               textStyle={styles.CheckboxStyle}
@@ -63,15 +65,11 @@ export default function FoundOut() {
       <Button
         onPress={submit}
         style={styles.Button}
-        title={
-          loading ? <ActivityIndicator color="white" /> : 'Next'
-        }
+        title={loading ? <ActivityIndicator color="white" /> : 'Next'}
       />
     </View>
   );
 }
-
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   SectionStyle: {
@@ -81,7 +79,7 @@ const styles = StyleSheet.create({
     marginTop: '15%',
   },
   Button: {
-    marginTop: windowHeight < 700 ? 0 : 20,
+    marginTop: WINDOW_HEIGHT < 700 ? 0 : 20,
     alignSelf: 'center',
   },
   labelText: {
@@ -96,7 +94,7 @@ const styles = StyleSheet.create({
   CheckboxContainerStyle: {
     backgroundColor: AppColorPalette.appBackgroundColor,
     padding: 0,
-    margin: windowHeight < 750 ? 4 : windowHeight < 850 ? 7 : 8,
+    margin: WINDOW_HEIGHT < 750 ? 4 : WINDOW_HEIGHT < 850 ? 7 : 8,
   },
   CheckboxStyle: {
     fontSize: 13,

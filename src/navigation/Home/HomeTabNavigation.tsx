@@ -1,21 +1,20 @@
-import { DefaultTheme, useNavigation } from '@react-navigation/native';
+import {DefaultTheme, useNavigation} from '@react-navigation/native';
 import React from 'react';
-import { AppColorPalette, commonStyles } from 'src/config/styles';
+import {AppColorPalette, commonStyles} from 'src/config/styles';
 import {
   BottomTabNavigationOptions,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import { HomeRoutes } from './routes';
-import { Icon, Text } from '@rneui/base';
-import { StyleSheet, View } from 'react-native';
+import {HomeRoutes} from './routes';
+import {Icon} from '@rneui/base';
+import {StyleSheet} from 'react-native';
 import ProfileNavigation from '../Profile/ProfileNavigation';
 import uuidv4 from 'uuidv4';
-import { getKeyValue } from 'src/util/helperFunctions';
-import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
+import {getKeyValue} from 'src/util/helperFunctions';
 import Header from '@screens/Login/Components/Header';
 
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { HomeRouteNames, ProfileRouteNames } from '../NavigationTypes';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {HomeRouteNames} from '../NavigationTypes';
 import MessageNavigation from '../Messages/MessageNavigator';
 
 export default function HomeTabNavigation() {
@@ -27,37 +26,37 @@ export default function HomeTabNavigation() {
   const Tab = createBottomTabNavigator();
 
   const options = (props: any): BottomTabNavigationOptions => {
-    const { route } = props;
+    const {route} = props;
     let iconName: string;
     let iconType: string;
 
     switch (route.name) {
       case HomeRoutes.HOME.displayName:
         iconName = 'home';
-        iconType = 'feather'
+        iconType = 'feather';
         break;
       case HomeRoutes.ORDER.displayName:
         iconName = 'clipboard-text-outline';
-        iconType = 'material-community'
+        iconType = 'material-community';
         break;
       case HomeRoutes.MESSAGE.displayName:
         iconName = 'message-text-outline';
-        iconType = 'material-community'
+        iconType = 'material-community';
         break;
       case HomeRoutes.PROFILE.displayName:
         iconName = 'person-circle-outline';
-        iconType = 'ionicon'
+        iconType = 'ionicon';
         break;
       case HomeRoutes.PAYMENTS.displayName:
         iconName = 'chart-box-outline';
-        iconType = 'material-community'
+        iconType = 'material-community';
         break;
       default:
         iconName = '';
         break;
     }
     return {
-      tabBarIcon: ({ focused }) => (
+      tabBarIcon: ({focused}) => (
         <Icon
           type={iconType}
           name={iconName}
@@ -65,25 +64,44 @@ export default function HomeTabNavigation() {
           size={25}
         />
       ),
-      tabBarButton: route.name === HomeRoutes.VERIFICATION.displayName ? () => null : undefined,
+      tabBarButton:
+        route.name === HomeRoutes.VERIFICATION.displayName
+          ? () => null
+          : undefined,
       tabBarShowLabel: false,
-      headerShown: route.name === HomeRoutes.VERIFICATION.displayName || route.name === HomeRoutes.PAYMENTS.displayName || route.name === HomeRoutes.HOME.displayName ? true : false,
-      headerStyle: route.name === HomeRoutes.VERIFICATION.displayName ? commonStyles.TransparentHeaderBackground : commonStyles.WhiteHeaderBackground,
-      header: (props) => {
+      headerShown:
+        route.name === HomeRoutes.VERIFICATION.displayName ||
+        route.name === HomeRoutes.PAYMENTS.displayName ||
+        route.name === HomeRoutes.HOME.displayName
+          ? true
+          : false,
+      headerStyle:
+        route.name === HomeRoutes.VERIFICATION.displayName
+          ? commonStyles.TransparentHeaderBackground
+          : commonStyles.WhiteHeaderBackground,
+      header: props => {
         if (route.name === HomeRoutes.VERIFICATION.displayName) {
           return (
             <SafeAreaView>
-              <Header backArrow onPressBack={() => navigation.navigate("Profile" as HomeRouteNames['PROFILE'])} />
+              <Header
+                backArrow
+                onPressBack={() =>
+                  navigation.navigate('Profile' as HomeRouteNames['PROFILE'])
+                }
+              />
             </SafeAreaView>
-          )
-        } else if (route.name === HomeRoutes.HOME.displayName || route.name === HomeRoutes.PAYMENTS.displayName) {
+          );
+        } else if (
+          route.name === HomeRoutes.HOME.displayName ||
+          route.name === HomeRoutes.PAYMENTS.displayName
+        ) {
           return (
             <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
               <Header />
             </SafeAreaView>
-          )
+          );
         }
-      }
+      },
     };
   };
 
@@ -99,8 +117,7 @@ export default function HomeTabNavigation() {
                 key={uuidv4()}
               />
             );
-          }
-          else if (key === HomeRoutes.MESSAGE.name) {
+          } else if (key === HomeRoutes.MESSAGE.name) {
             return (
               <Tab.Screen
                 name={getKeyValue(key)(HomeRoutes).displayName}
@@ -126,5 +143,4 @@ const styles = StyleSheet.create({
   focus: {
     color: AppColorPalette.orange,
   },
-
 });

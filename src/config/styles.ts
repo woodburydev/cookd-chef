@@ -1,5 +1,6 @@
 import {createTheme} from '@rneui/themed';
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {WINDOW_HEIGHT} from './constants';
 
 export const AppColorPalette = {
   orange: '#F26430',
@@ -7,7 +8,6 @@ export const AppColorPalette = {
   red: '#FF1643',
 };
 
-const windowHeight = Dimensions.get('window').height;
 export const myTheme = createTheme({
   Button: props => {
     if (props.mode === 'warning') {
@@ -80,8 +80,15 @@ export const myTheme = createTheme({
     }
   },
   Input: {
-    inputContainerStyle: { borderBottomWidth: 0, backgroundColor: 'white', alignItems: 'center', padding: 5, borderRadius: 10, height: windowHeight < 750 ? 40 : 50 },
-    inputStyle: { marginLeft: 5 },
+    inputContainerStyle: {
+      borderBottomWidth: 0,
+      backgroundColor: 'white',
+      alignItems: 'center',
+      padding: 5,
+      borderRadius: 10,
+      height: WINDOW_HEIGHT < 750 ? 40 : 50,
+    },
+    inputStyle: {marginLeft: 5},
     style: {
       fontFamily: 'WorkSans-Regular',
       fontWeight: '400',
@@ -96,7 +103,7 @@ export const myTheme = createTheme({
       case 'label':
         return {
           style: {
-            fontSize: windowHeight < 750 ? 16 : 18,
+            fontSize: WINDOW_HEIGHT < 750 ? 16 : 18,
             fontWeight: '600',
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
@@ -105,7 +112,7 @@ export const myTheme = createTheme({
       case 'description':
         return {
           style: {
-            fontSize: windowHeight < 750 ? 14 : 16,
+            fontSize: WINDOW_HEIGHT < 750 ? 14 : 16,
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
           },
@@ -113,7 +120,7 @@ export const myTheme = createTheme({
       case 'header':
         return {
           style: {
-            fontSize: windowHeight < 750 ? 20 : 22,
+            fontSize: WINDOW_HEIGHT < 750 ? 20 : 22,
             fontWeight: '600',
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
@@ -122,7 +129,7 @@ export const myTheme = createTheme({
       case 'large-header':
         return {
           style: {
-            fontSize: windowHeight < 850 ? 25 : 28,
+            fontSize: WINDOW_HEIGHT < 850 ? 25 : 28,
             fontWeight: 'bold',
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
@@ -131,7 +138,7 @@ export const myTheme = createTheme({
       case 'info':
         return {
           style: {
-            fontSize: windowHeight < 750 ? 12 : 14,
+            fontSize: WINDOW_HEIGHT < 750 ? 12 : 14,
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
           },
@@ -139,7 +146,7 @@ export const myTheme = createTheme({
       case 'error':
         return {
           style: {
-            fontSize: windowHeight < 750 ? 12 : 14,
+            fontSize: WINDOW_HEIGHT < 750 ? 12 : 14,
             color: 'red',
             fontFamily: 'WorkSans-Regular',
             textAlign: props.centerText ? 'center' : undefined,
@@ -166,40 +173,40 @@ export const commonStyles = StyleSheet.create({
     height: '100%',
   },
   mt5: {
-    marginTop: 5
+    marginTop: 5,
   },
   mb5: {
-    marginBottom: 5
+    marginBottom: 5,
   },
   mx5: {
     marginBottom: 5,
-    marginTop: 5
+    marginTop: 5,
   },
   mt10: {
-    marginTop: 10
+    marginTop: 10,
   },
   mb10: {
-    marginBottom: 10
+    marginBottom: 10,
   },
   mx10: {
     marginTop: 10,
     marginBottom: 10,
   },
   mt20: {
-    marginTop: 20
+    marginTop: 20,
   },
   mb20: {
-    marginBottom: 20
+    marginBottom: 20,
   },
   mx20: {
     marginTop: 20,
     marginBottom: 20,
   },
   mt30: {
-    marginTop: 30
+    marginTop: 30,
   },
   mb30: {
-    marginBottom: 30
+    marginBottom: 30,
   },
   mx30: {
     marginTop: 30,
@@ -264,11 +271,12 @@ export const commonStyles = StyleSheet.create({
     borderBottomRightRadius: 20,
     backgroundColor: 'white',
     shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
+    shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
   TransparentHeaderBackground: {
-    backgroundColor: AppColorPalette.appBackgroundColor, shadowColor: 'transparent'
-  }
+    backgroundColor: AppColorPalette.appBackgroundColor,
+    shadowColor: 'transparent',
+  },
 });

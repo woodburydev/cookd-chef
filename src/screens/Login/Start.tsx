@@ -1,12 +1,13 @@
-import { Button, Image, Text } from '@rneui/themed';
+import {Button, Image, Text} from '@rneui/themed';
 import React from 'react';
-import { View, StyleSheet, ActivityIndicator, Dimensions } from 'react-native';
-import { commonStyles } from '@config/styles';
+import {View, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
+import {commonStyles} from '@config/styles';
 import CookingImage from '@assets/cookingImage.jpg';
 import CookdLogo from '@assets/cookdlogolabel.png';
-import { LoginRoutes } from 'src/navigation/Login/routes';
-import { useNavigation } from '@react-navigation/core';
-import { LoginRoutesNames } from 'src/navigation/NavigationTypes';
+import {LoginRoutes} from 'src/navigation/Login/routes';
+import {useNavigation} from '@react-navigation/core';
+import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
+import {WINDOW_HEIGHT, WINDOW_WIDTH} from 'src/config/constants';
 
 export default function GetStarted() {
   const navigation = useNavigation();
@@ -25,10 +26,16 @@ export default function GetStarted() {
           style={styles.logoContainer}
           PlaceholderContent={<ActivityIndicator />}
         />
-        <View style={[{ alignItems: 'center' }, commonStyles.mt30]}>
-          <Text type="header" style={commonStyles.mb5}>Your Schedule.</Text>
-          <Text type="header" style={commonStyles.mb5}>Your Talents.</Text>
-          <Text type="header" style={commonStyles.mb5}>Your Business.</Text>
+        <View style={[{alignItems: 'center'}, commonStyles.mt30]}>
+          <Text type="header" style={commonStyles.mb5}>
+            Your Schedule.
+          </Text>
+          <Text type="header" style={commonStyles.mb5}>
+            Your Talents.
+          </Text>
+          <Text type="header" style={commonStyles.mb5}>
+            Your Business.
+          </Text>
         </View>
         <Button
           onPress={() =>
@@ -44,13 +51,10 @@ export default function GetStarted() {
   );
 }
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-
 const styles = StyleSheet.create({
   imageContainer: {
-    height: windowHeight / 2,
-    width: windowWidth,
+    height: WINDOW_HEIGHT / 2,
+    width: WINDOW_WIDTH,
     resizeMode: 'cover',
     zIndex: -1,
   },

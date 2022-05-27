@@ -1,13 +1,13 @@
-import { useNavigation } from '@react-navigation/core';
-import { Icon, Text } from '@rneui/themed';
-import React, { useState } from 'react';
-import { View, StyleSheet, ActivityIndicator } from 'react-native';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import { commonStyles } from 'src/config/styles';
-import { ProfileRoutes } from 'src/navigation/Profile/routes';
+import {useNavigation} from '@react-navigation/core';
+import {Icon, Text} from '@rneui/themed';
+import React, {useState} from 'react';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import {commonStyles} from 'src/config/styles';
+import {ProfileRoutes} from 'src/navigation/Profile/routes';
 import auth from '@react-native-firebase/auth';
 import uuidv4 from 'uuidv4';
-import { getKeyValue } from 'src/util/helperFunctions';
+import {getKeyValue} from 'src/util/helperFunctions';
 
 export default function Profile() {
   const navigation = useNavigation();
@@ -33,20 +33,23 @@ export default function Profile() {
           style={[commonStyles.FlexColCenterStart, styles.contentContainer]}>
           <View style={styles.LinksContainer}>
             {Object.keys(ProfileRoutes).map(key => {
-              const { name, iconType, iconName, displayName } =
+              const {name, iconType, iconName, displayName} =
                 getKeyValue(key)(ProfileRoutes);
               return (
                 <>
-                  {name === 'REVIEWS' &&
-                    <Text type="header" style={styles.firstLabelText} key={uuidv4()}>
+                  {name === 'REVIEWS' && (
+                    <Text
+                      type="header"
+                      style={styles.firstLabelText}
+                      key={uuidv4()}>
                       Your Cookd
                     </Text>
-                  }
-                  {name === 'BANKING_INFO' &&
+                  )}
+                  {name === 'BANKING_INFO' && (
                     <Text type="header" style={styles.labelText} key={uuidv4()}>
                       General
                     </Text>
-                  }
+                  )}
                   <TouchableOpacity
                     style={[
                       commonStyles.FlexRowCenterBetween,
@@ -99,7 +102,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
+    shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },

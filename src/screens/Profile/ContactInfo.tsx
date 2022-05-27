@@ -1,10 +1,11 @@
-import { Image, Text } from '@rneui/themed';
+import {Image, Text} from '@rneui/themed';
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { AppColorPalette, commonStyles } from 'src/config/styles';
-import ProfilePicture from '@assets/chefProfilePicture.jpeg'
-import { ScrollView } from 'react-native-gesture-handler';
-import { Icon } from '@rneui/base';
+import {View, StyleSheet} from 'react-native';
+import {AppColorPalette} from 'src/config/styles';
+import ProfilePicture from '@assets/chefProfilePicture.jpeg';
+import {ScrollView} from 'react-native-gesture-handler';
+import {Icon} from '@rneui/base';
+import {WINDOW_HEIGHT} from 'src/config/constants';
 export default function ContactInfo() {
   return (
     <ScrollView contentContainerStyle={styles.pageContainer}>
@@ -15,70 +16,90 @@ export default function ContactInfo() {
           containerStyle={styles.imageContainer}
         />
         <View style={styles.imageIconContainerView}>
-          <Icon size={windowHeight < 750 ? 15 : 18} color={AppColorPalette.orange} type="material" name="edit" />
+          <Icon
+            size={WINDOW_HEIGHT < 750 ? 15 : 18}
+            color={AppColorPalette.orange}
+            type="material"
+            name="edit"
+          />
         </View>
       </View>
       <View style={styles.whiteBackgroundView}>
         <View style={styles.whiteBackgroundText}>
           <View style={styles.insideTextContainer}>
-            <Text type="label">
-              Address:
-          </Text>
-            <Text>
-              123 Main Street
-          </Text>
-            <Text>
-              San Francisco, CA 94016
-          </Text>
+            <Text type="label">Address:</Text>
+            <Text>123 Main Street</Text>
+            <Text>San Francisco, CA 94016</Text>
           </View>
-          <Icon size={18} color={AppColorPalette.orange} style={styles.notificationIcon} containerStyle={[styles.notificationIconContainer, { right: 10, top: 5 }]} type="material" name="edit" />
+          <Icon
+            size={18}
+            color={AppColorPalette.orange}
+            style={styles.notificationIcon}
+            containerStyle={[
+              styles.notificationIconContainer,
+              {right: 10, top: 5},
+            ]}
+            type="material"
+            name="edit"
+          />
         </View>
-
       </View>
       <View style={styles.whiteBackgroundView}>
         <View style={styles.whiteBackgroundText}>
           <View style={styles.insideTextContainer}>
-            <Text type="label">
-              Phone Number:
-          </Text>
-            <Text>
-              (916) 352-2765
-          </Text>
+            <Text type="label">Phone Number:</Text>
+            <Text>(916) 352-2765</Text>
           </View>
-          <Icon size={18} color={AppColorPalette.orange} style={styles.notificationIcon} containerStyle={[styles.notificationIconContainer, { right: 10, top: 5 }]} type="material" name="edit" />
-
+          <Icon
+            size={18}
+            color={AppColorPalette.orange}
+            style={styles.notificationIcon}
+            containerStyle={[
+              styles.notificationIconContainer,
+              {right: 10, top: 5},
+            ]}
+            type="material"
+            name="edit"
+          />
         </View>
-
       </View>
       <View style={styles.whiteBackgroundView}>
         <View style={styles.whiteBackgroundText}>
           <View style={styles.insideTextContainer}>
-            <Text type="label">
-              Email:
-          </Text>
-            <Text>
-              NathanielWoodbury@gmail.com
-          </Text>
+            <Text type="label">Email:</Text>
+            <Text>NathanielWoodbury@gmail.com</Text>
           </View>
-          <Icon size={18} color={AppColorPalette.orange} style={styles.notificationIcon} containerStyle={[styles.notificationIconContainer, { right: 10, top: 5 }]} type="material" name="edit" />
-
+          <Icon
+            size={18}
+            color={AppColorPalette.orange}
+            style={styles.notificationIcon}
+            containerStyle={[
+              styles.notificationIconContainer,
+              {right: 10, top: 5},
+            ]}
+            type="material"
+            name="edit"
+          />
         </View>
-
       </View>
-    </ScrollView >
+    </ScrollView>
   );
 }
-
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   image: {
     borderRadius: 100,
-    height: windowHeight / 6,
-    width: windowHeight / 6
+    height: WINDOW_HEIGHT / 6,
+    width: WINDOW_HEIGHT / 6,
   },
   imageIconContainerView: {
-    height: windowHeight < 750 ? 30 : 40, width: windowHeight < 750 ? 30 : 40, bottom: 20, backgroundColor: 'white', borderRadius: 100, alignItems: 'center', justifyContent: 'center'
+    height: WINDOW_HEIGHT < 750 ? 30 : 40,
+    width: WINDOW_HEIGHT < 750 ? 30 : 40,
+    bottom: 20,
+    backgroundColor: 'white',
+    borderRadius: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   notificationIconContainer: {
     width: 50,
@@ -93,19 +114,20 @@ const styles = StyleSheet.create({
   pageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: '90%'
+    minHeight: '90%',
   },
   insideTextContainer: {
-    width: "90%",
+    width: '90%',
   },
   whiteBackgroundText: {
-    width: "90%",
-    left: 20
+    width: '90%',
+    left: 20,
   },
-  imageContainer: {
-  },
+  imageContainer: {},
   imageContainerView: {
-    alignItems: 'center', justifyContent: 'center', top: 30
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 30,
   },
   whiteBackgroundView: {
     backgroundColor: 'white',
@@ -115,5 +137,5 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     borderRadius: 20,
     alignItems: 'flex-start',
-  }
+  },
 });

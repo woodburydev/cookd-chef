@@ -1,6 +1,6 @@
-import { Icon } from '@rneui/base';
-import { Button, Input, Text } from '@rneui/themed';
-import React, { useRef, useState } from 'react';
+import {Icon} from '@rneui/base';
+import {Button, Input, Text} from '@rneui/themed';
+import React, {useRef, useState} from 'react';
 import {
   View,
   KeyboardAvoidingView,
@@ -8,14 +8,15 @@ import {
   ActivityIndicator,
   Dimensions,
 } from 'react-native';
-import { commonStyles } from '@config/styles';
-import { LoginRoutes } from '@navigation/Login/routes';
+import {commonStyles} from '@config/styles';
+import {LoginRoutes} from '@navigation/Login/routes';
 import auth from '@react-native-firebase/auth';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import {
   LoginNavigationRoutes,
   LoginRoutesNames,
 } from 'src/navigation/NavigationTypes';
+import {WINDOW_HEIGHT} from 'src/config/constants';
 
 export default function SetPassword() {
   const [errorText, setErrorText] = useState('');
@@ -85,7 +86,7 @@ export default function SetPassword() {
           </Text>
           <Input
             autoFocus={true}
-            shake={() => { }}
+            shake={() => {}}
             onChangeText={name => {
               setPassword(name);
             }}
@@ -95,8 +96,13 @@ export default function SetPassword() {
             secureTextEntry
             maxLength={20}
             returnKeyType="next"
-            errorStyle={{ marginBottom: windowHeight < 850 ? 0 : 15, marginTop: windowHeight < 850 ? 0 : 0 }}
-            onSubmitEditing={() => { confirmPasswordRef.current && confirmPasswordRef.current.focus() }}
+            errorStyle={{
+              marginBottom: WINDOW_HEIGHT < 850 ? 0 : 15,
+              marginTop: WINDOW_HEIGHT < 850 ? 0 : 0,
+            }}
+            onSubmitEditing={() => {
+              confirmPasswordRef.current && confirmPasswordRef.current.focus();
+            }}
             blurOnSubmit={false}
           />
           <Text type="label" style={styles.labelText}>
@@ -104,14 +110,14 @@ export default function SetPassword() {
           </Text>
           <Input
             autoComplete="name-family"
-            shake={() => { }}
+            shake={() => {}}
             ref={confirmPasswordRef}
             onChangeText={name => {
               setConfirmPassword(name);
             }}
             errorStyle={{
               marginTop: 10,
-              marginBottom: 15
+              marginBottom: 15,
             }}
             secureTextEntry
             placeholder="Smith"
@@ -124,16 +130,15 @@ export default function SetPassword() {
           />
         </View>
 
-        <Button onPress={() => (loading ? undefined : submitPassword())} icon={
-          loading ? (
-            <ActivityIndicator color="white" />
-          ) : undefined} title={loading ? "" : "Next"} />
+        <Button
+          onPress={() => (loading ? undefined : submitPassword())}
+          icon={loading ? <ActivityIndicator color="white" /> : undefined}
+          title={loading ? '' : 'Next'}
+        />
       </View>
     </View>
   );
 }
-
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   SectionStyle: {
@@ -146,6 +151,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   ContentContainer: {
-    bottom: windowHeight < 750 ? 60 : 100
+    bottom: WINDOW_HEIGHT < 750 ? 60 : 100,
   },
 });

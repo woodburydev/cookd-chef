@@ -1,5 +1,5 @@
-import { Button, Text } from '@rneui/themed';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import {Button, Text} from '@rneui/themed';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -9,33 +9,33 @@ import {
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
-import { commonStyles } from '@config/styles';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import {commonStyles} from '@config/styles';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import {
   LoginNavigationRoutes,
   LoginRoutesNames,
 } from 'src/navigation/NavigationTypes';
-import { LoginRoutes } from 'src/navigation/Login/routes';
-import { UserContext } from 'src/context/UserContext';
+import {LoginRoutes} from 'src/navigation/Login/routes';
+import {UserContext} from 'src/context/UserContext';
 import {
   CodeField,
   useBlurOnFulfill,
 } from 'react-native-confirmation-code-field';
+import {WINDOW_HEIGHT} from 'src/config/constants';
 
 const CELL_COUNT = 6;
 
 export default function EnterOTP() {
   const navigation = useNavigation();
   const [value, setValue] = useState('');
-  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
-  const { loadingUserContext } = useContext(UserContext);
+  const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
+  const {loadingUserContext} = useContext(UserContext);
   const [readyToMove, setReadyToMove] = useState(false);
 
   const route =
     useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['ENTER_OTP']>>();
-  const windowHeight = Dimensions.get('window').height;
 
-  const { confirm } = route.params;
+  const {confirm} = route.params;
 
   const [loading, setLoading] = useState(false);
   const [errorText, setErrorText] = useState('');
@@ -122,7 +122,7 @@ export default function EnterOTP() {
             rootStyle={styles.codeFieldRoot}
             keyboardType="number-pad"
             textContentType="oneTimeCode"
-            renderCell={({ index, symbol }) => (
+            renderCell={({index, symbol}) => (
               <View
                 key={index}
                 style={[commonStyles.FlexColCenterCenter, styles.cell]}>
@@ -138,7 +138,7 @@ export default function EnterOTP() {
           <Text style={styles.descriptionText} type="info">
             You’ll recieve a text with a code within a couple minutes.
           </Text>
-          {windowHeight > 850 ? (
+          {WINDOW_HEIGHT > 850 ? (
             <Text style={styles.descriptionText} type="info">
               Check your phone number, or click resend text if you didn’t
               recieve it.
@@ -157,13 +157,11 @@ export default function EnterOTP() {
   );
 }
 
-const windowHeight = Dimensions.get('window').height;
-
 const styles = StyleSheet.create({
   SectionStyle: {
     alignItems: 'flex-start',
     alignSelf: 'center',
-    marginTop: windowHeight < 750 ? '20%' : '-20%',
+    marginTop: WINDOW_HEIGHT < 750 ? '20%' : '-20%',
     width: '80%',
   },
   header: {
@@ -189,9 +187,9 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '700',
   },
-  root: { flex: 1, padding: 20 },
-  title: { textAlign: 'center', fontSize: 30 },
-  codeFieldRoot: { marginTop: 20 },
+  root: {flex: 1, padding: 20},
+  title: {textAlign: 'center', fontSize: 30},
+  codeFieldRoot: {marginTop: 20},
   cell: {
     width: 40,
     height: 60,
