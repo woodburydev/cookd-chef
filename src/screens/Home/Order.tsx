@@ -1,71 +1,32 @@
 import {Text, Image} from '@rneui/themed';
 import React from 'react';
-import {View, StyleSheet, ActivityIndicator} from 'react-native';
-import {AppColorPalette, commonStyles} from 'src/config/styles';
+import {View, ActivityIndicator} from 'react-native';
 import ChefImage from '@assets/resturantimage.png';
+import t from 'tailwind';
 
 export default function Order() {
   return (
-    <View style={commonStyles.FlexColCenterStart}>
-      <View style={[commonStyles.FlexColCenterCenter, styles.header]}>
-        <Text type="header" style={styles.headerText}>
-          Manage Orders
-        </Text>
-      </View>
-      <View style={[commonStyles.FlexColCenterStart, styles.contentContainer]}>
+    <View style={t`col-center-start`}>
+      <View style={t`w-8/12 mt-20 col-center-start`}>
         <Image
           source={ChefImage}
-          style={styles.logoContainer}
+          style={t`h-40 w-60 mb-12`}
           PlaceholderContent={<ActivityIndicator />}
         />
-        <Text type="label" centerText style={styles.text}>
+        <Text type="label" centerText style={t`my-2`}>
           No Orders Yet
         </Text>
-        <Text type="description" centerText style={styles.text}>
-          Experience fine dining with friends and family from the comfort of
-          your own home.
+        <Text type="description" centerText style={t`my-2`}>
+          When a customer places an order, it will appear here for you to view
+          and look at in closer detail.
         </Text>
         <Text
           type="description"
           centerText
-          style={[styles.text, styles.linkText]}>
-          Find A Chef
+          style={t`text-orange underline my-2`}>
+          Learn More
         </Text>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  contentContainer: {
-    width: '70%',
-    marginTop: 75,
-  },
-  header: {
-    flex: 0,
-    height: '20%',
-    backgroundColor: 'white',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-  },
-  headerText: {
-    marginTop: '12.5%',
-  },
-  logoContainer: {
-    height: 150,
-    marginBottom: 50,
-    width: 250,
-  },
-  text: {
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  linkText: {
-    textDecorationLine: 'underline',
-    color: AppColorPalette.orange,
-  },
-});

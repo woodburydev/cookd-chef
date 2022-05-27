@@ -71,10 +71,9 @@ export default function HomeTabNavigation() {
       tabBarShowLabel: false,
       headerShown:
         route.name === HomeRoutes.VERIFICATION.displayName ||
-        route.name === HomeRoutes.PAYMENTS.displayName ||
-        route.name === HomeRoutes.HOME.displayName
-          ? true
-          : false,
+        route.name === HomeRoutes.PROFILE.displayName
+          ? false
+          : true,
       headerStyle:
         route.name === HomeRoutes.VERIFICATION.displayName
           ? commonStyles.TransparentHeaderBackground
@@ -98,6 +97,12 @@ export default function HomeTabNavigation() {
           return (
             <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
               <Header />
+            </SafeAreaView>
+          );
+        } else if (route.name === HomeRoutes.ORDER.displayName) {
+          return (
+            <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
+              <Header headerText="Orders" />
             </SafeAreaView>
           );
         }
