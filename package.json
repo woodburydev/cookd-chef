@@ -13,7 +13,9 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "np": "np --no-publish",
-    "postversion": "react-native-version"
+    "postversion": "react-native-version",
+    "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
+    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\""
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
@@ -49,6 +51,8 @@
     "react-native-svg": "^12.3.0",
     "react-native-vector-icons": "^9.1.0",
     "react-native-web": "^0.17.7",
+    "tailwind-rn": "^4.2.0",
+    "twrnc": "^3.0.2-beta.1",
     "uuidv4": "^5.0.1"
   },
   "devDependencies": {
@@ -62,13 +66,16 @@
     "@typescript-eslint/parser": "^5.7.0",
     "babel-jest": "^26.6.3",
     "babel-plugin-module-resolver": "4.1.0",
+    "concurrently": "^7.2.1",
     "eslint": "^7.14.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.66.2",
     "np": "^7.6.1",
+    "postcss": "^8.4.14",
     "react-native-clean-project": "^4.0.1",
     "react-native-version": "^4.0.0",
     "react-test-renderer": "17.0.2",
+    "tailwindcss": "^3.0.24",
     "typescript": "^4.4.4"
   },
   "resolutions": {

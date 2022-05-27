@@ -33,7 +33,7 @@ export const SignUpRoutes = {
     name: 'FOUND_OUT',
     component: FoundOut,
   },
-}
+};
 
 export const GetStartedRoutes = {
   CREATE_PROFILE: {
@@ -52,8 +52,7 @@ export const GetStartedRoutes = {
     name: 'GROW',
     component: Grow,
   },
-}
-
+};
 
 export const LoginRoutes = {
   GET_STARTED: {
@@ -89,8 +88,8 @@ export const LoginRoutes = {
     component: FoundOut,
   },
   FINAL: {
-    name: "FINAL",
-    component: Final
+    name: 'FINAL',
+    component: Final,
   },
-  ...GetStartedRoutes
+  ...GetStartedRoutes,
 };

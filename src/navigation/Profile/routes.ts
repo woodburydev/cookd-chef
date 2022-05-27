@@ -1,6 +1,5 @@
 import Feedback from '@screens/Profile/Feedback';
 import PrivacyPolicy from '@screens/Profile/PrivacyPolicy';
-import Rewards from '@screens/Profile/Rewards';
 import TOS from 'src/screens/Profile/TOS';
 import Reviews from 'src/screens/Profile/Reviews';
 import Menus from 'src/screens/Profile/Menus';
@@ -78,10 +77,10 @@ export const ProfileRoutes = {
 };
 
 export const AllProfileRoutes = {
-  ...ProfileRoutes, 
+  ...ProfileRoutes,
   MENU_DETAILS: {
     name: 'MENU_DETAILS',
     displayName: 'Menu Details',
     component: MenuDetails,
   },
-}
+};

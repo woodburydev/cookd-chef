@@ -4,7 +4,13 @@ type RecursivePartial<T> = {[P in keyof T]?: RecursivePartial<T[P]>};
 
 declare module '@rneui/themed' {
   export interface TextProps {
-    type?: 'description' | 'header' | 'large-header' | 'label' | 'info' | 'error';
+    type?:
+      | 'description'
+      | 'header'
+      | 'large-header'
+      | 'label'
+      | 'info'
+      | 'error';
     centerText?: boolean;
   }
 

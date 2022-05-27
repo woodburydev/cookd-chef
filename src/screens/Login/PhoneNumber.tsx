@@ -1,16 +1,16 @@
-import { useNavigation } from '@react-navigation/core';
-import { Button, Icon, Input, Text } from '@rneui/themed';
-import React, { useCallback, useEffect, useState } from 'react';
+import {useNavigation} from '@react-navigation/core';
+import {Button, Icon, Input, Text} from '@rneui/themed';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   View,
   StyleSheet,
   KeyboardAvoidingView,
   ActivityIndicator,
 } from 'react-native';
-import { commonStyles } from 'src/config/styles';
-import { LoginRoutes } from 'src/navigation/Login/routes';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { LoginRoutesNames } from 'src/navigation/NavigationTypes';
+import {commonStyles} from 'src/config/styles';
+import {LoginRoutes} from 'src/navigation/Login/routes';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
 
 const countryCode = '+1';
 
@@ -88,16 +88,16 @@ export default function PhoneNumber() {
         <View style={styles.SectionStyle}>
           <Text type="header" style={styles.labelText}>
             Whats your number?
-            </Text>
+          </Text>
           <Input
             autoFocus={true}
-            containerStyle={{ marginTop: 10 }}
-            shake={() => { }}
+            containerStyle={{marginTop: 10}}
+            shake={() => {}}
             placeholder="(555) 555-5555"
             onSubmitEditing={() => submit()}
             errorStyle={{
               marginTop: 10,
-              marginBottom: 15
+              marginBottom: 15,
             }}
             textContentType="telephoneNumber"
             value={formatPhoneNumber(userPhoneNumber)}
@@ -110,12 +110,11 @@ export default function PhoneNumber() {
             errorMessage={phoneErrorText}
           />
         </View>
-        <Button onPress={() => (loading ? undefined : submit())}
-          icon={
-            loading ? (
-              <ActivityIndicator color="white" />
-            ) : undefined
-          } title={loading ? "" : "Verify"} />
+        <Button
+          onPress={() => (loading ? undefined : submit())}
+          icon={loading ? <ActivityIndicator color="white" /> : undefined}
+          title={loading ? '' : 'Verify'}
+        />
       </View>
     </View>
   );
@@ -127,10 +126,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   ContentContainer: {
-    bottom: 70
+    bottom: 70,
   },
   button: {
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   inputStyle: {
     color: 'black',

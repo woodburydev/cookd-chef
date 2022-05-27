@@ -1,0 +1,89 @@
+*, ::before, ::after {
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  
+}
+
+.btn-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+row-center-center {
+  align-items: center;
+  flex-direction: row;
+  justify-content: center
+}
+
+row-center-around {
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around
+}
+
+row-start-start {
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: flex-start
+}
+
+col-center-start {
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column
+}
+
+col-center-center {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+
+col-start-center {
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column
+}
+
+row-center-start {
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row
+}
+
+row-center-between {
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+/* example for css to js styling */

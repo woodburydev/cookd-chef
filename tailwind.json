@@ -1,0 +1,122 @@
+{
+	"*": {
+		"style": {
+			"--tw-ordinal": "",
+			"--tw-slashed-zero": "",
+			"--tw-numeric-figure": "",
+			"--tw-numeric-spacing": "",
+			"--tw-numeric-fraction": ""
+		}
+	},
+	"::before": {
+		"style": {
+			"--tw-ordinal": "",
+			"--tw-slashed-zero": "",
+			"--tw-numeric-figure": "",
+			"--tw-numeric-spacing": "",
+			"--tw-numeric-fraction": ""
+		}
+	},
+	"::after": {
+		"style": {
+			"--tw-ordinal": "",
+			"--tw-slashed-zero": "",
+			"--tw-numeric-figure": "",
+			"--tw-numeric-spacing": "",
+			"--tw-numeric-fraction": ""
+		}
+	},
+	"btn-primary": {
+		"style": {
+			"--tw-bg-opacity": 1,
+			"backgroundColor": "rgb(0 0 0 / var(--tw-bg-opacity))",
+			"paddingTop": 8,
+			"paddingBottom": 8,
+			"paddingLeft": 16,
+			"paddingRight": 16,
+			"fontWeight": "600",
+			"--tw-text-opacity": 1,
+			"color": "rgb(255 255 255 / var(--tw-text-opacity))"
+		}
+	},
+	"bg-black": {
+		"style": {
+			"--tw-bg-opacity": 1,
+			"backgroundColor": "rgb(0 0 0 / var(--tw-bg-opacity))"
+		}
+	},
+	"py-2": {
+		"style": {
+			"paddingTop": 8,
+			"paddingBottom": 8
+		}
+	},
+	"px-4": {
+		"style": {
+			"paddingLeft": 16,
+			"paddingRight": 16
+		}
+	},
+	"text-white": {
+		"style": {
+			"--tw-text-opacity": 1,
+			"color": "rgb(255 255 255 / var(--tw-text-opacity))"
+		}
+	},
+	"row-center-center": {
+		"style": {
+			"alignItems": "center",
+			"flexDirection": "row",
+			"justifyContent": "center"
+		}
+	},
+	"row-center-around": {
+		"style": {
+			"alignItems": "center",
+			"flexDirection": "row",
+			"justifyContent": "space-around"
+		}
+	},
+	"row-start-start": {
+		"style": {
+			"alignItems": "flex-start",
+			"flexDirection": "row",
+			"justifyContent": "flex-start"
+		}
+	},
+	"col-center-start": {
+		"style": {
+			"alignItems": "center",
+			"justifyContent": "flex-start",
+			"flexDirection": "column"
+		}
+	},
+	"col-center-center": {
+		"style": {
+			"alignItems": "center",
+			"justifyContent": "center",
+			"flexDirection": "column"
+		}
+	},
+	"col-start-center": {
+		"style": {
+			"alignItems": "flex-start",
+			"justifyContent": "center",
+			"flexDirection": "column"
+		}
+	},
+	"row-center-start": {
+		"style": {
+			"alignItems": "center",
+			"justifyContent": "flex-start",
+			"flexDirection": "row"
+		}
+	},
+	"row-center-between": {
+		"style": {
+			"alignItems": "center",
+			"flexDirection": "row",
+			"justifyContent": "space-between"
+		}
+	}
+}

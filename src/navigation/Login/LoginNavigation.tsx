@@ -1,21 +1,21 @@
-import { DefaultTheme, useNavigation } from '@react-navigation/native';
+import {DefaultTheme, useNavigation} from '@react-navigation/native';
 import {
   createStackNavigator,
   StackNavigationOptions,
   StackNavigationProp,
 } from '@react-navigation/stack';
-import React, { useContext, useState } from 'react';
-import { UserContext } from 'src/context/UserContext';
+import React, {useContext, useState} from 'react';
+import {UserContext} from 'src/context/UserContext';
 import {
   LoginNavigationRoutes,
   LoginRoutesNames,
 } from 'src/navigation/NavigationTypes';
-import { LoginRoutes, SignUpRoutes } from './routes';
+import {LoginRoutes, SignUpRoutes} from './routes';
 import auth from '@react-native-firebase/auth';
 import Header from 'src/screens/Login/Components/Header';
-import { AppColorPalette } from 'src/config/styles';
-import { getKeyValue } from 'src/util/helperFunctions';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {AppColorPalette} from 'src/config/styles';
+import {getKeyValue} from 'src/util/helperFunctions';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export default function LoginNavigation() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,7 +25,7 @@ export default function LoginNavigation() {
   const [showBackButton, setShowBackButton] = useState(true);
   const navTheme = DefaultTheme;
   navTheme.colors.background = AppColorPalette.appBackgroundColor;
-  const { user } = useContext(UserContext);
+  const {user} = useContext(UserContext);
 
   const getInitialRoute = () => {
     if (auth().currentUser && !user) {
@@ -40,13 +40,13 @@ export default function LoginNavigation() {
     }
   };
   const getLoaderPercentage = (numberInList: number) => {
-    return (1 / Object.keys(SignUpRoutes).length) * numberInList
-  }
+    return (1 / Object.keys(SignUpRoutes).length) * numberInList;
+  };
   // intercepting screen options for control before rendering each route.
   const screenOptions = (
     props: StackNavigationProp<LoginNavigationRoutes, keyof LoginRoutesNames>,
   ): StackNavigationOptions => {
-    const routeName = props.route.name
+    const routeName = props.route.name;
     switch (routeName) {
       case LoginRoutes.PHONE_NUMBER.name:
         setLoading(undefined);
@@ -99,14 +99,34 @@ export default function LoginNavigation() {
     if (showBackButton) {
       return {
         headerShown: isVisible,
-        header: () =>
-          <Header loading={loading} backArrow onPressBack={() => navigation.goBack()} loginPages headerContainerStyle={{ position: 'absolute', zIndex: 100, height: 135 }} />
+        header: () => (
+          <Header
+            loading={loading}
+            backArrow
+            onPressBack={() => navigation.goBack()}
+            loginPages
+            headerContainerStyle={{
+              position: 'absolute',
+              zIndex: 100,
+              height: 135,
+            }}
+          />
+        ),
       };
     }
     return {
       headerShown: isVisible,
-      header: () =>
-        <Header loading={loading} loginPages headerContainerStyle={{ position: 'absolute', zIndex: 100, height: 135 }} />
+      header: () => (
+        <Header
+          loading={loading}
+          loginPages
+          headerContainerStyle={{
+            position: 'absolute',
+            zIndex: 100,
+            height: 135,
+          }}
+        />
+      ),
     };
   };
   // update to use header from config above instead

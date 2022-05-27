@@ -1,11 +1,11 @@
-import { Image, Text } from '@rneui/themed';
-import { LinearProgress } from '@rneui/themed/dist/LinearProgress';
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, ActivityIndicator, Animated } from 'react-native';
+import {Image, Text} from '@rneui/themed';
+import {LinearProgress} from '@rneui/themed/dist/LinearProgress';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, ActivityIndicator, Animated} from 'react-native';
 import CookdLogo from 'src/assets/cookdlogo.png';
-import { AppColorPalette } from 'src/config/styles';
+import {AppColorPalette} from 'src/config/styles';
 import DeviceInfo from 'react-native-device-info';
-import { Icon } from '@rneui/base';
+import {Icon} from '@rneui/base';
 
 export default function Header({
   loading,
@@ -17,7 +17,7 @@ export default function Header({
   ...rest
 }: {
   loading?: number;
-  headerContainerStyle?: {}
+  headerContainerStyle?: {};
   backArrow?: boolean;
   headerText?: string;
   onPressBack?: () => any;
@@ -49,7 +49,7 @@ export default function Header({
       width: '80%',
       height: DeviceInfo.hasNotch() ? 75 : 100,
       flexDirection: 'row',
-      top: loginPages ? 15 : 0
+      top: loginPages ? 15 : 0,
     },
     paddingView: {
       width: 25,
@@ -57,7 +57,7 @@ export default function Header({
     arrowBack: {
       position: 'absolute',
       left: 0,
-    }
+    },
   });
 
   useEffect(() => {
@@ -71,37 +71,37 @@ export default function Header({
   }, [fadeAnim]);
 
   return (
-    <Animated.View style={[styles.HeaderContainer, { opacity: loginPages ? fadeAnim : 1 }]}>
+    <Animated.View
+      style={[styles.HeaderContainer, {opacity: loginPages ? fadeAnim : 1}]}>
       <View />
       <View style={styles.iconsContainer}>
-        {backArrow &&
+        {backArrow && (
           <View style={styles.arrowBack}>
             <Icon type="ionicon" name="arrow-back" onPress={onPressBack} />
-          </View>}
-        {
-          headerText ? <Text type="header">{headerText}</Text> : <Image
+          </View>
+        )}
+        {headerText ? (
+          <Text type="header">{headerText}</Text>
+        ) : (
+          <Image
             source={CookdLogo}
             style={styles.logoContainer}
             PlaceholderContent={<ActivityIndicator />}
           />
-        }
-
+        )}
       </View>
-      {
-        loading && (
-          <LinearProgress
-            style={styles.loadingBar}
-            variant="determinate"
-            value={loading}
-            color={
-              loading > 0
-                ? AppColorPalette.orange
-                : AppColorPalette.appBackgroundColor
-            }
-          />
-        )
-      }
-
+      {loading && (
+        <LinearProgress
+          style={styles.loadingBar}
+          variant="determinate"
+          value={loading}
+          color={
+            loading > 0
+              ? AppColorPalette.orange
+              : AppColorPalette.appBackgroundColor
+          }
+        />
+      )}
     </Animated.View>
   );
 }

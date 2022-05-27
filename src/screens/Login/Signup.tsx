@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react';
+import React, {createRef, useState} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -6,11 +6,12 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Text, Input, Button, Icon } from '@rneui/themed';
-import { commonStyles } from '@config/styles';
-import { LoginRoutes } from '@navigation/Login/routes';
-import { useNavigation } from '@react-navigation/core';
-import { LoginRoutesNames } from 'src/navigation/NavigationTypes';
+import {Text, Input, Button, Icon} from '@rneui/themed';
+import {commonStyles} from '@config/styles';
+import {LoginRoutes} from '@navigation/Login/routes';
+import {useNavigation} from '@react-navigation/core';
+import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
+import {WINDOW_HEIGHT} from 'src/config/constants';
 
 export default function Signup() {
   const navigation = useNavigation();
@@ -44,7 +45,7 @@ export default function Signup() {
           </Text>
           <Input
             autoFocus={true}
-            shake={() => { }}
+            shake={() => {}}
             onChangeText={name => {
               setFirstName(name);
               setLastNameErrorText('');
@@ -54,8 +55,13 @@ export default function Signup() {
             autoCapitalize="words"
             maxLength={20}
             returnKeyType="next"
-            errorStyle={{ marginBottom: windowHeight < 850 ? 0 : 15, marginTop: windowHeight < 850 ? 0 : 0 }}
-            onSubmitEditing={() => { lastNameRef.current && lastNameRef.current.focus() }}
+            errorStyle={{
+              marginBottom: WINDOW_HEIGHT < 850 ? 0 : 15,
+              marginTop: WINDOW_HEIGHT < 850 ? 0 : 0,
+            }}
+            onSubmitEditing={() => {
+              lastNameRef.current && lastNameRef.current.focus();
+            }}
             blurOnSubmit={false}
           />
           <Text type="label" style={styles.labelText}>
@@ -63,7 +69,7 @@ export default function Signup() {
           </Text>
           <Input
             autoComplete="name-family"
-            shake={() => { }}
+            shake={() => {}}
             ref={lastNameRef}
             onChangeText={name => {
               setLastName(name);
@@ -71,7 +77,7 @@ export default function Signup() {
             }}
             errorStyle={{
               marginTop: 10,
-              marginBottom: 15
+              marginBottom: 15,
             }}
             placeholder="Smith"
             autoCapitalize="words"
@@ -83,16 +89,15 @@ export default function Signup() {
           />
         </View>
 
-        <Button onPress={() => (loading ? undefined : submit())} icon={
-          loading ? (
-            <ActivityIndicator color="white" />
-          ) : undefined} title={loading ? "" : "Next"} />
+        <Button
+          onPress={() => (loading ? undefined : submit())}
+          icon={loading ? <ActivityIndicator color="white" /> : undefined}
+          title={loading ? '' : 'Next'}
+        />
       </View>
     </View>
   );
 }
-
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   SectionStyle: {
@@ -105,6 +110,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   ContentContainer: {
-    bottom: windowHeight < 750 ? 60 : 100
+    bottom: WINDOW_HEIGHT < 750 ? 60 : 100,
   },
 });
