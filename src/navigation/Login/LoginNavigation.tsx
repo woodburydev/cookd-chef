@@ -12,7 +12,7 @@ import {
 } from 'src/navigation/NavigationTypes';
 import {LoginRoutes, SignUpRoutes} from './routes';
 import auth from '@react-native-firebase/auth';
-import Header from 'src/screens/Login/Components/Header';
+import Header from 'src/components/Header';
 import {AppColorPalette} from 'src/config/styles';
 import {getKeyValue} from 'src/util/helperFunctions';
 import {SafeAreaView} from 'react-native-safe-area-context';

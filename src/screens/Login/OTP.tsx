@@ -22,6 +22,7 @@ import {
   useBlurOnFulfill,
 } from 'react-native-confirmation-code-field';
 import {WINDOW_HEIGHT} from 'src/config/constants';
+import t from 'tailwind';
 
 const CELL_COUNT = 6;
 
@@ -98,15 +99,15 @@ export default function EnterOTP() {
     <View style={commonStyles.FlexColCenterCenter}>
       <KeyboardAvoidingView
         behavior="position"
-        style={styles.KeyboardView}
+        style={t`w-full`}
         keyboardVerticalOffset={40}>
-        <View style={styles.SectionStyle}>
-          <View style={styles.header}>
-            <Text style={styles.labelText} type="header">
+        <View style={t`items-start self-center w-10/12`}>
+          <View style={t`row-center-start`}>
+            <Text style={t`ml-2`} type="header">
               What's the code?
             </Text>
             {loading ? (
-              <ActivityIndicator style={styles.loader} color="black" />
+              <ActivityIndicator style={t`left-5 bottom-0`} color="black" />
             ) : null}
           </View>
 
@@ -119,27 +120,30 @@ export default function EnterOTP() {
               setErrorText('');
             }}
             cellCount={CELL_COUNT}
-            rootStyle={styles.codeFieldRoot}
+            rootStyle={t`mt-5`}
             keyboardType="number-pad"
             textContentType="oneTimeCode"
             renderCell={({index, symbol}) => (
               <View
                 key={index}
-                style={[commonStyles.FlexColCenterCenter, styles.cell]}>
-                <Text style={styles.inputCodeText}>{symbol}</Text>
+                style={[
+                  commonStyles.FlexColCenterCenter,
+                  t`w-10 h-15 text-2xl border-b ml-2`,
+                ]}>
+                <Text style={t`text-3xl font-bold`}>{symbol}</Text>
               </View>
             )}
           />
           {errorText.length > 0 && (
-            <Text type="error" style={styles.errorText}>
+            <Text type="error" style={t`mt-6 ml-2 mb-1`}>
               {errorText}
             </Text>
           )}
-          <Text style={styles.descriptionText} type="info">
+          <Text style={t`mt-8 ml-2`} type="info">
             You’ll recieve a text with a code within a couple minutes.
           </Text>
           {WINDOW_HEIGHT > 850 ? (
-            <Text style={styles.descriptionText} type="info">
+            <Text style={t`mt-8 ml-2`} type="info">
               Check your phone number, or click resend text if you didn’t
               recieve it.
             </Text>
@@ -149,72 +153,10 @@ export default function EnterOTP() {
             mode="warning"
             onPress={() => login()}
             title="Resend Text"
-            style={styles.WarningButton}
+            style={t`mt-8 ml-2`}
           />
         </View>
       </KeyboardAvoidingView>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  SectionStyle: {
-    alignItems: 'flex-start',
-    alignSelf: 'center',
-    marginTop: WINDOW_HEIGHT < 750 ? '20%' : '-20%',
-    width: '80%',
-  },
-  header: {
-    flexDirection: 'row',
-  },
-  loadingIconStyle: {
-    position: 'absolute',
-    right: 0,
-  },
-  labelText: {
-    marginLeft: 10,
-  },
-  KeyboardView: {
-    width: '100%',
-    display: 'flex',
-  },
-  Button: {
-    alignSelf: 'center',
-    marginTop: 50,
-    marginLeft: 10,
-  },
-  inputCodeText: {
-    fontSize: 32,
-    fontWeight: '700',
-  },
-  root: {flex: 1, padding: 20},
-  title: {textAlign: 'center', fontSize: 30},
-  codeFieldRoot: {marginTop: 20},
-  cell: {
-    width: 40,
-    height: 60,
-    fontSize: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: 'black',
-    borderColor: 'black',
-    marginLeft: 10,
-    textAlign: 'center',
-  },
-  descriptionText: {
-    marginTop: 30,
-    marginLeft: 10,
-  },
-  errorText: {
-    marginTop: 25,
-    marginLeft: 10,
-    marginBottom: 5,
-  },
-  loader: {
-    left: 20,
-    bottom: 2,
-  },
-  WarningButton: {
-    marginTop: 30,
-    marginLeft: 10,
-  },
-});

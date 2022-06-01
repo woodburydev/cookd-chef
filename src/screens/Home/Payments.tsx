@@ -69,6 +69,7 @@ export default function Payments() {
         <View style={t`mt-5 w-11/12 row-center-between`}>
           <Text type="large-header">Analytics</Text>
           <Dropdown
+            disable={true}
             style={[t`w-44 m-4 h-10 bg-white rounded-3xl py-2`]}
             selectedTextStyle={t`left-4 font-normal text-base`}
             placeholderStyle={t`left-4 font-semibold text-base`}
@@ -109,7 +110,7 @@ export default function Payments() {
               },
               color: () => AppColorPalette.orange,
             }}
-            style={t`py-7 pr-10 col-center-center left-5 rounded-2xl`}
+            style={t`py-7 pr-12 col-center-center left-5 rounded-2xl`}
           />
         </View>
         <View style={t`row-center-center`}>

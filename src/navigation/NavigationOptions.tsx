@@ -30,7 +30,7 @@ import {
   useNavigation,
   useNavigationState,
 } from '@react-navigation/core';
-import Header from 'src/screens/Login/Components/Header';
+import Header from 'src/components/Header';
 import {HeaderBackButton} from '@react-navigation/elements';
 import {MessageRoutes} from './Messages/routes';
 

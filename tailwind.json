@@ -118,5 +118,21 @@
 			"flexDirection": "row",
 			"justifyContent": "space-between"
 		}
+	},
+	"rounded-4xl": {
+		"style": {
+			"borderTopLeftRadius": 32,
+			"borderTopRightRadius": 32,
+			"borderBottomRightRadius": 32,
+			"borderBottomLeftRadius": 32
+		}
+	},
+	"rounded-5xl": {
+		"style": {
+			"borderTopLeftRadius": 40,
+			"borderTopRightRadius": 40,
+			"borderBottomRightRadius": 40,
+			"borderBottomLeftRadius": 40
+		}
 	}
 }

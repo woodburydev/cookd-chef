@@ -1,8 +1,14 @@
+const {WINDOW_HEIGHT, WINDOW_WIDTH} = require('src/config/constants');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   content: ['./input.css'],
   theme: {
+    screens: {
+      sm: WINDOW_WIDTH < 650,
+      md: WINDOW_WIDTH > 750,
+      lg: WINDOW_WIDTH > 850,
+    },
     extend: {
       colors: {
         orange: '#F26430',
@@ -53,6 +59,18 @@ module.exports = {
           alignItems: 'center',
           flexDirection: 'row',
           justifyContent: 'space-between',
+        },
+        'h/50': {
+          height: WINDOW_HEIGHT / 2,
+        },
+        'w/100': {
+          width: WINDOW_WIDTH,
+        },
+        'rounded-4xl': {
+          borderRadius: 32,
+        },
+        'rounded-5xl': {
+          borderRadius: 40,
         },
       });
     }),

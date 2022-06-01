@@ -86,4 +86,12 @@ row-center-between {
   justify-content: space-between
 }
 
+rounded-4xl {
+  border-radius: 32px
+}
+
+rounded-5xl {
+  border-radius: 40px
+}
+
 /* example for css to js styling */

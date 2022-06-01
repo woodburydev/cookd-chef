@@ -12,6 +12,8 @@ import {LoginRoutes} from '@navigation/Login/routes';
 import {useNavigation} from '@react-navigation/core';
 import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
 import {WINDOW_HEIGHT} from 'src/config/constants';
+import t from 'tailwind';
+import {useDeviceContext} from 'twrnc';
 
 export default function Signup() {
   const navigation = useNavigation();
@@ -20,6 +22,7 @@ export default function Signup() {
   const lastNameRef: any = createRef();
   const [lastNameErrorText, setLastNameErrorText] = useState('');
   const [loading, setLoading] = useState(false);
+  useDeviceContext(t); // <- 👋
 
   const submit = () => {
     setLoading(true);
@@ -38,7 +41,10 @@ export default function Signup() {
   };
   return (
     <View style={commonStyles.FlexColCenterCenter}>
-      <View style={[commonStyles.FlexColCenterCenter, styles.ContentContainer]}>
+      <View style={[commonStyles.FlexColCenterCenter, t`lg:bottom-15`]}>
+        {/* ContentContainer: {
+    bottom: WINDOW_HEIGHT < 750 ? 60 : 100,
+  }, */}
         <View style={styles.SectionStyle}>
           <Text type="label" style={styles.labelText}>
             First Name
@@ -108,8 +114,5 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginLeft: 10,
     marginBottom: 10,
-  },
-  ContentContainer: {
-    bottom: WINDOW_HEIGHT < 750 ? 60 : 100,
   },
 });

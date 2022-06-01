@@ -3,6 +3,7 @@
 import {
   HomeNavigationRoutes,
   LoginNavigationRoutes,
+  MessageNavigationRoutes,
   ProfileNavigationRoutes,
 } from 'src/navigation/NavigationTypes';
 
@@ -11,6 +12,7 @@ declare global {
     interface RootParamList
       extends LoginNavigationRoutes,
         ProfileNavigationRoutes,
+        MessageNavigationRoutes,
         HomeNavigationRoutes {}
   }
 }
