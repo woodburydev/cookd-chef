@@ -1,39 +1,38 @@
 import {Button, Image, Text} from '@rneui/themed';
 import React from 'react';
-import {View, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
-import {commonStyles} from '@config/styles';
+import {View, ActivityIndicator} from 'react-native';
 import CookingImage from '@assets/cookingImage.jpg';
 import CookdLogo from '@assets/cookdlogolabel.png';
 import {LoginRoutes} from 'src/navigation/Login/routes';
 import {useNavigation} from '@react-navigation/core';
 import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
-import {WINDOW_HEIGHT, WINDOW_WIDTH} from 'src/config/constants';
+import t from 'tailwind';
 
 export default function GetStarted() {
   const navigation = useNavigation();
 
   return (
-    <View style={[commonStyles.FlexColCenterStart, styles.PageContainer]}>
+    <View style={t`col-center-start flex-1`}>
       <Image
         source={CookingImage}
-        style={styles.imageContainer}
+        style={t`h/50 w/100`}
         PlaceholderContent={<ActivityIndicator />}
       />
       <View
-        style={[commonStyles.FlexColCenterCenter, styles.mainBodyContainer]}>
+        style={t`col-center-center h-3/5 rounded-5xl bg-white absolute bottom-0 w-full`}>
         <Image
           source={CookdLogo}
-          style={styles.logoContainer}
+          style={t`h-28 w-36`}
           PlaceholderContent={<ActivityIndicator />}
         />
-        <View style={[{alignItems: 'center'}, commonStyles.mt30]}>
-          <Text type="header" style={commonStyles.mb5}>
+        <View style={t`items-center mt-7`}>
+          <Text type="header" style={t`mb-1`}>
             Your Schedule.
           </Text>
-          <Text type="header" style={commonStyles.mb5}>
+          <Text type="header" style={t`mb-1`}>
             Your Talents.
           </Text>
-          <Text type="header" style={commonStyles.mb5}>
+          <Text type="header" style={t`mb-1`}>
             Your Business.
           </Text>
         </View>
@@ -44,54 +43,9 @@ export default function GetStarted() {
             )
           }
           title="Get Started"
-          style={styles.button}
+          style={t`mt-10`}
         />
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  imageContainer: {
-    height: WINDOW_HEIGHT / 2,
-    width: WINDOW_WIDTH,
-    resizeMode: 'cover',
-    zIndex: -1,
-  },
-  PageContainer: {
-    flex: 1,
-  },
-  mainBodyContainer: {
-    height: '60%',
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-    zIndex: 1,
-    position: 'absolute',
-    backgroundColor: 'white',
-    bottom: 0,
-  },
-  logoContainer: {
-    padding: 0,
-    height: 120,
-    width: 150,
-  },
-  mainText: {
-    fontSize: 28,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-  subText: {
-    textAlign: 'center',
-  },
-  textDivider: {
-    marginTop: 20,
-    width: '60%',
-  },
-  button: {
-    marginTop: 40,
-  },
-  linkStyle: {
-    marginTop: 20,
-    textDecorationLine: 'underline',
-  },
-});

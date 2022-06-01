@@ -1,23 +1,17 @@
 import {useNavigation} from '@react-navigation/core';
-import {Button, Icon, Input, Text} from '@rneui/themed';
+import {Button, Input, Text} from '@rneui/themed';
 import React, {useCallback, useEffect, useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  KeyboardAvoidingView,
-  ActivityIndicator,
-} from 'react-native';
-import {commonStyles} from 'src/config/styles';
+import {View, ActivityIndicator} from 'react-native';
 import {LoginRoutes} from 'src/navigation/Login/routes';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
+import t from 'tailwind';
 
 const countryCode = '+1';
 
 export default function PhoneNumber() {
   const navigation = useNavigation();
   const [userPhoneNumber, setUserPhoneNumber] = useState('');
-
   const [loading, setLoading] = useState(false);
   const [confirm, setConfirm] =
     useState<FirebaseAuthTypes.ConfirmationResult>();
@@ -53,7 +47,7 @@ export default function PhoneNumber() {
   }, [sentOTP]);
 
   useEffect(() => {
-    if (confirm) {
+    if (confirm && userPhoneNumber.length === 14) {
       setLoading(false);
       navigation.navigate(
         LoginRoutes.ENTER_OTP.name as LoginRoutesNames['ENTER_OTP'],
@@ -83,22 +77,19 @@ export default function PhoneNumber() {
   }
 
   return (
-    <View style={commonStyles.FlexColCenterCenter}>
-      <View style={[commonStyles.FlexColCenterCenter, styles.ContentContainer]}>
-        <View style={styles.SectionStyle}>
-          <Text type="header" style={styles.labelText}>
+    <View style={t`col-center-center h-full`}>
+      <View style={t`col-center-center w-full bottom-16`}>
+        <View style={t`w-10/12 justify-center`}>
+          <Text type="header" style={t`ml-2 mb-5`}>
             Whats your number?
           </Text>
           <Input
             autoFocus={true}
-            containerStyle={{marginTop: 10}}
+            containerStyle={t`mt-2`}
             shake={() => {}}
             placeholder="(555) 555-5555"
             onSubmitEditing={() => submit()}
-            errorStyle={{
-              marginTop: 10,
-              marginBottom: 15,
-            }}
+            errorStyle={t`mt-2 mb-4`}
             textContentType="telephoneNumber"
             value={formatPhoneNumber(userPhoneNumber)}
             onChangeText={number => {
@@ -111,6 +102,8 @@ export default function PhoneNumber() {
           />
         </View>
         <Button
+          containerStyle={t`w-full`}
+          buttonStyle={t`self-center w-9/12`}
           onPress={() => (loading ? undefined : submit())}
           icon={loading ? <ActivityIndicator color="white" /> : undefined}
           title={loading ? '' : 'Verify'}
@@ -119,26 +112,3 @@ export default function PhoneNumber() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  SectionStyle: {
-    width: '80%',
-    justifyContent: 'center',
-  },
-  ContentContainer: {
-    bottom: 70,
-  },
-  button: {
-    alignSelf: 'center',
-  },
-  inputStyle: {
-    color: 'black',
-  },
-  labelText: {
-    marginLeft: 10,
-    marginBottom: 20,
-  },
-  iconStyle: {
-    color: 'white',
-  },
-});

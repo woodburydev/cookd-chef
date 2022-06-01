@@ -11,7 +11,7 @@ import {StyleSheet} from 'react-native';
 import ProfileNavigation from '../Profile/ProfileNavigation';
 import uuidv4 from 'uuidv4';
 import {getKeyValue} from 'src/util/helperFunctions';
-import Header from '@screens/Login/Components/Header';
+import Header from 'src/components/Header';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {HomeRouteNames} from '../NavigationTypes';
@@ -69,11 +69,7 @@ export default function HomeTabNavigation() {
           ? () => null
           : undefined,
       tabBarShowLabel: false,
-      headerShown:
-        route.name === HomeRoutes.VERIFICATION.displayName ||
-        route.name === HomeRoutes.PROFILE.displayName
-          ? false
-          : true,
+      headerShown: route.name === HomeRoutes.PROFILE.displayName ? false : true,
       headerStyle:
         route.name === HomeRoutes.VERIFICATION.displayName
           ? commonStyles.TransparentHeaderBackground
