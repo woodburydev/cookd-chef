@@ -26,7 +26,6 @@ export default function LoginNavigation() {
   const navTheme = DefaultTheme;
   navTheme.colors.background = AppColorPalette.appBackgroundColor;
   const {user} = useContext(UserContext);
-
   const getInitialRoute = () => {
     if (auth().currentUser && !user) {
       const hasEmailAndPassword = auth().currentUser?.providerData[1];
