@@ -2,29 +2,19 @@ import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import {Button, Icon, Input, Text} from '@rneui/themed';
 import axios from 'axios';
 import React, {useCallback, useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  ActivityIndicator,
-  KeyboardAvoidingView,
-  Dimensions,
-} from 'react-native';
+import {View, StyleSheet, ActivityIndicator, KeyboardAvoidingView, Dimensions} from 'react-native';
 import {endpoint} from 'src/config/api';
 import {WINDOW_HEIGHT} from 'src/config/constants';
 import {commonStyles} from 'src/config/styles';
 import {LoginRoutes} from 'src/navigation/Login/routes';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 
 export default function Email() {
   const [emailErrorText, setEmailErrorText] = useState('');
   const [email, setEmail] = useState('');
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
-  const route =
-    useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['EMAIL']>>();
+  const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['EMAIL']>>();
 
   const fullName = route.params.fullName;
   const submit = () => {
@@ -44,12 +34,12 @@ export default function Email() {
       .post(`${endpoint}/user/canCreate`, {
         email: email,
       })
-      .then(res => {
+      .then((res) => {
         if (res.data.status) {
-          navigation.navigate(
-            LoginRoutes.SET_PASSWORD.name as LoginRoutesNames['SET_PASSWORD'],
-            {fullName, email},
-          );
+          navigation.navigate(LoginRoutes.SET_PASSWORD.name as LoginRoutesNames['SET_PASSWORD'], {
+            fullName,
+            email,
+          });
         } else {
           const reason = res.data.reason;
           if (reason === 'invalid-email') {
@@ -57,14 +47,12 @@ export default function Email() {
             setLoading(false);
           }
           if (reason === 'not-in-db') {
-            navigation.navigate(
-              LoginRoutes.ADDRESS.name as LoginRoutesNames['ADDRESS'],
-            );
+            navigation.navigate(LoginRoutes.ADDRESS.name as LoginRoutesNames['ADDRESS']);
           }
         }
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         setEmail('Please enter a valid email');
         setLoading(false);
@@ -81,7 +69,7 @@ export default function Email() {
           <Input
             shake={() => {}}
             maxLength={40}
-            onChangeText={UserEmail => {
+            onChangeText={(UserEmail) => {
               setEmail(UserEmail);
               setEmailErrorText('');
             }}

@@ -9,7 +9,7 @@ export const AppColorPalette = {
 };
 
 export const myTheme = createTheme({
-  Button: props => {
+  Button: (props) => {
     if (props.mode === 'warning') {
       return {
         titleStyle: {
@@ -98,7 +98,7 @@ export const myTheme = createTheme({
       fontFamily: 'WorkSans-Regular',
     },
   },
-  Text: props => {
+  Text: (props) => {
     switch (props.type) {
       case 'label':
         return {

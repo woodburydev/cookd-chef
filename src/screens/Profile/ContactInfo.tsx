@@ -35,10 +35,7 @@ export default function ContactInfo() {
             size={18}
             color={AppColorPalette.orange}
             style={styles.notificationIcon}
-            containerStyle={[
-              styles.notificationIconContainer,
-              {right: 10, top: 5},
-            ]}
+            containerStyle={[styles.notificationIconContainer, {right: 10, top: 5}]}
             type="material"
             name="edit"
           />
@@ -54,10 +51,7 @@ export default function ContactInfo() {
             size={18}
             color={AppColorPalette.orange}
             style={styles.notificationIcon}
-            containerStyle={[
-              styles.notificationIconContainer,
-              {right: 10, top: 5},
-            ]}
+            containerStyle={[styles.notificationIconContainer, {right: 10, top: 5}]}
             type="material"
             name="edit"
           />
@@ -73,10 +67,7 @@ export default function ContactInfo() {
             size={18}
             color={AppColorPalette.orange}
             style={styles.notificationIcon}
-            containerStyle={[
-              styles.notificationIconContainer,
-              {right: 10, top: 5},
-            ]}
+            containerStyle={[styles.notificationIconContainer, {right: 10, top: 5}]}
             type="material"
             name="edit"
           />

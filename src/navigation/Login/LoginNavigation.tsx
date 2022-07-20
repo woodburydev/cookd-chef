@@ -6,10 +6,7 @@ import {
 } from '@react-navigation/stack';
 import React, {useContext, useState} from 'react';
 import {UserContext} from 'src/context/UserContext';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 import {LoginRoutes, SignUpRoutes} from './routes';
 import auth from '@react-native-firebase/auth';
 import Header from 'src/components/Header';
@@ -134,8 +131,9 @@ export default function LoginNavigation() {
       <Stack.Navigator
         screenOptions={screenOptions}
         theme={navTheme}
-        initialRouteName={getInitialRoute()}>
-        {Object.keys(LoginRoutes).map(key => {
+        initialRouteName={getInitialRoute()}
+      >
+        {Object.keys(LoginRoutes).map((key) => {
           return (
             <Stack.Screen
               name={getKeyValue(key)(LoginRoutes).name}

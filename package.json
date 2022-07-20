@@ -6,12 +6,26 @@
     "type": "git",
     "url": "git+https://github.com/woodburydev/cookd-chef.git"
   },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --ext .tsx --ext .ts src/ --fix"
+    ],
+    "./src/**": [
+      "prettier --write ."
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint --ext .tsx --ext .ts src/",
+    "format": "prettier --check ./src",
     "np": "np --no-publish",
     "postversion": "react-native-version",
     "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
@@ -63,16 +77,22 @@
     "@types/react-native": "^0.66.15",
     "@types/react-test-renderer": "^17.0.1",
     "@types/tailwindcss": "^3.0.10",
-    "@typescript-eslint/eslint-plugin": "^5.7.0",
-    "@typescript-eslint/parser": "^5.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
     "babel-jest": "^26.6.3",
     "babel-plugin-module-resolver": "4.1.0",
     "concurrently": "^7.2.1",
     "eslint": "^7.14.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
     "jest": "^26.6.3",
+    "lint-staged": "^13.0.3",
     "metro-react-native-babel-preset": "^0.66.2",
     "np": "^7.6.1",
     "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
     "react-native-clean-project": "^4.0.1",
     "react-native-version": "^4.0.0",
     "react-test-renderer": "17.0.2",

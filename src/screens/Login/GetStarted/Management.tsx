@@ -2,10 +2,7 @@ import {Button, Image, Text} from '@rneui/themed';
 import React, {useContext, useState} from 'react';
 import {ActivityIndicator, Dimensions, StyleSheet, View} from 'react-native';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 import {commonStyles} from 'src/config/styles';
 import ChefImage from '@assets/GetStartedImages/Chef3.png';
 import {UserContext} from 'src/context/UserContext';
@@ -15,8 +12,7 @@ import auth from '@react-native-firebase/auth';
 import {WINDOW_HEIGHT} from 'src/config/constants';
 
 export default function Management() {
-  const route =
-    useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
+  const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
   const navigation = useNavigation();
   const {address, foundOut} = route.params;
   const {getUser} = useContext(UserContext);
@@ -38,7 +34,7 @@ export default function Management() {
       .then(() => {
         getUser!(user);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('Error saving user in database: ', JSON.stringify(err));
         setLoading(false);
       });
@@ -52,19 +48,15 @@ export default function Management() {
           PlaceholderContent={<ActivityIndicator />}
         />
         <View style={[styles.TextContainer, commonStyles.mb20]}>
-          <Text
-            type="large-header"
-            style={[commonStyles.mb20, commonStyles.mt10]}
-            centerText>
+          <Text type="large-header" style={[commonStyles.mb20, commonStyles.mt10]} centerText>
             Step 3: Customer Management
           </Text>
           <Text type="description" centerText>
-            Cookd allows you to reach out to past clients once a month in order
-            to get more bookings.
+            Cookd allows you to reach out to past clients once a month in order to get more
+            bookings.
           </Text>
           <Text type="description" centerText style={commonStyles.mt10}>
-            Offer unique experiences for Cookd Clients so that they come back to
-            you.
+            Offer unique experiences for Cookd Clients so that they come back to you.
           </Text>
         </View>
         <Button

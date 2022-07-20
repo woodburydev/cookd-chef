@@ -1,15 +1,6 @@
 import React, {useContext} from 'react';
-import {
-  StackNavigationOptions,
-  StackNavigationProp,
-} from '@react-navigation/stack';
-import {
-  ActivityIndicator,
-  Dimensions,
-  EdgeInsetsPropType,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {StackNavigationOptions, StackNavigationProp} from '@react-navigation/stack';
+import {ActivityIndicator, Dimensions, EdgeInsetsPropType, StyleSheet, View} from 'react-native';
 import {HomeRoutes} from './Home/routes';
 import {AirbnbRating, Button, Icon, Rating, Text} from '@rneui/themed';
 import {AllProfileRoutes} from './Profile/routes';
@@ -25,11 +16,7 @@ import {
 import {UserContext} from 'src/context/UserContext';
 import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Image} from '@rneui/themed/dist/Image';
-import {
-  CommonActions,
-  useNavigation,
-  useNavigationState,
-} from '@react-navigation/core';
+import {CommonActions, useNavigation, useNavigationState} from '@react-navigation/core';
 import Header from 'src/components/Header';
 import {HeaderBackButton} from '@react-navigation/elements';
 import {MessageRoutes} from './Messages/routes';
@@ -49,7 +36,7 @@ export const MessageNavigationOptions = (
     return {
       headerShown: true,
       headerStyle: commonStyles.WhiteHeaderBackground,
-      header: headerProps => {
+      header: (headerProps) => {
         return (
           <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
             <Header
@@ -65,7 +52,7 @@ export const MessageNavigationOptions = (
   return {
     headerShown: true,
     headerStyle: commonStyles.WhiteHeaderBackground,
-    header: headerProps => {
+    header: (headerProps) => {
       return (
         <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
           <Header headerText={displayName} />
@@ -107,7 +94,8 @@ export const ProfileNavigationOptions = (
               commonStyles.FlexRowCenterCenter,
               styles.HeaderWrapper,
               {marginTop: insets.bottom > 30 ? '7%' : '0%'},
-            ]}>
+            ]}
+          >
             <View>
               <Image
                 source={ChefProfilePicture}
@@ -116,11 +104,7 @@ export const ProfileNavigationOptions = (
                 PlaceholderContent={<ActivityIndicator />}
               />
             </View>
-            <View
-              style={[
-                commonStyles.FlexColStartCenter,
-                styles.headerContentContainer,
-              ]}>
+            <View style={[commonStyles.FlexColStartCenter, styles.headerContentContainer]}>
               <Text type="label" style={styles.headerText} numberOfLines={1}>
                 Chef {user?.displayname.split(' ')[1]}
               </Text>
@@ -147,7 +131,7 @@ export const ProfileNavigationOptions = (
   } else {
     return {
       headerShown: true,
-      header: headerProps => {
+      header: (headerProps) => {
         return (
           <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
             <Header

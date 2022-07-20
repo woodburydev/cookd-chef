@@ -1,11 +1,5 @@
 import React, {createRef, useState} from 'react';
-import {
-  ActivityIndicator,
-  Dimensions,
-  KeyboardAvoidingView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {ActivityIndicator, Dimensions, KeyboardAvoidingView, StyleSheet, View} from 'react-native';
 import {Text, Input, Button, Icon} from '@rneui/themed';
 import {commonStyles} from '@config/styles';
 import {LoginRoutes} from '@navigation/Login/routes';
@@ -14,6 +8,7 @@ import {LoginRoutesNames} from 'src/navigation/NavigationTypes';
 import {WINDOW_HEIGHT} from 'src/config/constants';
 import t from 'tailwind';
 import {useDeviceContext} from 'twrnc';
+import auth from '@react-native-firebase/auth';
 
 export default function Signup() {
   const navigation = useNavigation();
@@ -24,7 +19,7 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   useDeviceContext(t); // <- 👋
 
-  const submit = () => {
+  const submit = async () => {
     setLoading(true);
     if (firstName.length <= 1) {
       setLastNameErrorText('Please enter a longer first name');
@@ -52,7 +47,7 @@ export default function Signup() {
           <Input
             autoFocus={true}
             shake={() => {}}
-            onChangeText={name => {
+            onChangeText={(name) => {
               setFirstName(name);
               setLastNameErrorText('');
             }}
@@ -77,7 +72,7 @@ export default function Signup() {
             autoComplete="name-family"
             shake={() => {}}
             ref={lastNameRef}
-            onChangeText={name => {
+            onChangeText={(name) => {
               setLastName(name);
               setLastNameErrorText('');
             }}

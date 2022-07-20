@@ -25,23 +25,16 @@ export default function Profile() {
       <View style={styles.BackgroundColor} />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={[
-          commonStyles.FlexColCenterStart,
-          styles.scrollView,
-        ]}>
-        <View
-          style={[commonStyles.FlexColCenterStart, styles.contentContainer]}>
+        contentContainerStyle={[commonStyles.FlexColCenterStart, styles.scrollView]}
+      >
+        <View style={[commonStyles.FlexColCenterStart, styles.contentContainer]}>
           <View style={styles.LinksContainer}>
-            {Object.keys(ProfileRoutes).map(key => {
-              const {name, iconType, iconName, displayName} =
-                getKeyValue(key)(ProfileRoutes);
+            {Object.keys(ProfileRoutes).map((key) => {
+              const {name, iconType, iconName, displayName} = getKeyValue(key)(ProfileRoutes);
               return (
                 <>
                   {name === 'REVIEWS' && (
-                    <Text
-                      type="header"
-                      style={styles.firstLabelText}
-                      key={uuidv4()}>
+                    <Text type="header" style={styles.firstLabelText} key={uuidv4()}>
                       Your Cookd
                     </Text>
                   )}
@@ -51,30 +44,18 @@ export default function Profile() {
                     </Text>
                   )}
                   <TouchableOpacity
-                    style={[
-                      commonStyles.FlexRowCenterBetween,
-                      styles.LinkContainer,
-                    ]}
+                    style={[commonStyles.FlexRowCenterBetween, styles.LinkContainer]}
                     key={uuidv4()}
                     onPress={() => {
                       navigation.navigate(name);
-                    }}>
-                    <Icon
-                      type={iconType}
-                      key={uuidv4()}
-                      name={iconName}
-                      size={20}
-                    />
+                    }}
+                  >
+                    <Icon type={iconType} key={uuidv4()} name={iconName} size={20} />
 
                     <Text key={uuidv4()} style={styles.LinkText} type="info">
                       {displayName}
                     </Text>
-                    <Icon
-                      type="material-community"
-                      key={uuidv4()}
-                      name="chevron-right"
-                      size={20}
-                    />
+                    <Icon type="material-community" key={uuidv4()} name="chevron-right" size={20} />
                   </TouchableOpacity>
                 </>
               );
@@ -86,7 +67,8 @@ export default function Profile() {
               onPress={() => {
                 setLoading(true);
                 auth().signOut();
-              }}>
+              }}
+            >
               Sign Out
             </Text>
           </View>

@@ -15,7 +15,7 @@ export default function MessageNavigation() {
   navTheme.colors.background = AppColorPalette.appBackgroundColor;
   return (
     <Stack.Navigator screenOptions={MessageNavigationOptions}>
-      {Object.keys(MessageRoutes).map(key => {
+      {Object.keys(MessageRoutes).map((key) => {
         return (
           <Stack.Screen
             name={getKeyValue(key)(MessageRoutes).name}

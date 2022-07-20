@@ -6,10 +6,7 @@ import {commonStyles} from 'src/config/styles';
 import ChefImage from '@assets/GetStartedImages/Chef1.png';
 import {Image} from '@rneui/themed/dist/Image';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 import axios from 'axios';
 import {endpoint} from 'src/config/api';
 import auth from '@react-native-firebase/auth';
@@ -17,8 +14,7 @@ import {UserContext} from 'src/context/UserContext';
 import {WINDOW_HEIGHT} from 'src/config/constants';
 
 export default function CreateProfile() {
-  const route =
-    useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
+  const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
   const navigation = useNavigation();
   const {address, foundOut} = route.params;
   const {getUser} = useContext(UserContext);
@@ -40,7 +36,7 @@ export default function CreateProfile() {
       .then(() => {
         getUser!(user);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('Error saving user in database: ', JSON.stringify(err));
         setLoading(false);
       });
@@ -64,8 +60,8 @@ export default function CreateProfile() {
             Create Profile
           </Text>
           <Text type="description" centerText>
-            Once your account is made, you’ll need to create a bio, menus and
-            dishes to offer your Cookd Clients.{' '}
+            Once your account is made, you’ll need to create a bio, menus and dishes to offer your
+            Cookd Clients.{' '}
           </Text>
         </View>
         <Button

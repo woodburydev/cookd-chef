@@ -37,20 +37,16 @@ export default function Menus() {
             Your Menu's
           </Text>
         </View>
-        {data.map(item => (
+        {data.map((item) => (
           <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('MENU_DETAILS', {menuId: item.menuId})
-            }
-            style={[styles.ContainerStyle]}>
+            onPress={() => navigation.navigate('MENU_DETAILS', {menuId: item.menuId})}
+            style={[styles.ContainerStyle]}
+          >
             <View style={styles.MenuItemTextContainer}>
               <Text
                 type="label"
-                style={[
-                  commonStyles.mt10,
-                  commonStyles.mb20,
-                  styles.orangeLabelText,
-                ]}>
+                style={[commonStyles.mt10, commonStyles.mb20, styles.orangeLabelText]}
+              >
                 {item.title}
               </Text>
               <Text numberOfLines={5} style={{marginRight: 15, height: 90}}>
@@ -71,10 +67,7 @@ export default function Menus() {
                   size={20}
                   color={AppColorPalette.orange}
                   style={styles.notificationIcon}
-                  containerStyle={[
-                    styles.notificationIconContainer,
-                    {right: 10, top: 5},
-                  ]}
+                  containerStyle={[styles.notificationIconContainer, {right: 10, top: 5}]}
                   type="material"
                   name="edit"
                 />

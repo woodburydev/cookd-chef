@@ -1,15 +1,42 @@
-import {RouteProp, useRoute} from '@react-navigation/core';
 import {Button, Input, Text} from '@rneui/themed';
-import React from 'react';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {endpoint} from 'src/config/api';
 import {AppColorPalette, commonStyles} from 'src/config/styles';
-import {
-  ProfileNavigationRoutes,
-  ProfileRouteNames,
-} from 'src/navigation/NavigationTypes';
+import auth from '@react-native-firebase/auth';
 
 const Bio = () => {
+  const [bio, setBio] = useState('');
+  const [education, setEducation] = useState('');
+  const [currentBioData, setCurrentBioData] = useState('');
+  const [currentEducation, setCurrentEducation] = useState('');
+  const user = auth().currentUser!;
+
+  useEffect(() => {
+    axios
+      .get(`${endpoint}/cook/bioData?email=${user.email}`)
+      .then((res) => {
+        setCurrentBioData(res.data.bio);
+        setCurrentEducation(res.data.education);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    // on change of values, send to update
+    bio.length > 0 || education.length > 0
+      ? axios.post(`${endpoint}/cook/update`, {
+          email: user.email,
+          ...(bio.length > 0 && {bio}),
+          ...(education.length > 0 && {education}),
+        })
+      : null;
+  }, [bio, education, user]);
+
   return (
     <ScrollView>
       <View style={{marginLeft: 20, width: '90%', marginTop: 20}}>
@@ -17,9 +44,8 @@ const Bio = () => {
           Tell People About Yourself!
         </Text>
         <Text type="description">
-          Adding some more information about you is going to make a big
-          difference. Increase your probability of bookings by adding some
-          information about yourself
+          Adding some more information about you is going to make a big difference. Increase your
+          probability of bookings by adding some information about yourself
         </Text>
       </View>
       <View style={[commonStyles.FlexColCenterStart, styles.PageContainer]}>
@@ -27,13 +53,19 @@ const Bio = () => {
           <Text type="label" style={[styles.orangeLabelText]}>
             Educational Background
           </Text>
-          <Input shake={() => null} />
+          <Input
+            defaultValue={currentEducation}
+            onChangeText={(text) => setEducation(text)}
+            shake={() => null}
+          />
         </View>
         <View style={[styles.EditableInputsWrapper, commonStyles.mx10]}>
           <Text type="label" style={[styles.orangeLabelText]}>
             Your Bio (Publicly Visible)
           </Text>
           <Input
+            defaultValue={currentBioData}
+            onChangeText={(text) => setBio(text)}
             maxLength={200}
             multiline={true}
             inputContainerStyle={{height: 200, alignItems: 'flex-start'}}

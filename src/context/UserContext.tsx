@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, {createContext, PropsWithChildren, useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {endpoint} from '@config/api';
@@ -24,7 +18,7 @@ export default function Context(props: PropsWithChildren<any>) {
         .get(`${endpoint}/cook/${uid}`, {
           headers: {Authorization: `Bearer ${token}`},
         })
-        .then(res => {
+        .then((res) => {
           // check for response if its empty by finding id ?
           if (res.data.id) {
             setUser(res.data);
@@ -46,7 +40,7 @@ export default function Context(props: PropsWithChildren<any>) {
     });
   };
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(authUser => {
+    const subscriber = auth().onAuthStateChanged((authUser) => {
       if (authUser && !overrideGet) {
         setLoadingUserContext(true);
         getUser(authUser);
@@ -66,7 +60,8 @@ export default function Context(props: PropsWithChildren<any>) {
         databaseFetchError,
         getUser,
         loadingUserContext,
-      }}>
+      }}
+    >
       {props.children}
     </UserContext.Provider>
   );

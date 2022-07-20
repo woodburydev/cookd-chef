@@ -81,7 +81,7 @@ export default function Payments() {
             dropdownPosition="bottom"
             labelField="lable"
             placeholder="Last Month"
-            onChange={e => {
+            onChange={(e) => {
               setFilter(e.value);
             }}
           />
@@ -119,8 +119,7 @@ export default function Payments() {
               <View style={t`bg-orange w-2 h-2 mr-2`} />
               <Text style={t`my-2`}>Total Gross Sales</Text>
             </View>
-            <View
-              style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
+            <View style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
               <Text style={t`text-orange`}>$4,135</Text>
             </View>
           </View>
@@ -129,8 +128,7 @@ export default function Payments() {
               <View style={t`bg-black w-2 h-2 mr-2`} />
               <Text style={t`my-2`}>Total Bookings</Text>
             </View>
-            <View
-              style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
+            <View style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
               <Text>17</Text>
             </View>
           </View>
@@ -162,13 +160,8 @@ export default function Payments() {
             <Text type="description" style={t`mr-2 font-semibold`}>
               Avg Sale Per Booking
             </Text>
-            <View
-              style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
-              <Icon
-                color={AppColorPalette.orange}
-                type="ionicon"
-                name="options"
-              />
+            <View style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
+              <Icon color={AppColorPalette.orange} type="ionicon" name="options" />
               <Text style={t`text-orange`}>17</Text>
               <View />
             </View>
@@ -177,8 +170,7 @@ export default function Payments() {
             <Text type="description" style={t`mr-2 font-semibold`}>
               Total Profile Visitors
             </Text>
-            <View
-              style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
+            <View style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
               <Icon
                 color={AppColorPalette.orange}
                 type="ionicon"
@@ -192,8 +184,7 @@ export default function Payments() {
             <Text type="description" style={t`mr-2 font-semibold`}>
               Total Message Recieved
             </Text>
-            <View
-              style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
+            <View style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
               <Icon
                 color={AppColorPalette.orange}
                 type="material-community"
@@ -207,13 +198,8 @@ export default function Payments() {
             <Text type="description" style={t`mr-2 font-semibold`}>
               Avg Guests Per Booking
             </Text>
-            <View
-              style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
-              <Icon
-                color={AppColorPalette.orange}
-                type="ionicon"
-                name="options"
-              />
+            <View style={t`bg-white w-36 pt-2 pb-2 rounded-full row-center-around`}>
+              <Icon color={AppColorPalette.orange} type="ionicon" name="options" />
               <Text style={t`text-orange`}>4</Text>
               <View />
             </View>
@@ -229,14 +215,9 @@ export default function Payments() {
                     <Text>Menu 2</Text>
                     <Text>Entree 3</Text>
                   </View>
-                  <Image
-                    source={Pasta}
-                    style={t`bottom-2 w-full rounded-lg h-15`}
-                  />
+                  <Image source={Pasta} style={t`bottom-2 w-full rounded-lg h-15`} />
                 </View>
-                <Text style={[t`mt-1 font-semibold text-orange`]}>
-                  13 Orders
-                </Text>
+                <Text style={[t`mt-1 font-semibold text-orange`]}>13 Orders</Text>
               </View>
               <View style={t`items-center`}>
                 <View style={t`bg-white h-28 w-28 justify-between rounded-2xl`}>
@@ -244,10 +225,7 @@ export default function Payments() {
                     <Text>Menu 2</Text>
                     <Text>Entree 1</Text>
                   </View>
-                  <Image
-                    source={Sushi}
-                    style={t`bottom-2 w-full rounded-lg h-15`}
-                  />
+                  <Image source={Sushi} style={t`bottom-2 w-full rounded-lg h-15`} />
                 </View>
                 <Text style={t`mt-1 font-semibold text-orange`}>10 Orders</Text>
               </View>
@@ -257,20 +235,14 @@ export default function Payments() {
                     <Text>Menu 1</Text>
                     <Text>Entree 2</Text>
                   </View>
-                  <Image
-                    source={Tacos}
-                    style={t`bottom-2 w-full rounded-lg h-15`}
-                  />
+                  <Image source={Tacos} style={t`bottom-2 w-full rounded-lg h-15`} />
                 </View>
-                <Text style={[t`mt-1 font-semibold text-orange`]}>
-                  7 Orders
-                </Text>
+                <Text style={[t`mt-1 font-semibold text-orange`]}>7 Orders</Text>
               </View>
             </View>
           </View>
           <View style={t`my-7 flex-row`}>
-            <View
-              style={t`w-8/12 z-10 col-start-center p-7 px-10 h-50 bg-white rounded-2xl`}>
+            <View style={t`w-8/12 z-10 col-start-center p-7 px-10 h-50 bg-white rounded-2xl`}>
               <Text type="label">Weekly Auto Deposit - May 5</Text>
               <Text style={t`mt-2 text-orange`} type="large-header">
                 $995
@@ -289,7 +261,8 @@ export default function Payments() {
               </View>
             </View>
             <View
-              style={t`w-5/12 right-0 h-50 col-center-center rounded-2xl p-6 absolute pl-10 bg-orange`}>
+              style={t`w-5/12 right-0 h-50 col-center-center rounded-2xl p-6 absolute pl-10 bg-orange`}
+            >
               <Text type="label" style={t`text-white font-semibold`}>
                 Instant Deposit
               </Text>

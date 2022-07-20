@@ -20,7 +20,8 @@ export default function Reviews() {
               paddingBottom: 20,
               paddingTop: 20,
             },
-          ]}>
+          ]}
+        >
           <Text type="large-header" style={commonStyles.mb20} centerText>
             Your Reviews
           </Text>
@@ -29,7 +30,8 @@ export default function Reviews() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-            }}>
+            }}
+          >
             <View style={commonStyles.FlexRowCenterCenter}>
               <Text style={styles.ReviewTextStyle}>5</Text>
               <LinearProgress
@@ -78,11 +80,8 @@ export default function Reviews() {
           </View>
         </View>
         <View
-          style={[
-            styles.TouchableOpacityContainer,
-            styles.WhiteBackgroundView,
-            commonStyles.mb10,
-          ]}>
+          style={[styles.TouchableOpacityContainer, styles.WhiteBackgroundView, commonStyles.mb10]}
+        >
           <View>
             <Image
               source={User}
@@ -93,17 +92,10 @@ export default function Reviews() {
           <View style={{marginLeft: 10}}>
             <Text type="label">Rebecca Jones</Text>
             <View style={[commonStyles.FlexColStartStart, commonStyles.mt5]}>
-              <Text style={styles.GrayText}>
-                Absolutely Fantastic Service!!
-              </Text>
+              <Text style={styles.GrayText}>Absolutely Fantastic Service!!</Text>
               <View style={[commonStyles.FlexRowStartStart, commonStyles.mb5]}>
                 {[...Array(5).keys()].map(() => (
-                  <Icon
-                    type="font-awesome"
-                    name="star"
-                    size={11}
-                    iconStyle={styles.RatingIcon}
-                  />
+                  <Icon type="font-awesome" name="star" size={11} iconStyle={styles.RatingIcon} />
                 ))}
               </View>
               <Text style={styles.GrayText}>April 16th</Text>
@@ -112,11 +104,8 @@ export default function Reviews() {
         </View>
 
         <View
-          style={[
-            styles.TouchableOpacityContainer,
-            styles.WhiteBackgroundView,
-            commonStyles.mb10,
-          ]}>
+          style={[styles.TouchableOpacityContainer, styles.WhiteBackgroundView, commonStyles.mb10]}
+        >
           <View>
             <Image
               source={User1}
@@ -127,26 +116,17 @@ export default function Reviews() {
           <View style={{marginLeft: 10}}>
             <Text type="label">Rob Kent</Text>
             <View
-              style={[
-                commonStyles.FlexColStartStart,
-                commonStyles.mt5,
-                styles.ReviewTextContainer,
-              ]}>
+              style={[commonStyles.FlexColStartStart, commonStyles.mt5, styles.ReviewTextContainer]}
+            >
               <Text style={styles.GrayText}>
-                I found this chef to be one of the most professional, friendly,
-                and inviting people I have come across in the personal chef
-                business. Definitely a huge favorite, made great friends with
-                him while he worked, and he made the most delicious food. Highly
+                I found this chef to be one of the most professional, friendly, and inviting people
+                I have come across in the personal chef business. Definitely a huge favorite, made
+                great friends with him while he worked, and he made the most delicious food. Highly
                 recommend
               </Text>
               <View style={[commonStyles.FlexRowStartStart, commonStyles.mb5]}>
                 {[...Array(5).keys()].map(() => (
-                  <Icon
-                    type="font-awesome"
-                    name="star"
-                    size={11}
-                    iconStyle={styles.RatingIcon}
-                  />
+                  <Icon type="font-awesome" name="star" size={11} iconStyle={styles.RatingIcon} />
                 ))}
               </View>
               <Text style={styles.GrayText}>April 14th</Text>
@@ -154,11 +134,8 @@ export default function Reviews() {
           </View>
         </View>
         <View
-          style={[
-            styles.TouchableOpacityContainer,
-            styles.WhiteBackgroundView,
-            commonStyles.mb10,
-          ]}>
+          style={[styles.TouchableOpacityContainer, styles.WhiteBackgroundView, commonStyles.mb10]}
+        >
           <View>
             <Image
               source={User2}
@@ -169,25 +146,17 @@ export default function Reviews() {
           <View style={{marginLeft: 10}}>
             <Text type="label">Joeseph Diaz</Text>
             <View
-              style={[
-                commonStyles.FlexColStartStart,
-                commonStyles.mt5,
-                styles.ReviewTextContainer,
-              ]}>
+              style={[commonStyles.FlexColStartStart, commonStyles.mt5, styles.ReviewTextContainer]}
+            >
               <Text style={styles.GrayText}>This guy is crazy good.</Text>
               <Text style={styles.GrayText}>
-                I had the most fantastic time when I ordered from this chef. I
-                would highly recommend this to all of my friends, some of the
-                best food I have ever eaten in my life.
+                I had the most fantastic time when I ordered from this chef. I would highly
+                recommend this to all of my friends, some of the best food I have ever eaten in my
+                life.
               </Text>
               <View style={[commonStyles.FlexRowStartStart, commonStyles.mb5]}>
                 {[...Array(5).keys()].map(() => (
-                  <Icon
-                    type="font-awesome"
-                    name="star"
-                    size={11}
-                    iconStyle={styles.RatingIcon}
-                  />
+                  <Icon type="font-awesome" name="star" size={11} iconStyle={styles.RatingIcon} />
                 ))}
               </View>
               <Text style={styles.GrayText}>April 12th</Text>

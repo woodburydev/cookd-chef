@@ -17,16 +17,10 @@ import User from '@assets/user1Female.jpg';
 import User2 from '@assets/user2Male.jpg';
 import User3 from '@assets/user3Male.jpg';
 import {RouteProp, useRoute} from '@react-navigation/native';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 
 const MessageDetail = () => {
-  const route =
-    useRoute<
-      RouteProp<LoginNavigationRoutes, LoginRoutesNames['MESSAGE_DETAIL']>
-    >();
+  const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['MESSAGE_DETAIL']>>();
   const April16Date = new Date(Date.UTC(2022, 3, 16, 17, 20, 0));
   const April18Date = new Date(Date.UTC(2022, 3, 18, 17, 20, 0));
   const nowDate = new Date(Date.now());
@@ -204,7 +198,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const renderMessageText = props => (
+const renderMessageText = (props) => (
   <MessageText
     {...props}
     containerStyle={{}}
@@ -219,7 +213,7 @@ const renderMessageText = props => (
   />
 );
 
-const renderInputToolbar = props => (
+const renderInputToolbar = (props) => (
   <InputToolbar
     containerStyle={{
       borderTopColor: 'white',
@@ -228,7 +222,7 @@ const renderInputToolbar = props => (
   />
 );
 
-const renderBubble = props => {
+const renderBubble = (props) => {
   return (
     <Bubble
       {...props}
@@ -240,7 +234,7 @@ const renderBubble = props => {
   );
 };
 
-const renderMessage = props => {
+const renderMessage = (props) => {
   return (
     <Message
       {...props}
@@ -252,13 +246,7 @@ const renderMessage = props => {
   );
 };
 
-const renderDay = props => {
-  return (
-    <Day
-      {...props}
-      wrapperStyle={{marginTop: 20, marginBottom: 5}}
-      dateFormat="ddd, MMM D"
-    />
-  );
+const renderDay = (props) => {
+  return <Day {...props} wrapperStyle={{marginTop: 20, marginBottom: 5}} dateFormat="ddd, MMM D" />;
 };
 export default MessageDetail;

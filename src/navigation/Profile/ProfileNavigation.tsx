@@ -20,7 +20,7 @@ export default function ProfileNavigation() {
         component={HomeRoutes.PROFILE.component}
         key={uuidv4()}
       />
-      {Object.keys(AllProfileRoutes).map(key => {
+      {Object.keys(AllProfileRoutes).map((key) => {
         return (
           <Stack.Screen
             name={getKeyValue(key)(AllProfileRoutes).name}

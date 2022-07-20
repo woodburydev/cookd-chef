@@ -4,10 +4,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {AppColorPalette, commonStyles} from 'src/config/styles';
-import {
-  ProfileNavigationRoutes,
-  ProfileRouteNames,
-} from 'src/navigation/NavigationTypes';
+import {ProfileNavigationRoutes, ProfileRouteNames} from 'src/navigation/NavigationTypes';
 
 const data = [
   {
@@ -27,10 +24,7 @@ const data = [
 ];
 
 const MenuDetails = () => {
-  const route =
-    useRoute<
-      RouteProp<ProfileNavigationRoutes, ProfileRouteNames['MENU_DETAILS']>
-    >();
+  const route = useRoute<RouteProp<ProfileNavigationRoutes, ProfileRouteNames['MENU_DETAILS']>>();
 
   const menuId = route.params.menuId;
   const menuData = data[menuId - 1];
