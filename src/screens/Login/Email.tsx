@@ -1,13 +1,13 @@
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
-import {Button, Icon, Input, Text} from '@rneui/themed';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/core';
+import { Button, Icon, Input, Text } from '@rneui/themed';
 import axios from 'axios';
-import React, {useCallback, useState} from 'react';
-import {View, StyleSheet, ActivityIndicator, KeyboardAvoidingView, Dimensions} from 'react-native';
-import {endpoint} from 'src/config/api';
-import {WINDOW_HEIGHT} from 'src/config/constants';
-import {commonStyles} from 'src/config/styles';
-import {LoginRoutes} from 'src/navigation/Login/routes';
-import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
+import React, { useCallback, useState } from 'react';
+import { View, StyleSheet, ActivityIndicator, KeyboardAvoidingView, Dimensions } from 'react-native';
+import { endpoint } from 'src/config/api';
+import { WINDOW_HEIGHT } from 'src/config/constants';
+import { commonStyles } from 'src/config/styles';
+import { LoginRoutes } from 'src/navigation/Login/routes';
+import { LoginNavigationRoutes, LoginRoutesNames } from 'src/navigation/NavigationTypes';
 
 export default function Email() {
   const [emailErrorText, setEmailErrorText] = useState('');
@@ -31,10 +31,11 @@ export default function Email() {
   const confirmDetails = useCallback(async () => {
     setLoading(true);
     await axios
-      .post(`${endpoint}/user/canCreate`, {
+      .post(`${endpoint}/cook/canCreate`, {
         email: email,
       })
       .then((res) => {
+        console.log(res.data);
         if (res.data.status) {
           navigation.navigate(LoginRoutes.SET_PASSWORD.name as LoginRoutesNames['SET_PASSWORD'], {
             fullName,
@@ -42,6 +43,7 @@ export default function Email() {
           });
         } else {
           const reason = res.data.reason;
+          console.log("Reason: ", reason)
           if (reason === 'invalid-email') {
             setEmailErrorText('This email is already in use');
             setLoading(false);
@@ -67,7 +69,7 @@ export default function Email() {
             Whats your email?
           </Text>
           <Input
-            shake={() => {}}
+            shake={() => { }}
             maxLength={40}
             onChangeText={(UserEmail) => {
               setEmail(UserEmail);

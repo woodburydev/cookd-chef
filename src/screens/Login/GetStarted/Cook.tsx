@@ -1,26 +1,26 @@
-import {Button, Text} from '@rneui/themed';
-import React, {useContext, useState} from 'react';
-import {ActivityIndicator, Dimensions, StyleSheet, View} from 'react-native';
-import {commonStyles} from 'src/config/styles';
+import { Button, Text } from '@rneui/themed';
+import React, { useContext, useState } from 'react';
+import { ActivityIndicator, Dimensions, StyleSheet, View } from 'react-native';
+import { commonStyles } from 'src/config/styles';
 
 import ChefImage from '@assets/GetStartedImages/Chef2.png';
-import {Image} from '@rneui/themed/dist/Image';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
-import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
-import {UserContext} from 'src/context/UserContext';
+import { Image } from '@rneui/themed/dist/Image';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { LoginNavigationRoutes, LoginRoutesNames } from 'src/navigation/NavigationTypes';
+import { UserContext } from 'src/context/UserContext';
 import axios from 'axios';
 import auth from '@react-native-firebase/auth';
-import {endpoint} from 'src/config/api';
-import {WINDOW_HEIGHT} from 'src/config/constants';
+import { endpoint } from 'src/config/api';
+import { WINDOW_HEIGHT } from 'src/config/constants';
 
 export default function Cook() {
   const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
   const navigation = useNavigation();
-  const {address, foundOut} = route.params;
-  const {getUser} = useContext(UserContext);
+  const { address, foundOut } = route.params;
+  const { getUser } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const submit = () => {
-    navigation.navigate('CUSTOMER_MANAGEMENT', {address, foundOut});
+    navigation.navigate('CUSTOMER_MANAGEMENT', { address, foundOut });
   };
   const submitToDB = () => {
     const user = auth().currentUser!;

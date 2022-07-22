@@ -1,14 +1,17 @@
-import React, {createContext, PropsWithChildren, useContext, useEffect, useState} from 'react';
+import React, { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {endpoint} from '@config/api';
-import {UserContextType} from './ContextTypes';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { endpoint } from '@config/api';
+import { UserContextType } from './ContextTypes';
 
 export const UserContext = createContext<Partial<UserContextType>>({});
 export default function Context(props: PropsWithChildren<any>) {
   const [user, setUser] = useState<any>(undefined);
   const [databaseFetchError, setDatabaseFetchError] = useState(false);
   const [loadingUserContext, setLoadingUserContext] = useState<boolean>(false);
+  const [linkToProfilePicture, setLinkToProfilePicture] = useState<string>('');
+  const [forceUpdateOfProfilePicture, setForceUpdateOfProfilePicture] = useState(false)
+
   // helpful for when we dont want to get the user until a process is finished, like in the register screen.
   const [overrideGet, setOverrideGet] = useState(false);
   const getUser = (authUser: FirebaseAuthTypes.User) => {
@@ -16,12 +19,13 @@ export default function Context(props: PropsWithChildren<any>) {
     authUser.getIdToken().then((token: string) => {
       axios
         .get(`${endpoint}/cook/${uid}`, {
-          headers: {Authorization: `Bearer ${token}`},
+          headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
           // check for response if its empty by finding id ?
           if (res.data.id) {
             setUser(res.data);
+            console.log(res.data);
             setLoadingUserContext(false);
             setDatabaseFetchError(false);
           } else {
@@ -39,6 +43,17 @@ export default function Context(props: PropsWithChildren<any>) {
         });
     });
   };
+
+  useEffect(() => {
+    if (user) {
+      axios.get(`${endpoint}/cook/profilePicture?user=${user.email}`).then(res => {
+        setLinkToProfilePicture(res.data);
+      }).catch(err => {
+        console.log(err);
+      })
+    }
+  }, [user, forceUpdateOfProfilePicture])
+
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((authUser) => {
       if (authUser && !overrideGet) {
@@ -60,6 +75,12 @@ export default function Context(props: PropsWithChildren<any>) {
         databaseFetchError,
         getUser,
         loadingUserContext,
+        profilePicture: {
+          linkToProfilePicture,
+          forceUpdateOfProfilePicture,
+          setForceUpdateOfProfilePicture
+        },
+
       }}
     >
       {props.children}
