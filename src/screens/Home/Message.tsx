@@ -24,7 +24,8 @@ export default function Message() {
             })
           }
           containerStyle={styles.TouchableOpacityContainer}
-          style={[styles.WhiteBackgroundView]}>
+          style={[styles.WhiteBackgroundView]}
+        >
           <View>
             <Image
               source={User}
@@ -36,11 +37,7 @@ export default function Message() {
             <Text type="label">Rebecca Jones</Text>
             <View style={[commonStyles.FlexRowCenterStart, commonStyles.mt5]}>
               <Text style={styles.GrayText}>Okay sounds good!</Text>
-              <Text
-                style={[
-                  {fontSize: 3, marginLeft: 5, marginRight: 5},
-                  styles.GrayText,
-                ]}>
+              <Text style={[{fontSize: 3, marginLeft: 5, marginRight: 5}, styles.GrayText]}>
                 {'\u2B24'}
               </Text>
               <Text style={styles.GrayText}>Just now</Text>
@@ -59,7 +56,8 @@ export default function Message() {
             })
           }
           containerStyle={styles.TouchableOpacityContainer}
-          style={[styles.WhiteBackgroundView]}>
+          style={[styles.WhiteBackgroundView]}
+        >
           <View>
             <Image
               source={User2}
@@ -71,11 +69,7 @@ export default function Message() {
             <Text type="label">Sam Robert</Text>
             <View style={[commonStyles.FlexRowCenterStart, commonStyles.mt5]}>
               <Text style={styles.GrayText}>Okay man see you soon.</Text>
-              <Text
-                style={[
-                  {fontSize: 3, marginLeft: 5, marginRight: 5},
-                  styles.GrayText,
-                ]}>
+              <Text style={[{fontSize: 3, marginLeft: 5, marginRight: 5}, styles.GrayText]}>
                 {'\u2B24'}
               </Text>
               <Text style={styles.GrayText}>April 18</Text>
@@ -89,7 +83,8 @@ export default function Message() {
             })
           }
           containerStyle={styles.TouchableOpacityContainer}
-          style={[styles.WhiteBackgroundView, commonStyles.mt10]}>
+          style={[styles.WhiteBackgroundView, commonStyles.mt10]}
+        >
           <View>
             <Image
               source={User3}
@@ -101,11 +96,7 @@ export default function Message() {
             <Text type="label">Steve Smith</Text>
             <View style={[commonStyles.FlexRowCenterStart, commonStyles.mt5]}>
               <Text style={styles.GrayText}>Appreciate it!</Text>
-              <Text
-                style={[
-                  {fontSize: 3, marginLeft: 5, marginRight: 5},
-                  styles.GrayText,
-                ]}>
+              <Text style={[{fontSize: 3, marginLeft: 5, marginRight: 5}, styles.GrayText]}>
                 {'\u2B24'}
               </Text>
               <Text style={styles.GrayText}>April 16</Text>

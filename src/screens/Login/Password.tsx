@@ -1,21 +1,12 @@
 import {Icon} from '@rneui/base';
 import {Button, Input, Text} from '@rneui/themed';
 import React, {useRef, useState} from 'react';
-import {
-  View,
-  KeyboardAvoidingView,
-  StyleSheet,
-  ActivityIndicator,
-  Dimensions,
-} from 'react-native';
+import {View, KeyboardAvoidingView, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
 import {commonStyles} from '@config/styles';
 import {LoginRoutes} from '@navigation/Login/routes';
 import auth from '@react-native-firebase/auth';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 import {WINDOW_HEIGHT} from 'src/config/constants';
 
 export default function SetPassword() {
@@ -25,10 +16,7 @@ export default function SetPassword() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const confirmPasswordRef: any = useRef<HTMLDivElement>(null);
   const navigation = useNavigation();
-  const route =
-    useRoute<
-      RouteProp<LoginNavigationRoutes, LoginRoutesNames['SET_PASSWORD']>
-    >();
+  const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['SET_PASSWORD']>>();
 
   const updateName = async () => {
     await auth().currentUser?.updateProfile({
@@ -52,19 +40,16 @@ export default function SetPassword() {
           .currentUser!.linkWithCredential(credential)
           .then(async () => {
             await updateName();
-            navigation.navigate(
-              LoginRoutes.ADDRESS.name as LoginRoutesNames['ADDRESS'],
-            );
+            navigation.navigate(LoginRoutes.ADDRESS.name as LoginRoutesNames['ADDRESS']);
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
             if (err.code === 'auth/weak-password') {
               setErrorText('Please choose a stronger password.');
             } else if (err.code === 'auth/requires-recent-login') {
               setErrorText('Please re-authenticate.');
               navigation.navigate(
-                LoginRoutes.PHONE_NUMBER
-                  .name as LoginRoutesNames['PHONE_NUMBER'],
+                LoginRoutes.PHONE_NUMBER.name as LoginRoutesNames['PHONE_NUMBER'],
               );
             } else {
               setErrorText('Oops, there was a problem');
@@ -87,7 +72,7 @@ export default function SetPassword() {
           <Input
             autoFocus={true}
             shake={() => {}}
-            onChangeText={name => {
+            onChangeText={(name) => {
               setPassword(name);
             }}
             autoComplete="name-given"
@@ -112,7 +97,7 @@ export default function SetPassword() {
             autoComplete="name-family"
             shake={() => {}}
             ref={confirmPasswordRef}
-            onChangeText={name => {
+            onChangeText={(name) => {
               setConfirmPassword(name);
             }}
             errorStyle={{

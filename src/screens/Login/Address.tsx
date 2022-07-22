@@ -10,19 +10,13 @@ import {
   Keyboard,
   Dimensions,
 } from 'react-native';
-import {
-  ScrollView,
-  TouchableWithoutFeedback,
-} from 'react-native-gesture-handler';
+import {ScrollView, TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {endpoint} from 'src/config/api';
 import {WINDOW_HEIGHT} from 'src/config/constants';
 import {commonStyles} from 'src/config/styles';
 import {LoginRoutes} from 'src/navigation/Login/routes';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 
 export default function Address() {
   const [emailErrorText, setEmailErrorText] = useState('');
@@ -31,8 +25,7 @@ export default function Address() {
   const googleMapsComponent: any = createRef();
   const [loading, setLoading] = useState(false);
   const [buttonVisible, setButtonVisible] = useState(true);
-  const route =
-    useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['EMAIL']>>();
+  const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['EMAIL']>>();
 
   const submit = () => {
     setLoading(true);
@@ -50,7 +43,8 @@ export default function Address() {
     <ScrollView
       contentContainerStyle={[commonStyles.FlexColCenterCenter]}
       keyboardShouldPersistTaps="handled"
-      scrollEnabled={false}>
+      scrollEnabled={false}
+    >
       <View style={[styles.SectionStyle]}>
         <View />
         <View style={styles.inputContainer}>
@@ -62,7 +56,7 @@ export default function Address() {
           </Text>
           <GooglePlacesAutocomplete
             placeholder="Search"
-            onPress={data => {
+            onPress={(data) => {
               Keyboard.dismiss();
               // 'details' is provided when fetchDetails = true
               console.log(data);
@@ -76,8 +70,7 @@ export default function Address() {
                 marginTop: 90,
                 width: '100%',
                 margin: 0,
-                maxHeight:
-                  WINDOW_HEIGHT < 750 ? 100 : WINDOW_HEIGHT < 850 ? 150 : 200,
+                maxHeight: WINDOW_HEIGHT < 750 ? 100 : WINDOW_HEIGHT < 850 ? 150 : 200,
                 padding: 0,
                 position: 'absolute',
                 backgroundColor: 'white',
@@ -85,13 +78,12 @@ export default function Address() {
 
               listView: {
                 top: 50,
-                maxHeight:
-                  WINDOW_HEIGHT < 750 ? 100 : WINDOW_HEIGHT < 850 ? 150 : 200,
+                maxHeight: WINDOW_HEIGHT < 750 ? 100 : WINDOW_HEIGHT < 850 ? 150 : 200,
                 position: 'absolute',
                 backgroundColor: 'white',
               },
             }}
-            onFail={error => console.error(error)}
+            onFail={(error) => console.error(error)}
             query={{
               key: 'AIzaSyACTEgEnnRrAp8pJfKYPmpOTsxF1Fm6uPo',
               language: 'en',

@@ -21,18 +21,10 @@ export default function AppNavigator() {
       <Stack.Navigator headerShown={false}>
         {user && user.email ? (
           <>
-            <Stack.Screen
-              name="HOME"
-              component={HomeNavigation}
-              options={{headerShown: false}}
-            />
+            <Stack.Screen name="HOME" component={HomeNavigation} options={{headerShown: false}} />
           </>
         ) : (
-          <Stack.Screen
-            name="LOGIN"
-            component={LoginNavigation}
-            options={{headerShown: false}}
-          />
+          <Stack.Screen name="LOGIN" component={LoginNavigation} options={{headerShown: false}} />
         )}
       </Stack.Navigator>
     </ThemeProvider>

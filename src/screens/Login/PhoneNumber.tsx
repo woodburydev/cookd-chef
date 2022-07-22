@@ -13,8 +13,7 @@ export default function PhoneNumber() {
   const navigation = useNavigation();
   const [userPhoneNumber, setUserPhoneNumber] = useState('');
   const [loading, setLoading] = useState(false);
-  const [confirm, setConfirm] =
-    useState<FirebaseAuthTypes.ConfirmationResult>();
+  const [confirm, setConfirm] = useState<FirebaseAuthTypes.ConfirmationResult>();
   const [phoneErrorText, setPhoneErrorText] = useState('');
 
   const submit = () => {
@@ -30,10 +29,10 @@ export default function PhoneNumber() {
   const sentOTP = useCallback(async () => {
     await auth()
       .signInWithPhoneNumber(countryCode + userPhoneNumber)
-      .then(res => {
+      .then((res) => {
         setConfirm(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         if (err.code === 'auth/invalid-phone-number') {
           setPhoneErrorText('Please enter a valid phone number');
@@ -49,12 +48,9 @@ export default function PhoneNumber() {
   useEffect(() => {
     if (confirm && userPhoneNumber.length === 14) {
       setLoading(false);
-      navigation.navigate(
-        LoginRoutes.ENTER_OTP.name as LoginRoutesNames['ENTER_OTP'],
-        {
-          confirm,
-        },
-      );
+      navigation.navigate(LoginRoutes.ENTER_OTP.name as LoginRoutesNames['ENTER_OTP'], {
+        confirm,
+      });
     }
   }, [confirm, confirmDetails, navigation, userPhoneNumber]);
 
@@ -70,10 +66,7 @@ export default function PhoneNumber() {
     if (phoneNumberLength < 7) {
       return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
     }
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
-      3,
-      6,
-    )}-${phoneNumber.slice(6, 10)}`;
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
   }
 
   return (
@@ -92,7 +85,7 @@ export default function PhoneNumber() {
             errorStyle={t`mt-2 mb-4`}
             textContentType="telephoneNumber"
             value={formatPhoneNumber(userPhoneNumber)}
-            onChangeText={number => {
+            onChangeText={(number) => {
               setUserPhoneNumber(number);
               setPhoneErrorText('');
             }}

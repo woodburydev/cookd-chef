@@ -20,9 +20,7 @@ export default function Verification() {
         </View>
 
         <View style={[styles.ContainerStyle]}>
-          <Text
-            type="label"
-            style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
+          <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
             * Upload a photo of your Driver License
           </Text>
           <View style={[styles.ButtonView, commonStyles.mb20]}>
@@ -32,9 +30,7 @@ export default function Verification() {
           </View>
         </View>
         <View style={[styles.ContainerStyle]}>
-          <Text
-            type="label"
-            style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
+          <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
             * Take a Selfie
           </Text>
           <View style={[styles.ButtonView, commonStyles.mb20]}>
@@ -44,11 +40,9 @@ export default function Verification() {
           </View>
         </View>
         <View style={[styles.ContainerStyle]}>
-          <Text
-            type="label"
-            style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
-            * Give us a short description of how you plan on offering a unique
-            dining experience for your clients.
+          <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
+            * Give us a short description of how you plan on offering a unique dining experience for
+            your clients.
           </Text>
           <View style={[styles.ButtonView, commonStyles.mb20]}>
             <Input
@@ -61,9 +55,7 @@ export default function Verification() {
           </View>
         </View>
         <View style={[styles.ContainerStyle]}>
-          <Text
-            type="label"
-            style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
+          <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
             * Whats your SSN
           </Text>
           <View style={[styles.ButtonView, commonStyles.mb20]}>
@@ -80,9 +72,7 @@ export default function Verification() {
           </View>
         </View>
         <View style={[styles.ContainerStyle]}>
-          <Text
-            type="label"
-            style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
+          <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
             * Upload a photo of your food handlers certification.
           </Text>
           <View style={[styles.ButtonView, commonStyles.mb20]}>
@@ -94,17 +84,14 @@ export default function Verification() {
                 textDecorationLine: 'underline',
                 marginTop: 7,
               }}
-              onPress={() =>
-                Linking.openURL('https://www.statefoodsafety.com/food-handler')
-              }>
+              onPress={() => Linking.openURL('https://www.statefoodsafety.com/food-handler')}
+            >
               Learn More
             </Text>
           </View>
         </View>
         <View style={[styles.ContainerStyle]}>
-          <Text
-            type="label"
-            style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
+          <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
             * Give us a short description of your Professional Cooking Career.
           </Text>
           <View style={[styles.ButtonView, commonStyles.mb20]}>
@@ -118,9 +105,7 @@ export default function Verification() {
           </View>
         </View>
         <View style={[styles.ContainerStyle]}>
-          <Text
-            type="label"
-            style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
+          <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
             * Do you agree to a full background check?
           </Text>
           <View style={[styles.ButtonView, commonStyles.mb20]}>
@@ -130,9 +115,7 @@ export default function Verification() {
           </View>
         </View>
         <View style={[styles.ContainerStyle]}>
-          <Text
-            type="label"
-            style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
+          <Text type="label" style={[commonStyles.mt10, commonStyles.mb20, styles.LabelText]}>
             * Please upload a resume with any refrences.
           </Text>
           <View style={[styles.ButtonView, commonStyles.mb20]}>

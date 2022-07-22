@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import HomeTabNavigation from './HomeTabNavigation';
-import {HomeNavigationOptions} from '../NavigationOptions';
+import { HomeNavigationOptions } from '../NavigationOptions';
 
 export default function HomeNavigation() {
   const Stack: any = createStackNavigator();

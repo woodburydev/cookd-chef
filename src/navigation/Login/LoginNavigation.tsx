@@ -1,23 +1,21 @@
-import {DefaultTheme, useNavigation} from '@react-navigation/native';
+import { DefaultTheme, useNavigation } from '@react-navigation/native';
 import {
   createStackNavigator,
   StackNavigationOptions,
   StackNavigationProp,
 } from '@react-navigation/stack';
-import React, {useContext, useState} from 'react';
-import {UserContext} from 'src/context/UserContext';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
-import {LoginRoutes, SignUpRoutes} from './routes';
+import React, { useContext, useState } from 'react';
+import { UserContext } from 'src/context/UserContext';
+import { LoginNavigationRoutes, LoginRoutesNames } from 'src/navigation/NavigationTypes';
+import { LoginRoutes, SignUpRoutes } from './routes';
 import auth from '@react-native-firebase/auth';
 import Header from 'src/components/Header';
-import {AppColorPalette} from 'src/config/styles';
-import {getKeyValue} from 'src/util/helperFunctions';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { AppColorPalette } from 'src/config/styles';
+import { getKeyValue } from 'src/util/helperFunctions';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function LoginNavigation() {
+
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState<number | undefined>(0);
   const Stack: any = createStackNavigator();
@@ -25,7 +23,7 @@ export default function LoginNavigation() {
   const [showBackButton, setShowBackButton] = useState(true);
   const navTheme = DefaultTheme;
   navTheme.colors.background = AppColorPalette.appBackgroundColor;
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const getInitialRoute = () => {
     if (auth().currentUser && !user) {
       const hasEmailAndPassword = auth().currentUser?.providerData[1];
@@ -134,8 +132,9 @@ export default function LoginNavigation() {
       <Stack.Navigator
         screenOptions={screenOptions}
         theme={navTheme}
-        initialRouteName={getInitialRoute()}>
-        {Object.keys(LoginRoutes).map(key => {
+        initialRouteName={getInitialRoute()}
+      >
+        {Object.keys(LoginRoutes).map((key) => {
           return (
             <Stack.Screen
               name={getKeyValue(key)(LoginRoutes).name}

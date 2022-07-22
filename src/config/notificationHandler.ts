@@ -4,38 +4,35 @@ import PushNotification from 'react-native-push-notification';
 import uuid from 'uuidv4';
 
 export async function notificationListener() {
-  messaging().onNotificationOpenedApp(message => {
+  messaging().onNotificationOpenedApp((message) => {
     console.log('Notification caused app to open: ', message);
   });
 
   messaging()
     .requestPermission()
-    .then(res => {
+    .then((res) => {
       console.log('Allowed: ', res);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log('Error with Permissions: ', err);
     });
 
   messaging()
     .registerDeviceForRemoteMessages()
-    .then(res => {
+    .then((res) => {
       console.log('Registered for remote: ', res);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log('Failed to register for remote: ', err);
     });
   messaging()
     .getInitialNotification()
-    .then(message => {
+    .then((message) => {
       console.log('Notification caused app to open from quit state', message);
     });
 
   messaging().setBackgroundMessageHandler(async (remoteMessage: any) => {
-    Alert.alert(
-      remoteMessage.notification.title,
-      remoteMessage.notification.body,
-    );
+    Alert.alert(remoteMessage.notification.title, remoteMessage.notification.body);
   });
 
   messaging().onMessage(async (remoteMessage: any) => {
@@ -69,10 +66,10 @@ export async function requestUserPermission() {
 export async function getToken() {
   await messaging()
     .getToken()
-    .then(res => {
+    .then((res) => {
       console.log('Token: ', res);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log('Token Error: ', err);
     });
 }
@@ -106,7 +103,7 @@ export const registerLocalPushNotifications = () => {
     // default: true
     popInitialNotification: true,
 
-    onNotification: notification => {
+    onNotification: (notification) => {
       console.log('Local Notification: ', notification);
     },
     requestPermissions: Platform.OS === 'ios',

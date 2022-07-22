@@ -9,24 +9,23 @@ export default function Invite() {
   return (
     <View style={[commonStyles.FlexColCenterCenter]}>
       <KeyboardAwareScrollView
-        contentContainerStyle={[
-          commonStyles.FlexColCenterCenter,
-          {width: WINDOW_WIDTH},
-        ]}
-        extraScrollHeight={50}>
+        contentContainerStyle={[commonStyles.FlexColCenterCenter, {width: WINDOW_WIDTH}]}
+        extraScrollHeight={50}
+      >
         <KeyboardAvoidingView style={commonStyles.FlexColCenterCenter}>
           <View style={styles.contentContainer}>
             <Text style={commonStyles.mb30} centerText type="large-header">
               Email or Phone Number
             </Text>
             <Text style={commonStyles.mb30} type="description">
-              Inviting a chef can give you a commission off thier first service
-              they do over $400! See more details{' '}
+              Inviting a chef can give you a commission off thier first service they do over $400!
+              See more details{' '}
               <Text
                 style={{
                   textDecorationLine: 'underline',
                   color: AppColorPalette.orange,
-                }}>
+                }}
+              >
                 here
               </Text>
             </Text>

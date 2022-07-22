@@ -71,8 +71,7 @@ export default function Header({
   }, [fadeAnim]);
 
   return (
-    <Animated.View
-      style={[styles.HeaderContainer, {opacity: loginPages ? fadeAnim : 1}]}>
+    <Animated.View style={[styles.HeaderContainer, {opacity: loginPages ? fadeAnim : 1}]}>
       <View />
       <View style={styles.iconsContainer}>
         {backArrow && (
@@ -95,11 +94,7 @@ export default function Header({
           style={styles.loadingBar}
           variant="determinate"
           value={loading}
-          color={
-            loading > 0
-              ? AppColorPalette.orange
-              : AppColorPalette.appBackgroundColor
-          }
+          color={loading > 0 ? AppColorPalette.orange : AppColorPalette.appBackgroundColor}
         />
       )}
     </Animated.View>

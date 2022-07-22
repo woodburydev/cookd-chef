@@ -3,10 +3,7 @@ import React, {useContext, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import axios from 'axios';
 import {endpoint} from 'src/config/api';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 import {RouteProp, useRoute} from '@react-navigation/core';
 import {UserContext} from 'src/context/UserContext';
 import {commonStyles} from 'src/config/styles';
@@ -15,8 +12,7 @@ import {Button, Image, Text} from '@rneui/themed';
 import {WINDOW_HEIGHT} from 'src/config/constants';
 
 export default function Grow() {
-  const route =
-    useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
+  const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
   const {address, foundOut} = route.params;
   const {getUser} = useContext(UserContext);
   const [loading, setLoading] = useState(false);
@@ -35,7 +31,7 @@ export default function Grow() {
       .then(() => {
         getUser!(user);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('Error saving user in database: ', JSON.stringify(err));
         setLoading(false);
       });
@@ -60,8 +56,7 @@ export default function Grow() {
             View your profile statstics and track trends.{' '}
           </Text>
           <Text type="description" centerText style={commonStyles.mt10}>
-            Read our Cookd Chef Guide for educational blogs to ensure your
-            success!
+            Read our Cookd Chef Guide for educational blogs to ensure your success!
           </Text>
         </View>
         <Button

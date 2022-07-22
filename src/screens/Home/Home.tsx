@@ -11,10 +11,7 @@ import {
   View,
 } from 'react-native';
 import {BarChart} from 'react-native-chart-kit';
-import {
-  ScrollView,
-  TouchableWithoutFeedback,
-} from 'react-native-gesture-handler';
+import {ScrollView, TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import {AppColorPalette, commonStyles} from 'src/config/styles';
 import UpcomingJobImage from '@assets/upcomingJobImage1.jpg';
 import UpcomingJobImage2 from '@assets/upcomingJobImage2.jpg';
@@ -164,9 +161,7 @@ export default function Home() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.contentContainerStyles}>
           <View style={styles.TextContainerStyle}>
-            <Text
-              style={[commonStyles.mt20, styles.welcomeBackText]}
-              type="description">
+            <Text style={[commonStyles.mt20, styles.welcomeBackText]} type="description">
               Welcome Back Chef!
             </Text>
             <Text style={commonStyles.mx20} type="large-header">
@@ -177,7 +172,8 @@ export default function Home() {
           <ScrollView
             contentContainerStyle={styles.cardsContainer}
             horizontal={true}
-            showsHorizontalScrollIndicator={false}>
+            showsHorizontalScrollIndicator={false}
+          >
             {jobData.map((item, index) => (
               <TouchableWithoutFeedback style={[styles.cardWrapper]}>
                 <View style={[commonStyles.mx10, styles.topLeftCard]}>
@@ -212,16 +208,13 @@ export default function Home() {
                   <Text type="label" style={commonStyles.mb5}>
                     Order: {item.order.menu}
                   </Text>
-                  {item.order.items.map(orderItem => {
+                  {item.order.items.map((orderItem) => {
                     return bulletItem(`${orderItem.count}x ${orderItem.name}`);
                   })}
                   {item.specialInstructions && (
                     <Text
-                      style={[
-                        commonStyles.mx10,
-                        styles.cardGuestCount,
-                        styles.welcomeBackText,
-                      ]}>
+                      style={[commonStyles.mx10, styles.cardGuestCount, styles.welcomeBackText]}
+                    >
                       *special instructions*
                     </Text>
                   )}
@@ -252,8 +245,7 @@ export default function Home() {
             <Text style={commonStyles.mt30} type="large-header">
               Your Schedule
             </Text>
-            <Text
-              style={[{fontWeight: '600', top: 20}, styles.welcomeBackText]}>
+            <Text style={[{fontWeight: '600', top: 20}, styles.welcomeBackText]}>
               Jobs This Week
             </Text>
             <BarChart
@@ -286,13 +278,9 @@ export default function Home() {
           </View>
           <View style={styles.TextContainerStyle}>
             <Text type="description" style={[commonStyles.mx10]}>
-              Looks like you have a busy week Chef! Make sure your ingredients
-              are in order.
+              Looks like you have a busy week Chef! Make sure your ingredients are in order.
             </Text>
-            <Button
-              style={[commonStyles.mx20, {alignSelf: 'center'}]}
-              title="Manage Schedule"
-            />
+            <Button style={[commonStyles.mx20, {alignSelf: 'center'}]} title="Manage Schedule" />
           </View>
         </View>
       </ScrollView>

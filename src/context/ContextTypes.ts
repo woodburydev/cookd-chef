@@ -7,6 +7,13 @@ export interface UserContextType {
   databaseFetchError: boolean;
   getUser: (authUser: FirebaseAuthTypes.User) => void;
   loadingUserContext: boolean;
+  profilePicture: ProfilePictureContext;
+}
+
+export interface ProfilePictureContext {
+  linkToProfilePicture: string;
+  forceUpdateOfProfilePicture: boolean;
+  setForceUpdateOfProfilePicture: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface User {

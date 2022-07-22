@@ -1,8 +1,8 @@
-import { Button, Input, Text } from '@rneui/themed';
+import {Button, Input, Text} from '@rneui/themed';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { commonStyles } from 'src/config/styles';
+import {StyleSheet, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import {commonStyles} from 'src/config/styles';
 
 export default function Feedback() {
   return (
@@ -10,15 +10,14 @@ export default function Feedback() {
       <View style={commonStyles.FlexColCenterStart}>
         <View style={[commonStyles.mt30, styles.HeaderArea]}>
           <Text type="description">
-            If you would like to leave a suggestion or feedback on how we are
-            doing on how we can make your experience with cookd better we would
-            love to hear your input.
+            If you would like to leave a suggestion or feedback on how we are doing on how we can
+            make your experience with cookd better we would love to hear your input.
           </Text>
         </View>
         <View style={[commonStyles.mt30, styles.LowerArea]}>
           <Input
             inputContainerStyle={styles.InputContainerStyle}
-            inputStyle={{ margin: 10 }}
+            inputStyle={{margin: 10}}
             maxLength={150}
             multiline={true}
             shake={() => null}
@@ -29,7 +28,6 @@ export default function Feedback() {
     </ScrollView>
   );
 }
-
 
 export const styles = StyleSheet.create({
   HeaderArea: {

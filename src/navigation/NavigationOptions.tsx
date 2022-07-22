@@ -1,38 +1,23 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
+import { StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { HomeRoutes } from './Home/routes';
+import { AirbnbRating, Button, Icon, Rating, Text } from '@rneui/themed';
+import { AllProfileRoutes } from './Profile/routes';
+import { AppColorPalette, commonStyles } from 'src/config/styles';
 import {
-  StackNavigationOptions,
-  StackNavigationProp,
-} from '@react-navigation/stack';
-import {
-  ActivityIndicator,
-  Dimensions,
-  EdgeInsetsPropType,
-  StyleSheet,
-  View,
-} from 'react-native';
-import {HomeRoutes} from './Home/routes';
-import {AirbnbRating, Button, Icon, Rating, Text} from '@rneui/themed';
-import {AllProfileRoutes} from './Profile/routes';
-import ChefProfilePicture from '@assets/chefProfilePicture.jpeg';
-import {AppColorPalette, commonStyles} from 'src/config/styles';
-import {
-  HomeRouteNames,
   MessageNavigationRoutes,
   MessageRouteNames,
   ProfileNavigationRoutes,
   ProfileRouteNames,
 } from './NavigationTypes';
-import {UserContext} from 'src/context/UserContext';
-import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Image} from '@rneui/themed/dist/Image';
-import {
-  CommonActions,
-  useNavigation,
-  useNavigationState,
-} from '@react-navigation/core';
+import ProfilePicture from '@assets/profilePicture.png'
+import { UserContext } from 'src/context/UserContext';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Image } from '@rneui/themed/dist/Image';
+import { useNavigation } from '@react-navigation/core';
 import Header from 'src/components/Header';
-import {HeaderBackButton} from '@react-navigation/elements';
-import {MessageRoutes} from './Messages/routes';
+import { MessageRoutes } from './Messages/routes';
 
 export const HomeNavigationOptions: StackNavigationOptions = {
   headerShown: false,
@@ -43,13 +28,13 @@ export const MessageNavigationOptions = (
 ): StackNavigationOptions => {
   const navigation = useNavigation();
   const routeName = props.route.name as keyof MessageRouteNames;
-  const {recipientDisplayName} = props.route?.params || '';
+  const { recipientDisplayName } = props.route?.params || '';
   const displayName = MessageRoutes[routeName]?.displayName;
   if (routeName === MessageRoutes.MESSAGE_DETAIL.name) {
     return {
       headerShown: true,
       headerStyle: commonStyles.WhiteHeaderBackground,
-      header: headerProps => {
+      header: (headerProps) => {
         return (
           <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
             <Header
@@ -65,7 +50,7 @@ export const MessageNavigationOptions = (
   return {
     headerShown: true,
     headerStyle: commonStyles.WhiteHeaderBackground,
-    header: headerProps => {
+    header: (headerProps) => {
       return (
         <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
           <Header headerText={displayName} />
@@ -78,12 +63,13 @@ export const MessageNavigationOptions = (
 export const ProfileNavigationOptions = (
   props: StackNavigationProp<ProfileNavigationRoutes, keyof ProfileRouteNames>,
 ): StackNavigationOptions => {
+
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
-  const {user} = useContext(UserContext);
+  const { user, profilePicture } = useContext(UserContext);
   const routeName = props.route.name as keyof ProfileRouteNames;
-  // seperate sames to save first and last name in DB to display only first name for responsive compatibility
   const displayName = AllProfileRoutes[routeName]?.displayName;
+
   if (props.route.name === HomeRoutes.PROFILE.name) {
     return {
       headerShown: true,
@@ -106,21 +92,18 @@ export const ProfileNavigationOptions = (
             style={[
               commonStyles.FlexRowCenterCenter,
               styles.HeaderWrapper,
-              {marginTop: insets.bottom > 30 ? '7%' : '0%'},
-            ]}>
+              { marginTop: insets.bottom > 30 ? '7%' : '0%' },
+            ]}
+          >
             <View>
               <Image
-                source={ChefProfilePicture}
+                source={profilePicture?.linkToProfilePicture ? { uri: profilePicture?.linkToProfilePicture } : ProfilePicture}
                 style={styles.image}
                 containerStyle={styles.imageContainer}
                 PlaceholderContent={<ActivityIndicator />}
               />
             </View>
-            <View
-              style={[
-                commonStyles.FlexColStartCenter,
-                styles.headerContentContainer,
-              ]}>
+            <View style={[commonStyles.FlexColStartCenter, styles.headerContentContainer]}>
               <Text type="label" style={styles.headerText} numberOfLines={1}>
                 Chef {user?.displayname.split(' ')[1]}
               </Text>
@@ -147,7 +130,7 @@ export const ProfileNavigationOptions = (
   } else {
     return {
       headerShown: true,
-      header: headerProps => {
+      header: (headerProps) => {
         return (
           <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
             <Header
@@ -174,7 +157,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
+    shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.1,
     position: 'relative',
     shadowRadius: 3,
