@@ -69,6 +69,7 @@ export const ProfileNavigationOptions = (
   const { user, profilePicture } = useContext(UserContext);
   const routeName = props.route.name as keyof ProfileRouteNames;
   const displayName = AllProfileRoutes[routeName]?.displayName;
+
   if (props.route.name === HomeRoutes.PROFILE.name) {
     return {
       headerShown: true,

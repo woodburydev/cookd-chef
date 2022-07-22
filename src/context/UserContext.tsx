@@ -46,10 +46,10 @@ export default function Context(props: PropsWithChildren<any>) {
 
   useEffect(() => {
     if (user) {
+      // if api is broken we get a loading sign because itll return a weird firebase url. fix this in backend
       axios.get(`${endpoint}/cook/profilePicture?user=${user.email}`).then(res => {
         setLinkToProfilePicture(res.data);
-      }).catch(err => {
-        console.log(err);
+      }).catch(() => {
       })
     }
   }, [user, forceUpdateOfProfilePicture])

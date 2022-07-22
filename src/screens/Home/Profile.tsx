@@ -8,7 +8,6 @@ import { ProfileRoutes } from 'src/navigation/Profile/routes';
 import auth from '@react-native-firebase/auth';
 import uuidv4 from 'uuidv4';
 import { getKeyValue } from 'src/util/helperFunctions';
-import axios from 'axios';
 
 export default function Profile() {
   const navigation = useNavigation();
