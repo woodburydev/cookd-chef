@@ -14,10 +14,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import AppNavigator from '../navigation/AppNavigator';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
-import {
-  notificationListener,
-  requestUserPermission,
-} from '@config/notificationHandler';
+import {notificationListener, requestUserPermission} from '@config/notificationHandler';
 import {TailwindProvider} from 'tailwind-rn/dist';
 import utilities from '../../tailwind.json';
 

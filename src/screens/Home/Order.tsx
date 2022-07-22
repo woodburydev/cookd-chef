@@ -17,13 +17,10 @@ export default function Order() {
           No Orders Yet
         </Text>
         <Text type="description" centerText style={t`my-2`}>
-          When a customer places an order, it will appear here for you to view
-          and look at in closer detail.
+          When a customer places an order, it will appear here for you to view and look at in closer
+          detail.
         </Text>
-        <Text
-          type="description"
-          centerText
-          style={t`text-orange underline my-2`}>
+        <Text type="description" centerText style={t`text-orange underline my-2`}>
           Learn More
         </Text>
       </View>

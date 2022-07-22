@@ -6,24 +6,20 @@ import axios from 'axios';
 import {endpoint} from '@config/api';
 import {UserContext} from 'src/context/UserContext';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
-import {
-  LoginNavigationRoutes,
-  LoginRoutesNames,
-} from 'src/navigation/NavigationTypes';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 import {WINDOW_HEIGHT} from 'src/config/constants';
 
 export default function FoundOut() {
   const [foundOut, setFoundOut] = useState<number[]>([]);
   const [loading, setLoading] = useState(false);
-  const route =
-    useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FOUND_OUT']>>();
+  const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FOUND_OUT']>>();
   const navigation = useNavigation();
   const {address} = route.params;
   console.log(address);
 
   const checkBoxPressed = (item: number) => {
     if (foundOut.includes(item)) {
-      setFoundOut(foundOut.filter(curItem => item !== curItem));
+      setFoundOut(foundOut.filter((curItem) => item !== curItem));
     } else {
       setFoundOut([...foundOut, item]);
     }
@@ -32,8 +28,8 @@ export default function FoundOut() {
   const submit = () => {
     setLoading(true);
     const foundOutList = getRadioButtonsData()
-      .filter(item => foundOut.includes(item.id))
-      .map(item => item.label.toLowerCase());
+      .filter((item) => foundOut.includes(item.id))
+      .map((item) => item.label.toLowerCase());
 
     navigation.navigate('FINAL', {address, foundOut: foundOutList});
     setLoading(false);
@@ -46,7 +42,7 @@ export default function FoundOut() {
           How'd you hear about us?
         </Text>
         <View style={styles.ListContainer}>
-          {getRadioButtonsData().map(item => (
+          {getRadioButtonsData().map((item) => (
             <CheckBox
               center
               key={item.id}

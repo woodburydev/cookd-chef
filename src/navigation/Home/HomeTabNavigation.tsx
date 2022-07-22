@@ -1,10 +1,7 @@
 import {DefaultTheme, useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {AppColorPalette, commonStyles} from 'src/config/styles';
-import {
-  BottomTabNavigationOptions,
-  createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
+import {BottomTabNavigationOptions, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomeRoutes} from './routes';
 import {Icon} from '@rneui/base';
 import {StyleSheet} from 'react-native';
@@ -64,25 +61,20 @@ export default function HomeTabNavigation() {
           size={25}
         />
       ),
-      tabBarButton:
-        route.name === HomeRoutes.VERIFICATION.displayName
-          ? () => null
-          : undefined,
+      tabBarButton: route.name === HomeRoutes.VERIFICATION.displayName ? () => null : undefined,
       tabBarShowLabel: false,
       headerShown: route.name === HomeRoutes.PROFILE.displayName ? false : true,
       headerStyle:
         route.name === HomeRoutes.VERIFICATION.displayName
           ? commonStyles.TransparentHeaderBackground
           : commonStyles.WhiteHeaderBackground,
-      header: props => {
+      header: (props) => {
         if (route.name === HomeRoutes.VERIFICATION.displayName) {
           return (
             <SafeAreaView>
               <Header
                 backArrow
-                onPressBack={() =>
-                  navigation.navigate('Profile' as HomeRouteNames['PROFILE'])
-                }
+                onPressBack={() => navigation.navigate('Profile' as HomeRouteNames['PROFILE'])}
               />
             </SafeAreaView>
           );
