@@ -1,27 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
-import { ActivityIndicator, Dimensions, EdgeInsetsPropType, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { HomeRoutes } from './Home/routes';
 import { AirbnbRating, Button, Icon, Rating, Text } from '@rneui/themed';
 import { AllProfileRoutes } from './Profile/routes';
-import ChefProfilePicture from '@assets/chefProfilePicture.jpeg';
 import { AppColorPalette, commonStyles } from 'src/config/styles';
 import {
-  HomeRouteNames,
   MessageNavigationRoutes,
   MessageRouteNames,
   ProfileNavigationRoutes,
   ProfileRouteNames,
 } from './NavigationTypes';
+import ProfilePicture from '@assets/profilePicture.png'
 import { UserContext } from 'src/context/UserContext';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Image } from '@rneui/themed/dist/Image';
-import { CommonActions, useNavigation, useNavigationState } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/core';
 import Header from 'src/components/Header';
-import { HeaderBackButton } from '@react-navigation/elements';
 import { MessageRoutes } from './Messages/routes';
-import axios from 'axios';
-import { endpoint } from 'src/config/api';
 
 export const HomeNavigationOptions: StackNavigationOptions = {
   headerShown: false,
@@ -72,7 +68,6 @@ export const ProfileNavigationOptions = (
   const navigation = useNavigation();
   const { user, profilePicture } = useContext(UserContext);
   const routeName = props.route.name as keyof ProfileRouteNames;
-  // seperate sames to save first and last name in DB to display only first name for responsive compatibility
   const displayName = AllProfileRoutes[routeName]?.displayName;
   if (props.route.name === HomeRoutes.PROFILE.name) {
     return {
@@ -101,7 +96,7 @@ export const ProfileNavigationOptions = (
           >
             <View>
               <Image
-                source={{ uri: profilePicture?.linkToProfilePicture }}
+                source={profilePicture?.linkToProfilePicture ? { uri: profilePicture?.linkToProfilePicture } : ProfilePicture}
                 style={styles.image}
                 containerStyle={styles.imageContainer}
                 PlaceholderContent={<ActivityIndicator />}

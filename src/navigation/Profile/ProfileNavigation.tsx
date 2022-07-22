@@ -1,12 +1,12 @@
-import {DefaultTheme} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import React from 'react';
-import {AllProfileRoutes} from './routes';
-import {HomeRoutes} from '../Home/routes';
+import { DefaultTheme } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import React, { useContext, useState } from 'react';
+import { AllProfileRoutes } from './routes';
+import { HomeRoutes } from '../Home/routes';
 import uuidv4 from 'uuidv4';
-import {AppColorPalette} from 'src/config/styles';
-import {ProfileNavigationOptions} from '../NavigationOptions';
-import {getKeyValue} from 'src/util/helperFunctions';
+import { AppColorPalette } from 'src/config/styles';
+import { ProfileNavigationOptions } from '../NavigationOptions';
+import { getKeyValue } from 'src/util/helperFunctions';
 
 export default function ProfileNavigation() {
   const Stack: any = createStackNavigator();
