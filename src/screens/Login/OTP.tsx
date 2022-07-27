@@ -1,5 +1,5 @@
 import {Button, Text} from '@rneui/themed';
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {ActivityIndicator, Dimensions, KeyboardAvoidingView, StyleSheet, View} from 'react-native';
 import auth from '@react-native-firebase/auth';
 
@@ -11,6 +11,7 @@ import {UserContext} from 'src/context/UserContext';
 import {CodeField, useBlurOnFulfill} from 'react-native-confirmation-code-field';
 import {WINDOW_HEIGHT} from 'src/config/constants';
 import t from 'tailwind';
+import {useGetUserQuery} from 'src/redux/store';
 
 const CELL_COUNT = 6;
 
@@ -18,7 +19,7 @@ export default function EnterOTP() {
   const navigation = useNavigation();
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
-  const {loadingUserContext} = useContext(UserContext);
+  const {isLoading} = useGetUserQuery();
   const [readyToMove, setReadyToMove] = useState(false);
 
   const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['ENTER_OTP']>>();
@@ -27,7 +28,6 @@ export default function EnterOTP() {
 
   const [loading, setLoading] = useState(false);
   const [errorText, setErrorText] = useState('');
-
   const login = useCallback(() => {
     return new Promise(async (resolve, reject) => {
       confirm
@@ -62,12 +62,12 @@ export default function EnterOTP() {
           setLoading(false);
         });
     }
-  }, [loadingUserContext, value, login, navigation, loading, errorText]);
+  }, [isLoading, value, login, navigation, loading, errorText]);
 
   useEffect(() => {
     // "ready to move" is a silly trick used to fix react error
     if (readyToMove) {
-      if (!loadingUserContext) {
+      if (!isLoading) {
         const email = auth().currentUser?.email;
         if (email) {
           navigation.navigate(LoginRoutes.ADDRESS.name as LoginRoutesNames['ADDRESS']);
@@ -76,7 +76,7 @@ export default function EnterOTP() {
         }
       }
     }
-  }, [readyToMove, loadingUserContext, navigation]);
+  }, [readyToMove, isLoading, navigation]);
 
   return (
     <View style={commonStyles.FlexColCenterCenter}>

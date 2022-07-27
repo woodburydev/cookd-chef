@@ -7,12 +7,16 @@ import { Icon } from '@rneui/base';
 import { WINDOW_HEIGHT } from 'src/config/constants';
 import ProfilePicture from '@assets/profilePicture.png';
 import * as ImagePicker from 'react-native-image-picker';
-import { endpoint } from 'src/config/api';
-import { UserContext } from 'src/context/UserContext';
+import { useAddProfilePictureMutation, useGetProfilePictureQuery, useGetUserQuery } from 'src/redux/store';
 
 export default function ContactInfo() {
   const [photo, setPhoto] = useState<any>();
-  const { user, profilePicture } = useContext(UserContext);
+  const { data: userInfo } = useGetUserQuery();
+  const { data: profilePictureUri, isLoading: loadingProfilePicture } = useGetProfilePictureQuery();
+  const [
+    updateProfilePicture, // This is the mutation trigger
+    { isLoading: isUpdating }, // This is the destructured mutation result
+  ] = useAddProfilePictureMutation();
 
   const onImageLibraryPress = useCallback(() => {
     const options = {
@@ -21,15 +25,17 @@ export default function ContactInfo() {
         skipBackup: true,
         path: "images"
       },
+      includeExtra: true,
       selectionLimit: 1,
       mediaType: 'photo',
       includeBase64: false,
     };
+
     ImagePicker.launchImageLibrary(options, (response) => {
       if (response && response.assets && response.assets[0]) {
         const photo = response.assets[0]
-        // initilizing form data
 
+        // initilizing form data
         let formData = new FormData();
 
         formData.append('file', {
@@ -41,21 +47,8 @@ export default function ContactInfo() {
           name: photo.fileName,
 
         });
-        formData.append('userEmail', user!.email)
-        fetch(
-          `${endpoint}/cook/profilePicture`,
-          {
-            method: 'post',
-            body: formData,
-            headers: {
-              'Content-Type': 'multipart/form-data; ',
-            },
-          }
-        )
-          .then(res => {
-            profilePicture!.setForceUpdateOfProfilePicture(!profilePicture!.forceUpdateOfProfilePicture)
-          })
-          .catch(err => console.log(err));
+        formData.append('userEmail', userInfo!.email);
+        updateProfilePicture(formData);
       }
     });
   }, []);
@@ -64,7 +57,7 @@ export default function ContactInfo() {
     <ScrollView contentContainerStyle={styles.pageContainer}>
       <View style={styles.imageContainerView}>
         <Image
-          source={profilePicture?.linkToProfilePicture ? { uri: profilePicture?.linkToProfilePicture } : ProfilePicture}
+          source={(!isUpdating && !loadingProfilePicture && !profilePictureUri) ? ProfilePicture : { uri: profilePictureUri }}
           style={styles.image}
           containerStyle={styles.imageContainer}
         />

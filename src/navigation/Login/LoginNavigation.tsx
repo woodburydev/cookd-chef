@@ -1,21 +1,19 @@
-import { DefaultTheme, useNavigation } from '@react-navigation/native';
+import {DefaultTheme, useNavigation} from '@react-navigation/native';
 import {
   createStackNavigator,
   StackNavigationOptions,
   StackNavigationProp,
 } from '@react-navigation/stack';
-import React, { useContext, useState } from 'react';
-import { UserContext } from 'src/context/UserContext';
-import { LoginNavigationRoutes, LoginRoutesNames } from 'src/navigation/NavigationTypes';
-import { LoginRoutes, SignUpRoutes } from './routes';
+import React, {useState} from 'react';
+import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
+import {LoginRoutes, SignUpRoutes} from './routes';
 import auth from '@react-native-firebase/auth';
 import Header from 'src/components/Header';
-import { AppColorPalette } from 'src/config/styles';
-import { getKeyValue } from 'src/util/helperFunctions';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {AppColorPalette} from 'src/config/styles';
+import {getKeyValue} from 'src/util/helperFunctions';
+import {useGetUserQuery} from 'src/redux/store';
 
 export default function LoginNavigation() {
-
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState<number | undefined>(0);
   const Stack: any = createStackNavigator();
@@ -23,9 +21,10 @@ export default function LoginNavigation() {
   const [showBackButton, setShowBackButton] = useState(true);
   const navTheme = DefaultTheme;
   navTheme.colors.background = AppColorPalette.appBackgroundColor;
-  const { user } = useContext(UserContext);
+  const {data: userInfo} = useGetUserQuery();
   const getInitialRoute = () => {
-    if (auth().currentUser && !user) {
+    console.log(auth().currentUser);
+    if (auth().currentUser && !userInfo) {
       const hasEmailAndPassword = auth().currentUser?.providerData[1];
       if (hasEmailAndPassword) {
         return LoginRoutes.ADDRESS.name;

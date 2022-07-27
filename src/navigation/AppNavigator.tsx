@@ -1,25 +1,36 @@
-import React, {useContext} from 'react';
+import React, {useEffect} from 'react';
 import {UserContext} from 'src/context/UserContext';
 import {ActivityIndicator} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {ThemeProvider} from '@rneui/themed';
 import {myTheme} from '@config/styles';
-
+import auth from '@react-native-firebase/auth';
 import LoginNavigation from './Login/LoginNavigation';
+import {useGetUserQuery} from 'src/redux/store';
 import HomeNavigation from './Home/HomeNavigation';
 
 export default function AppNavigator() {
-  const {user} = useContext(UserContext);
+  const {data: userInfo, error, isFetching, refetch} = useGetUserQuery();
+
   // stack typescript definition is stupid, override with any.
   const Stack: any = createStackNavigator();
-  if (user === undefined) {
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged((user) => {
+      refetch();
+    });
+
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (isFetching) {
     return <ActivityIndicator />;
   }
 
   return (
     <ThemeProvider theme={myTheme}>
       <Stack.Navigator headerShown={false}>
-        {user && user.email ? (
+        {userInfo && userInfo.email && !error ? (
           <>
             <Stack.Screen name="HOME" component={HomeNavigation} options={{headerShown: false}} />
           </>

@@ -7,14 +7,17 @@ import uuidv4 from 'uuidv4';
 import { AppColorPalette } from 'src/config/styles';
 import { ProfileNavigationOptions } from '../NavigationOptions';
 import { getKeyValue } from 'src/util/helperFunctions';
+import { useGetProfilePictureQuery, useGetUserQuery } from 'src/redux/store';
 
 export default function ProfileNavigation() {
   const Stack: any = createStackNavigator();
   const navTheme = DefaultTheme;
+  const { data: profilePictureUri, isLoading: isLoadingProfilePictureUri } = useGetProfilePictureQuery();
+  const { data: userInfo } = useGetUserQuery();
 
   navTheme.colors.background = AppColorPalette.appBackgroundColor;
   return (
-    <Stack.Navigator screenOptions={ProfileNavigationOptions}>
+    <Stack.Navigator screenOptions={(options: any) => ProfileNavigationOptions(options, { profilePictureUri, isLoadingProfilePictureUri, userInfo })}>
       <Stack.Screen
         name={HomeRoutes.PROFILE.name}
         component={HomeRoutes.PROFILE.component}

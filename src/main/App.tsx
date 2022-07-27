@@ -13,10 +13,12 @@ import Context from 'src/context/UserContext';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import AppNavigator from '../navigation/AppNavigator';
+import {Provider} from 'react-redux';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import {notificationListener, requestUserPermission} from '@config/notificationHandler';
 import {TailwindProvider} from 'tailwind-rn/dist';
 import utilities from '../../tailwind.json';
+import {store} from 'src/redux/store';
 
 const App = () => {
   useEffect(() => {
@@ -28,11 +30,11 @@ const App = () => {
 
   return (
     <TailwindProvider utilities={utilities}>
-      <NavigationContainer>
-        <Context>
+      <Provider store={store}>
+        <NavigationContainer>
           <AppNavigator />
-        </Context>
-      </NavigationContainer>
+        </NavigationContainer>
+      </Provider>
     </TailwindProvider>
   );
 };

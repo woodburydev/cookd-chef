@@ -1,40 +1,34 @@
 import {View, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
 import React, {useContext, useState} from 'react';
 import auth from '@react-native-firebase/auth';
-import axios from 'axios';
-import {endpoint} from 'src/config/api';
 import {LoginNavigationRoutes, LoginRoutesNames} from 'src/navigation/NavigationTypes';
 import {RouteProp, useRoute} from '@react-navigation/core';
-import {UserContext} from 'src/context/UserContext';
 import {commonStyles} from 'src/config/styles';
 import ChefImage from '@assets/GetStartedImages/Chef4.png';
 import {Button, Image, Text} from '@rneui/themed';
 import {WINDOW_HEIGHT} from 'src/config/constants';
+import { useAddUserMutation, useGetUserQuery } from 'src/redux/store';
 
 export default function Grow() {
   const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
   const {address, foundOut} = route.params;
-  const {getUser} = useContext(UserContext);
+  const { refetch } = useGetUserQuery();
+const [addUserMutation] = useAddUserMutation();
   const [loading, setLoading] = useState(false);
 
-  const submit = () => {
+  const submitToDB = () => {
+    setLoading(true);
     const user = auth().currentUser!;
-    axios
-      .post(`${endpoint}/cook`, {
-        displayname: user!.displayName,
-        fbuuid: user!.uid,
-        email: user!.email,
-        phone: user!.phoneNumber,
-        address,
-        foundOut,
-      })
-      .then(() => {
-        getUser!(user);
-      })
-      .catch((err) => {
-        console.log('Error saving user in database: ', JSON.stringify(err));
-        setLoading(false);
-      });
+    const sendObj = { 
+      displayname: user!.displayName,
+      fbuuid: user!.uid,
+      email: user!.email,
+      phone: user!.phoneNumber,
+      address,
+      foundOut,
+    }
+    addUserMutation(sendObj);
+    refetch()
   };
 
   return (
@@ -60,7 +54,7 @@ export default function Grow() {
           </Text>
         </View>
         <Button
-          onPress={submit}
+          onPress={submitToDB}
           style={styles.Button}
           title={loading ? <ActivityIndicator color="white" /> : 'Finish'}
         />

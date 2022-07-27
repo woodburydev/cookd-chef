@@ -1,23 +1,23 @@
-import React, { useContext } from 'react';
-import { StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { HomeRoutes } from './Home/routes';
-import { AirbnbRating, Button, Icon, Rating, Text } from '@rneui/themed';
-import { AllProfileRoutes } from './Profile/routes';
-import { AppColorPalette, commonStyles } from 'src/config/styles';
+import React, {useContext} from 'react';
+import {StackNavigationOptions, StackNavigationProp} from '@react-navigation/stack';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
+import {HomeRoutes} from './Home/routes';
+import {AirbnbRating, Button, Icon, Rating, Text} from '@rneui/themed';
+import {AllProfileRoutes} from './Profile/routes';
+import {AppColorPalette, commonStyles} from 'src/config/styles';
 import {
   MessageNavigationRoutes,
   MessageRouteNames,
   ProfileNavigationRoutes,
   ProfileRouteNames,
 } from './NavigationTypes';
-import ProfilePicture from '@assets/profilePicture.png'
-import { UserContext } from 'src/context/UserContext';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Image } from '@rneui/themed/dist/Image';
-import { useNavigation } from '@react-navigation/core';
+import ProfilePicture from '@assets/profilePicture.png';
+import {UserContext} from 'src/context/UserContext';
+import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
+import {Image} from '@rneui/themed/dist/Image';
+import {useNavigation} from '@react-navigation/core';
 import Header from 'src/components/Header';
-import { MessageRoutes } from './Messages/routes';
+import {MessageRoutes} from './Messages/routes';
 
 export const HomeNavigationOptions: StackNavigationOptions = {
   headerShown: false,
@@ -28,7 +28,7 @@ export const MessageNavigationOptions = (
 ): StackNavigationOptions => {
   const navigation = useNavigation();
   const routeName = props.route.name as keyof MessageRouteNames;
-  const { recipientDisplayName } = props.route?.params || '';
+  const {recipientDisplayName} = props.route?.params || '';
   const displayName = MessageRoutes[routeName]?.displayName;
   if (routeName === MessageRoutes.MESSAGE_DETAIL.name) {
     return {
@@ -62,11 +62,10 @@ export const MessageNavigationOptions = (
 
 export const ProfileNavigationOptions = (
   props: StackNavigationProp<ProfileNavigationRoutes, keyof ProfileRouteNames>,
+  {profilePictureUri, isLoadingProfilePictureUri, userInfo}: any,
 ): StackNavigationOptions => {
-
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
-  const { user, profilePicture } = useContext(UserContext);
   const routeName = props.route.name as keyof ProfileRouteNames;
   const displayName = AllProfileRoutes[routeName]?.displayName;
 
@@ -92,12 +91,16 @@ export const ProfileNavigationOptions = (
             style={[
               commonStyles.FlexRowCenterCenter,
               styles.HeaderWrapper,
-              { marginTop: insets.bottom > 30 ? '7%' : '0%' },
+              {marginTop: insets.bottom > 30 ? '7%' : '0%'},
             ]}
           >
             <View>
               <Image
-                source={profilePicture?.linkToProfilePicture ? { uri: profilePicture?.linkToProfilePicture } : ProfilePicture}
+                source={
+                  !isLoadingProfilePictureUri && !profilePictureUri
+                    ? ProfilePicture
+                    : {uri: profilePictureUri}
+                }
                 style={styles.image}
                 containerStyle={styles.imageContainer}
                 PlaceholderContent={<ActivityIndicator />}
@@ -105,7 +108,7 @@ export const ProfileNavigationOptions = (
             </View>
             <View style={[commonStyles.FlexColStartCenter, styles.headerContentContainer]}>
               <Text type="label" style={styles.headerText} numberOfLines={1}>
-                Chef {user?.displayname.split(' ')[1]}
+                Chef {userInfo?.displayname.split(' ')[1]}
               </Text>
               <AirbnbRating
                 isDisabled={true}
@@ -157,7 +160,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
+    shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.1,
     position: 'relative',
     shadowRadius: 3,

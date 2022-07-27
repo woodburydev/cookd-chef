@@ -12,34 +12,31 @@ import axios from 'axios';
 import auth from '@react-native-firebase/auth';
 import { endpoint } from 'src/config/api';
 import { WINDOW_HEIGHT } from 'src/config/constants';
+import { useAddUserMutation, useGetUserQuery } from 'src/redux/store';
 
 export default function Cook() {
   const route = useRoute<RouteProp<LoginNavigationRoutes, LoginRoutesNames['FINAL']>>();
   const navigation = useNavigation();
   const { address, foundOut } = route.params;
-  const { getUser } = useContext(UserContext);
+  const { refetch } = useGetUserQuery();
   const [loading, setLoading] = useState(false);
+  const [addUserMutation] = useAddUserMutation();
   const submit = () => {
     navigation.navigate('CUSTOMER_MANAGEMENT', { address, foundOut });
   };
   const submitToDB = () => {
+    setLoading(true);
     const user = auth().currentUser!;
-    axios
-      .post(`${endpoint}/cook`, {
-        displayname: user!.displayName,
-        fbuuid: user!.uid,
-        email: user!.email,
-        phone: user!.phoneNumber,
-        address,
-        foundOut,
-      })
-      .then(() => {
-        getUser!(user);
-      })
-      .catch((err) => {
-        console.log('Error saving user in database: ', JSON.stringify(err));
-        setLoading(false);
-      });
+    const sendObj = { 
+      displayname: user!.displayName,
+      fbuuid: user!.uid,
+      email: user!.email,
+      phone: user!.phoneNumber,
+      address,
+      foundOut,
+    }
+    addUserMutation(sendObj);
+    refetch()
   };
   return (
     <View style={commonStyles.FlexColCenterCenter}>
