@@ -8,10 +8,13 @@ import auth from '@react-native-firebase/auth';
 import LoginNavigation from './Login/LoginNavigation';
 import {useGetUserQuery} from 'src/redux/store';
 import HomeNavigation from './Home/HomeNavigation';
+import { useSelector } from 'react-redux';
 
 export default function AppNavigator() {
   const {data: userInfo, error, isFetching, refetch} = useGetUserQuery();
-
+  const updateUserRefetching = useSelector(
+    state => state.mainReducer.updateUserRefetch,
+  );
   // stack typescript definition is stupid, override with any.
   const Stack: any = createStackNavigator();
 
@@ -23,7 +26,7 @@ export default function AppNavigator() {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  if (isFetching) {
+  if (isFetching && !updateUserRefetching) {
     return <ActivityIndicator />;
   }
 

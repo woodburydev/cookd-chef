@@ -13,7 +13,7 @@ export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({baseUrl: `${endpoint}`}),
   tagTypes: ['User'],
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     getUser: builder.query<any, string | void>({
       query: (userId?: string | undefined) =>
         userId ? `/cook/${userId}` : `/cook/${auth()?.currentUser?.uid}`,
@@ -27,8 +27,17 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['User'],
     }),
+    updateUser: builder.mutation<any, any>({
+      query: (payload: any) => ({
+        url: '/cook/update',
+        method: 'POST',
+        body: payload,
+      }),
+      invalidatesTags: ['User'],
+    }),
   }),
 });
+
 
 export const profilePictureApi = createApi({
   reducerPath: 'profilePictureApi',
@@ -36,7 +45,7 @@ export const profilePictureApi = createApi({
   tagTypes: ['Post'],
   endpoints: (builder) => ({
     getProfilePicture: builder.query<string, void>({
-      query: () => `/cook/profilePicture?user=${auth().currentUser?.email}`,
+      query: () => `/cook/profilePicture?user=${auth().currentUser?.uid}`,
       providesTags: ['Post'],
     }),
     addProfilePicture: builder.mutation<FormData, any>({
@@ -53,7 +62,11 @@ export const profilePictureApi = createApi({
   }),
 });
 
-export const {useGetUserQuery, useLazyGetUserQuery, useAddUserMutation} = userApi;
+export const updateUserRefetchAction = createAction<boolean>(
+  'USER_UPDATE_REFETCH',
+);
+
+export const {useGetUserQuery, useUpdateUserMutation, useLazyGetUserQuery, useAddUserMutation} = userApi;
 
 export const {useGetProfilePictureQuery, useAddProfilePictureMutation} = profilePictureApi;
 
@@ -66,9 +79,23 @@ export const {useGetProfilePictureQuery, useAddProfilePictureMutation} = profile
 //   }
 // };
 
+const initialState = {
+  updateUserRefetch: false,
+};
+
+const mainReducer = (state = initialState, action: any) => {
+  switch (action.type) {
+    case 'USER_UPDATE_REFETCH':
+      return {...state, updateUserRefetch: action.payload};
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   [profilePictureApi.reducerPath]: profilePictureApi.reducer,
+  mainReducer,
   // loadingUserReducer,
 });
 

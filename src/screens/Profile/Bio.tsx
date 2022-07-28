@@ -30,7 +30,7 @@ const Bio = () => {
     // on change of values, send to update
     bio.length > 0 || education.length > 0
       ? axios.post(`${endpoint}/cook/update`, {
-          email: user.email,
+          fbuuid: user.uid,
           ...(bio.length > 0 && {bio}),
           ...(education.length > 0 && {education}),
         })
