@@ -17,7 +17,6 @@ export default function AppNavigator() {
   );
   // stack typescript definition is stupid, override with any.
   const Stack: any = createStackNavigator();
-
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
       refetch();
