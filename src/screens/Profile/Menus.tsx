@@ -1,12 +1,19 @@
-import {Image, Text} from '@rneui/themed';
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {Button, ButtonGroup, Image, Text} from '@rneui/themed';
+import React, {useEffect} from 'react';
+import {View, StyleSheet, ActivityIndicator, DeviceEventEmitter} from 'react-native';
 import {AppColorPalette, commonStyles} from 'src/config/styles';
 import Tacos from '@assets/tacos.jpg';
 import Ravioli from '@assets/pasta.jpg';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
 import {Icon} from '@rneui/base';
+import {
+  useGetMenuImageQuery,
+  useGetMenusFromUserQuery,
+  useGetUserQuery,
+  useLazyGetUserQuery,
+} from 'src/redux/store';
+import auth from '@react-native-firebase/auth';
 
 const data = [
   {
@@ -29,6 +36,18 @@ const data = [
 
 export default function Menus() {
   const navigation = useNavigation();
+  const fbuuid = auth().currentUser?.uid;
+  const {data: userInfo} = useGetUserQuery();
+  const {data: menus, isFetching} = useGetMenusFromUserQuery(userInfo.fbuuid);
+
+  useEffect(() => {
+    DeviceEventEmitter.emit('event.isLoading', isFetching);
+  }, [isFetching]);
+
+  if (isFetching) {
+    return <ActivityIndicator />;
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.pageContainer}>
       <View style={[commonStyles.FlexColStartStart, {flex: 1}]}>
@@ -37,45 +56,76 @@ export default function Menus() {
             Your Menu's
           </Text>
         </View>
-        {data.map((item) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('MENU_DETAILS', {menuId: item.menuId})}
-            style={[styles.ContainerStyle]}
-          >
-            <View style={styles.MenuItemTextContainer}>
-              <Text
-                type="label"
-                style={[commonStyles.mt10, commonStyles.mb20, styles.orangeLabelText]}
-              >
-                {item.title}
-              </Text>
-              <Text numberOfLines={5} style={{marginRight: 15, height: 90}}>
-                {item.description}
-              </Text>
-              <Text style={[commonStyles.mx20, styles.orangeLabelText]}>
-                ${item.costPerGuest}/guest
-              </Text>
-            </View>
-            <View style={styles.ImageWrapper}>
-              <Image
-                source={item.image}
-                style={styles.ImageContainer}
-                // PlaceholderContent={<ActivityIndicator />}
-              />
-              <View style={styles.imageIconContainerView}>
-                <Icon
-                  size={20}
-                  color={AppColorPalette.orange}
-                  style={styles.notificationIcon}
-                  containerStyle={[styles.notificationIconContainer, {right: 10, top: 5}]}
-                  type="material"
-                  name="edit"
-                />
-              </View>
-            </View>
-          </TouchableOpacity>
-        ))}
+        {menus.length > 0
+          ? menus.map(item => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('MENU_DETAILS', {menuId: item.id, new: false})}
+                style={[styles.ContainerStyle]}>
+                <View style={styles.MenuItemTextContainer}>
+                  <Text
+                    type="label"
+                    style={[commonStyles.mt10, commonStyles.mb20, styles.orangeLabelText]}>
+                    {item.title}
+                  </Text>
+                  <Text numberOfLines={5} style={{marginRight: 15, height: 90}}>
+                    {item.description}
+                  </Text>
+                  <Text style={[commonStyles.mx20, styles.orangeLabelText]}>
+                    ${item.cost_per_person}/guest
+                  </Text>
+                </View>
+                <View style={styles.ImageWrapper}>
+                  <Image
+                    source={item.filename.length > 0 ? {uri: JSON.parse(item.filename)} : {uri: ''}}
+                    style={styles.ImageContainer}
+                  />
+                </View>
+              </TouchableOpacity>
+            ))
+          : data.map(item => (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('MENU_DETAILS', {menuId: item.menuId, new: false})
+                }
+                style={[styles.ContainerStyle]}>
+                <View style={styles.MenuItemTextContainer}>
+                  <Text
+                    type="label"
+                    style={[commonStyles.mt10, commonStyles.mb20, styles.orangeLabelText]}>
+                    {item.title}
+                  </Text>
+                  <Text numberOfLines={5} style={{marginRight: 15, height: 90}}>
+                    {item.description}
+                  </Text>
+                  <Text style={[commonStyles.mx20, styles.orangeLabelText]}>
+                    ${item.costPerGuest}/guest
+                  </Text>
+                </View>
+                <View style={styles.ImageWrapper}>
+                  <Image
+                    source={item.image}
+                    style={styles.ImageContainer}
+                    // PlaceholderContent={<ActivityIndicator />}
+                  />
+                  <View style={styles.imageIconContainerView}>
+                    <Icon
+                      size={20}
+                      color={AppColorPalette.orange}
+                      style={styles.notificationIcon}
+                      containerStyle={[styles.notificationIconContainer, {right: 10, top: 5}]}
+                      type="material"
+                      name="edit"
+                    />
+                  </View>
+                </View>
+              </TouchableOpacity>
+            ))}
       </View>
+      <Button
+        onPress={() => navigation.navigate('MENU_DETAILS', {new: true})}
+        style={{alignSelf: 'center', marginTop: 20, marginBottom: 30}}
+        title="Add New Menu"
+      />
     </ScrollView>
   );
 }

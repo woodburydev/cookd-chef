@@ -1,12 +1,6 @@
 import {Button, Image, Input, Text} from '@rneui/themed';
 import React, {useCallback, useEffect, useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  Platform,
-  KeyboardAvoidingView,
-} from 'react-native';
+import {View, StyleSheet, Dimensions, Platform, KeyboardAvoidingView} from 'react-native';
 import {AppColorPalette, commonStyles} from 'src/config/styles';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Icon} from '@rneui/base';
@@ -27,16 +21,14 @@ const screenWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 const fbuuid = auth().currentUser?.uid;
 export default function ContactInfo() {
-  const {data: userInfo, isFetching: isFetchingUserInformation} =
-    useGetUserQuery();
+  const {data: userInfo, isFetching: isFetchingUserInformation} = useGetUserQuery();
   const [fullName, setFullName] = useState<string>();
   const [phoneNumber, setPhoneNumber] = useState<string>();
   const [email, setEmail] = useState<string>();
   const [emailError, setEmailError] = useState('');
   const [phoneNumberError, setPhoneNumberError] = useState('');
   const dispatch = useDispatch();
-  const {data: profilePictureUri, isFetching: loadingProfilePicture} =
-    useGetProfilePictureQuery();
+  const {data: profilePictureUri, isFetching: loadingProfilePicture} = useGetProfilePictureQuery();
   const [
     updateProfilePicture, // This is the mutation trigger
     {isLoading: isUpdating, error}, // This is the destructured mutation result
@@ -46,7 +38,6 @@ export default function ContactInfo() {
     // This is the mutation trigger
     {data: updateUserResponse}, // This is the destructured mutation result
   ] = useUpdateUserMutation();
-
 
   const onImageLibraryPress = useCallback(() => {
     const options = {
@@ -69,10 +60,7 @@ export default function ContactInfo() {
         const formData = new FormData();
 
         formData.append('file', {
-          uri:
-            Platform.OS === 'android'
-              ? photo.uri
-              : photo.uri!.replace('file://', ''),
+          uri: Platform.OS === 'android' ? photo.uri : photo.uri!.replace('file://', ''),
           type: photo.type,
           name: photo.fileName,
         });
@@ -130,10 +118,7 @@ export default function ContactInfo() {
     if (phoneNumberLength < 7) {
       return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
     }
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
-      3,
-      6,
-    )}-${phoneNumber.slice(6, 10)}`;
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
   }
   return (
     <ScrollView
@@ -170,7 +155,7 @@ export default function ContactInfo() {
             />
           </View>
         </View>
-        <View style={styles.whiteBackgroundView}>
+        <View style={[styles.whiteBackgroundView, {marginTop: 0}]}>
           <View style={styles.whiteBackgroundText}>
             <View style={styles.insideTextContainer}>
               <Text type="label">Full Name:</Text>
@@ -200,20 +185,13 @@ export default function ContactInfo() {
               size={18}
               color={AppColorPalette.orange}
               style={styles.notificationIcon}
-              containerStyle={[
-                styles.notificationIconContainer,
-                {right: 10, top: 5},
-              ]}
+              containerStyle={[styles.notificationIconContainer, {right: 10, top: 5}]}
               type="material"
               name="edit"
             />
           </View>
         </View>
-        <View
-          style={[
-            styles.whiteBackgroundView,
-            emailError.length > 0 && {paddingBottom: 30},
-          ]}>
+        <View style={[styles.whiteBackgroundView, emailError.length > 0 && {paddingBottom: 30}]}>
           <View style={styles.whiteBackgroundText}>
             <View style={styles.insideTextContainer}>
               <Text type="label">Email:</Text>
@@ -249,20 +227,14 @@ export default function ContactInfo() {
               size={18}
               color={AppColorPalette.orange}
               style={styles.notificationIcon}
-              containerStyle={[
-                styles.notificationIconContainer,
-                {right: 10, top: 5},
-              ]}
+              containerStyle={[styles.notificationIconContainer, {right: 10, top: 5}]}
               type="material"
               name="edit"
             />
           </View>
         </View>
         <View
-          style={[
-            styles.whiteBackgroundView,
-            phoneNumberError.length > 0 && {paddingBottom: 30},
-          ]}>
+          style={[styles.whiteBackgroundView, phoneNumberError.length > 0 && {paddingBottom: 30}]}>
           <View style={styles.whiteBackgroundText}>
             <View style={styles.insideTextContainer}>
               <Text type="label">Phone Number:</Text>
@@ -300,10 +272,7 @@ export default function ContactInfo() {
           </View>
         </View>
         <View
-          style={[
-            styles.whiteBackgroundView,
-            phoneNumberError.length > 0 && {paddingBottom: 30},
-          ]}>
+          style={[styles.whiteBackgroundView, phoneNumberError.length > 0 && {paddingBottom: 30}]}>
           <View style={styles.whiteBackgroundText}>
             <View style={styles.insideTextContainer}>
               <Text type="label">Address:</Text>
@@ -350,12 +319,12 @@ export default function ContactInfo() {
             /> */}
           </View>
         </View>
-        <View style={{ marginBottom: 25 }}>
-        <Button
-          onPress={updateProfileInformation}
-          title="Update"
-          containerStyle={{marginTop: 25}}
-        />
+        <View style={{marginBottom: 25}}>
+          <Button
+            onPress={updateProfileInformation}
+            title="Update"
+            containerStyle={{marginTop: 25}}
+          />
         </View>
 
         {/* <View style={styles.whiteBackgroundView}>

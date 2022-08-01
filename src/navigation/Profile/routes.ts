@@ -8,6 +8,7 @@ import BankingInfo from 'src/screens/Profile/BankingInfo';
 import InviteChef from 'src/screens/Profile/InviteChef';
 import ContactInfo from 'src/screens/Profile/ContactInfo';
 import MenuDetails from 'src/screens/Profile/MenuDetails';
+import MenuDetailsAdd from 'src/screens/Profile/MenuDetailsAdd';
 
 export const ProfileRoutes = {
   REVIEWS: {
@@ -82,5 +83,10 @@ export const AllProfileRoutes = {
     name: 'MENU_DETAILS',
     displayName: 'Menu Details',
     component: MenuDetails,
+  },
+  MENU_DETAILS_ADD: {
+    name: 'MENU_DETAILS_ADD',
+    displayName: 'Edit Details',
+    component: MenuDetailsAdd,
   },
 };

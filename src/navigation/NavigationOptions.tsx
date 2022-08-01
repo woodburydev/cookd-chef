@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {StackNavigationOptions, StackNavigationProp} from '@react-navigation/stack';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {HomeRoutes} from './Home/routes';
@@ -18,6 +18,8 @@ import {Image} from '@rneui/themed/dist/Image';
 import {useNavigation} from '@react-navigation/core';
 import Header from 'src/components/Header';
 import {MessageRoutes} from './Messages/routes';
+import {useSelector} from 'react-redux';
+import {showToast} from 'src/redux/store';
 
 export const HomeNavigationOptions: StackNavigationOptions = {
   headerShown: false,
@@ -34,7 +36,7 @@ export const MessageNavigationOptions = (
     return {
       headerShown: true,
       headerStyle: commonStyles.WhiteHeaderBackground,
-      header: (headerProps) => {
+      header: headerProps => {
         return (
           <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
             <Header
@@ -50,7 +52,7 @@ export const MessageNavigationOptions = (
   return {
     headerShown: true,
     headerStyle: commonStyles.WhiteHeaderBackground,
-    header: (headerProps) => {
+    header: headerProps => {
       return (
         <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
           <Header headerText={displayName} />
@@ -62,7 +64,7 @@ export const MessageNavigationOptions = (
 
 export const ProfileNavigationOptions = (
   props: StackNavigationProp<ProfileNavigationRoutes, keyof ProfileRouteNames>,
-  {profilePictureUri, isLoadingProfilePictureUri, userInfo}: any,
+  {profilePictureUri, isLoadingProfilePictureUri, userInfo, toast}: any,
 ): StackNavigationOptions => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
@@ -92,8 +94,7 @@ export const ProfileNavigationOptions = (
               commonStyles.FlexRowCenterCenter,
               styles.HeaderWrapper,
               {marginTop: insets.bottom > 30 ? '7%' : '0%'},
-            ]}
-          >
+            ]}>
             <View>
               <Image
                 source={
@@ -130,10 +131,54 @@ export const ProfileNavigationOptions = (
         </SafeAreaView>
       ),
     };
-  } else {
+  } else if (props.route.name === AllProfileRoutes.MENU_DETAILS_ADD.name) {
+    const menuId = props.route.params.menuId;
+    const newItem = props.route.params.new;
+    const detail = props.route.params.detail;
+    const editing = props.route.params.editing;
     return {
       headerShown: true,
-      header: (headerProps) => {
+      header: headerProps => {
+        return (
+          <>
+            <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
+              <Header
+                backArrow
+                headerText={editing ? `Edit ${detail}` : `New ${detail}`}
+                onPressBack={() => navigation.navigate('MENU_DETAILS', {menuId, new: newItem})}
+              />
+            </SafeAreaView>
+          </>
+        );
+      },
+    };
+  } else if (props.route.name === AllProfileRoutes.MENU_DETAILS.name) {
+    const newItem = props.route.params.new;
+    return {
+      headerShown: true,
+      header: headerProps => {
+        return (
+          <>
+            <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
+              <Header
+                backArrow
+                headerText={newItem ? 'New Menu' : 'Menu Details'}
+                onPressBack={
+                  // sub navigation fix, if we are on menu details, back should take us to menus. Not profile.
+                  props.route.name === AllProfileRoutes.MENU_DETAILS.name
+                    ? () => navigation.navigate('MENUS')
+                    : () => navigation.navigate('PROFILE')
+                }
+              />
+            </SafeAreaView>
+          </>
+        );
+      },
+    };
+  } else
+    return {
+      headerShown: true,
+      header: headerProps => {
         return (
           <SafeAreaView style={commonStyles.WhiteHeaderBackground}>
             <Header
@@ -150,7 +195,6 @@ export const ProfileNavigationOptions = (
         );
       },
     };
-  }
 };
 
 const styles = StyleSheet.create({

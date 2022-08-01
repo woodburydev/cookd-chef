@@ -64,7 +64,12 @@ export type ProfileNavigationRoutes = {
   REWARDS: undefined;
   REVIEWS: undefined;
   MENUS: undefined;
-  MENU_DETAILS: {menuId: number};
+  MENU_DETAILS: {
+    menuId?: number;
+    new: boolean;
+    appetizers?: {title: string; description: string};
+  };
+  MENU_DETAILS_ADD: {menuId: number; detail: string; editing: boolean; new: boolean};
   BIO: undefined;
   FAVORITE_CUISINES: undefined;
   CONTACT_INFO: undefined;
@@ -80,6 +85,7 @@ export type ProfileRouteNames = {
   REVIEWS: 'REVIEWS';
   MENUS: 'MENUS';
   MENU_DETAILS: 'MENU_DETAILS';
+  MENU_DETAILS_ADD: 'MENU_DETAILS_ADD';
   BIO: 'BIO';
   FAVORITE_CUISINES: 'FAVORITE_CUISINES';
   CONTACT_INFO: 'CONTACT_INFO';
